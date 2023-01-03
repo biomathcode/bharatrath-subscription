@@ -31,8 +31,8 @@ export default class Subscription extends BaseModel {
   @column()
   public userId?: number
 
-  @column.dateTime()
-  public startDate: DateTime
+  @column()
+  public startDate: string
 
   @column()
   public totalAmount: number

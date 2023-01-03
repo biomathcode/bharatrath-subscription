@@ -8,6 +8,8 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.dateTime('start_date').nullable()
+      table.dateTime('end_date').nullable()
+
       table.integer('total_amount').unsigned().nullable().defaultTo(500)
       table.enum('recurrence', Object.values(RecurrenceStatus)).defaultTo(RecurrenceStatus.EVERYDAY)
 

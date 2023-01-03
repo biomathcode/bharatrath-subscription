@@ -25,8 +25,8 @@ export enum SubscriptionStatus {
 }
 
 export enum RecurrenceStatus {
-  EVERYDAY = 'everyday', // everyday order will be placed
-  EVERYWEEK = 'everyweek', // every week
-  ALTERNATEWEEK = 'alternateweek', // alternate weeks
-  EVERYMONTH = 'everymonth', // everymonth
+  EVERYDAY = 'Every Day', // everyday order will be placed
+  EVERYWEEK = 'Every Week', // every week
+  ALTERNATEWEEK = 'Every Alternate Week', // alternate weeks
+  EVERYMONTH = 'Every Month', // everymonth
 }

@@ -75,22 +75,23 @@ let startDate = ref(new Date());
 
 let endDate = ref(new Date());
 
-watch(startDate, async (newDate, oldDate) => {
-  console.log(newDate + oldDate);
-});
+let type = ref('Every Day')
 
-let SelectedDays = ref([]);
+let orderToday = ref(false);
 
-console.log(store.cart.values.length);
+
+let Days = ref([]);
+
+
 
 function select(e) {
   console.log("this is working");
   console.log(e);
-  if (SelectedDays.value.includes(e)) {
-    const newArray = SelectedDays.value.filter((el) => el !== e);
-    SelectedDays.value = [...newArray];
+  if (Days.value.includes(e)) {
+    const newArray = Days.value.filter((el) => el !== e);
+    Days.value = [...newArray];
   } else {
-    SelectedDays.value = [...SelectedDays.value, e];
+    Days.value = [...Days.value, e];
   }
 }
 </script>
@@ -118,7 +119,7 @@ function select(e) {
     <div
       class="min-w-20 border-green-100 rounded-md border-2 bg-green-50 text-green-900 p-20 flex gap-10 flex-col mt-10">
       <h1 class="text-lg font-extrabold">Start Subscription</h1>
-      <DaysSelectorVue @select="select" :data="WeekData" :selected-days="SelectedDays" />
+      <DaysSelectorVue @select="select" :data="WeekData" :selected-days="Days" />
 
       <div class="flex max-w-md flex-col gap-3">
         <label>Start Date</label>
@@ -166,17 +167,17 @@ function select(e) {
 
       <div class="flex gap-4">
         <label>Select Type</label>
-        <select class=" bg-white text-gray-900 ">
-          <option :key="type" v-for="type in selectType" >
-            {{ type }}
+        <select v-model="type"  @change="event => type = event.target.value"  class=" bg-white text-gray-900 ">
+          <option v-bind:value="el" :key="el" v-for="el in selectType" >
+            {{ el }}
           </option>
         </select>
       </div>
       <div class="flex gap-4">
         <label>Order For Today</label>
-        <input  :value="true" class="bg-white text-slate-900" type="radio" />
+        <input :value="orderToday" @change="event => orderToday = !orderToday" class="form-check-input bg-white rounded-full h-4 w-4  text-slate-100 checkbox" type="checkbox" />
       </div>
-      <button @click="store.startSubscription(SelectedDays, startDate)" class="btn  bottom-2 btn-success ">
+      <button @click="store.startSubscription(startDate, endDate, type, orderToday, Days )" class="btn  bottom-2 btn-success ">
         Start Subscription
       </button>
     </div>

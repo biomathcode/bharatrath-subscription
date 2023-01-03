@@ -1,4 +1,4 @@
-import { reactive } from "vue";
+import { reactive, toRaw } from "vue";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
 
@@ -20,41 +20,45 @@ export const store = reactive({
     console.log(this.products.values);
   },
   getSubscription(subscriptions) {
-    this.subscription = [...this.subscription, ...subscriptions];
+    console.log(subscriptions);
+    this.subscription = [...subscriptions];
   },
   getTransactions(transactions) {
     this.transaction = [...this.transactions, ...transactions];
   },
 
-  async startSubscription(SelectedDays, startDate) {
-    const newSub = {
-      id: uuid(),
-      createdAt: new Date(),
-      products: this.cart,
-      startDate: startDate,
-      SelectedDays,
-    };
-    this.subscription = [...this.subscription, newSub];
-
-    const products = this.cart.map((el) => el.id);
-
-    const totalAmount = store.cart?.reduce(
+  async startSubscription(startDate, endDate, type, orderToday, Days) {
+    const products = toRaw(this.cart.map((el) => el.id));
+    const quantity = toRaw(this.cart.map((el) => el.quantity));
+    const totalAmount = this.cart?.reduce(
       (prev, curr) => prev + curr.quantity * curr.price,
       0
     );
+    const newSub = {
+      createdAt: new Date(),
+      products: toRaw(products),
+      startDate: startDate,
+      endDate: endDate,
+      type: type,
+      orderToday: orderToday,
+      days: JSON.stringify(Days),
+      status: "active",
+      quantity,
+      amount: totalAmount,
+    };
+
+    console.log(newSub);
+    this.subscription = [...this.subscription, { id: uuid(), ...newSub }];
+
+    // const products = this.cart.map((el) => el.id);
 
     const response = await axios.post(
       "http://localhost:3333/users/1/subscriptions",
-      {
-        products,
-        startDate,
-        amount: totalAmount,
-        status: "active",
-      }
+      newSub
     );
     console.log(response);
 
-    this.cart = [];
+    // this.cart = [];
   },
   credit(amount) {
     const newTransaction = {

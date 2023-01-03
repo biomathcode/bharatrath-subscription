@@ -5,10 +5,11 @@ import User from 'App/Models/User'
 export default class SubscriptionsController {
   public async index({ request }: HttpContextContract) {
     const params = request.params()
-    const subscription = await Subscription.findBy('user_id', params.user_id)
+    const user = await User.find(params.user_id)
+    const subscriptions = await user?.related('subscription').query().preload('products')
 
-    const products = await subscription?.related('products').query()
-    return { ...subscription, products }
+    // const products = await subscription?.related('products').query()
+    return subscriptions
   }
   public async store({ request }: HttpContextContract) {
     const body = request.body()
@@ -19,14 +20,17 @@ export default class SubscriptionsController {
     const subscription = await Subscription.create({
       userId: params.user_id,
       startDate: body.startDate,
+      endDate: body.endDate,
       status: body.status,
       totalAmount: body.amount,
+      days: body.days,
+      recurrence: body.type,
     })
     // solved quantity issue
 
     let productsObject = {}
 
-    body.products.forEach((key, i) => (productsObject[key] = { quantify: body.quantitys[i] }))
+    body.products.forEach((key, i) => (productsObject[key] = { quantity: body.quantity[i] }))
 
     const products = await subscription.related('products').attach(productsObject)
 
