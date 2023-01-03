@@ -1,6 +1,6 @@
 import HomeView from "../pages/Home.vue";
 import AboutView from "../pages/About.vue";
-import CalendarView from "../pages/Calendar.vue";
+import SubscriptionsView from "./Subscriptions.vue";
 import CheckoutView from "../pages/Checkout.vue";
 
-export { HomeView, AboutView, CalendarView, CheckoutView };
+export { HomeView, AboutView, SubscriptionsView, CheckoutView };

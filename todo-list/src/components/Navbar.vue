@@ -16,21 +16,21 @@ const amount = ref("");
       <ul class="menu menu-horizontal p-0">
         <li><RouterLink to="/"> 🏡 Home </RouterLink></li>
 
-        <li><RouterLink to="/calendar">🗓 Calendar</RouterLink></li>
+        <li><RouterLink to="/subscriptions">Subscriptions</RouterLink></li>
       </ul>
     </div>
     <div class="px-2 flex justify-center content-center">
-      <div class="flex gap-1 content-center items-center justify-center">
+      <div class="flex regap-1 content-center items-center justify-center">
         <label
           for="my-modal"
           tabindex="0"
           class="btn btn-ghost flex gap-10 content-center items-center sss"
         >
-          <div class="avatar">
+          <!-- <div class="avatar">
             <div class="w-10 rounded-full">
               <img class="avatar" :src="store.user.image" alt="avatar" />
             </div>
-          </div>
+          </div> -->
 
           <div class="flex flex-col">
             <p>{{ store.user.name }}</p>

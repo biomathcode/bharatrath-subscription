@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createRouter, createWebHistory } from "vue-router";
-import { HomeView, AboutView, CalendarView, CheckoutView } from "../pages";
+import { HomeView, AboutView, SubscriptionsView, CheckoutView } from "../pages";
 import { store } from "../stores/store";
 
 const router = createRouter({
@@ -20,9 +20,9 @@ const router = createRouter({
       // component: ProductListView,
     },
     {
-      path: "/calendar",
-      name: "calendar",
-      component: CalendarView,
+      path: "/subscriptions",
+      name: "subscriptions",
+      component: SubscriptionsView,
     },
     {
       path: "/checkout",
