@@ -3,29 +3,14 @@ import { v4 as uuid } from "uuid";
 import axios from "axios";
 
 export const store = reactive({
-  products: [
-    // {
-    //   id: 12342321,
-    //   name: "Milk - Mother Dairy",
-    //   description: "500 ml Mother dairy Milk - freshly daily ",
-    //   price: 28,
-    //   image: "src/assets/milk.jpeg",
-    // },
-    // {
-    //   id: 12321,
-    //   name: "Amul Masti Dahi ",
-    //   description: "1kg Dahi by Amul - freshly daily ",
-    //   price: 40,
-    //   image: "src/assets/dahi.jpeg",
-    // },
-  ],
+  products: [],
   cart: [],
   user: {
     name: "Pratik Sharma",
     amount: 500,
   },
   getUser(user) {
-    this.user = user;
+    this.user = { ...user, name: "Pratik Sharma" };
   },
   subscription: [],
   transaction: [],

@@ -22,8 +22,13 @@ export default class SubscriptionsController {
       status: body.status,
       totalAmount: body.amount,
     })
+    // solved quantity issue
 
-    const products = await subscription.related('products').attach(body.products)
+    let productsObject = {}
+
+    body.products.forEach((key, i) => (productsObject[key] = { quantify: body.quantitys[i] }))
+
+    const products = await subscription.related('products').attach(productsObject)
 
     return { subscription, products }
   }

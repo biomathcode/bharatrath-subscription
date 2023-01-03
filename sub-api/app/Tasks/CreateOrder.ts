@@ -2,6 +2,11 @@ import { BaseTask } from 'adonis5-scheduler/build'
 import Order from 'App/Models/Order'
 import Subscription from 'App/Models/Subscription'
 
+
+// every week of the month
+// every second week of the month
+// 
+
 export default class CreateOrder extends BaseTask {
   public static get schedule() {
     return '* * * * * *' // get it to midnight

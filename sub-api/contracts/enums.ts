@@ -23,3 +23,10 @@ export enum SubscriptionStatus {
   ACTIVE = 'active',
   CANCELED = 'canceled',
 }
+
+export enum RecurrenceStatus {
+  EVERYDAY = 'everyday', // everyday order will be placed
+  EVERYWEEK = 'everyweek', // every week
+  ALTERNATEWEEK = 'alternateweek', // alternate weeks
+  EVERYMONTH = 'everymonth', // everymonth
+}
