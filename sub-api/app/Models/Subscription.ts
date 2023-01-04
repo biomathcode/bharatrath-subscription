@@ -44,7 +44,7 @@ export default class Subscription extends BaseModel {
   public endDate: string
 
   @column()
-  public days: string
+  public days: string // array of strings
 
   @column()
   public recurrence: RecurrenceStatus
