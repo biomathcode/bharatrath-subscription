@@ -5,6 +5,7 @@ import axios from "axios";
 export const store = reactive({
   products: [],
   cart: [],
+  order: [],
   user: {
     name: "Pratik Sharma",
     amount: 500,
@@ -18,6 +19,29 @@ export const store = reactive({
     this.products = [...this.products, ...products];
     console.log("this are products", products);
     console.log(this.products.values);
+  },
+  getOrders(orders, quantity) {
+    console.log("this is quantiy", quantity);
+    const newData = orders.map((element) => {
+      const newProduct = element.products.map((pd) => {
+        const quant = quantity.filter(
+          (el) => el.product_id === pd.id && el.order_id === element.id
+        )[0];
+        return {
+          ...pd,
+          quantity: quant.quantity,
+        };
+      });
+
+      return {
+        ...element,
+        products: newProduct,
+      };
+    });
+
+    console.log("this are the orders", newData);
+
+    this.order = [...newData];
   },
   getSubscription(subscriptions, quantity) {
     console.log("this is quantiy", quantity);

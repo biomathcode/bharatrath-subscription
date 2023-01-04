@@ -13,7 +13,7 @@ export default class SubscriptionsController {
 
     const el = await Subscription.findBy('user_id', params.user_id)
 
-    if (!el) throw new Error('SUBSCRIPTION NOT FOUND')
+    // if (!el) throw new Error('SUBSCRIPTION NOT FOUND')
 
     const getAllquantity = await Database.query().from('product_subscriptions').select('*')
 

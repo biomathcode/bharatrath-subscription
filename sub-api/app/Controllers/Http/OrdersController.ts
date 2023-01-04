@@ -1,14 +1,16 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import Database from '@ioc:Adonis/Lucid/Database'
 import Order from 'App/Models/Order'
-import Product from 'App/Models/Product'
 import { OrderStatus } from 'Contracts/enums'
 import { DateTime, from } from 'luxon'
 
 export default class OrdersController {
   public async index({ params }: HttpContextContract) {
-    const order = await Order.query().preload('products')
+    const orders = await Order.query().preload('products')
 
-    return order
+    const getAllquantity = await Database.query().from('order_products').select('*')
+
+    return { orders, quantity: getAllquantity }
   }
   public async store({ request }: HttpContextContract) {
     // create order
