@@ -11,6 +11,9 @@ import { format, formatDistance } from "date-fns";
     <h3>Active Subscriptions</h3>
     <div class="flex gap-1 items-center px-5 max-w-md rounded mx-5 overflow-hidden shadow-lg " :key="subs.id" v-for="subs in store.subscription">
       <div class="px-6 py-4 ">
+        <div class="text-sm badge badge-primary">
+          {{ subs.recurrence }}
+        </div>
         <p >
           {{ subs?.products.map((el) => el.name).join(" + ") }}
         </p>
@@ -31,6 +34,7 @@ import { format, formatDistance } from "date-fns";
           {{ format(new Date(subs?.end_date), "dd/MM/yyyy") }}
         </div>
         </div>
+        
         <div :key="product.id" v-for="product in subs.products" >
           <div class="text-sm">{{product.name}} x {{product.quantity}} = {{product.price * product.quantity}}</div>
 

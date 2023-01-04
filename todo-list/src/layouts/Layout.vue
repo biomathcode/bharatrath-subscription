@@ -7,7 +7,7 @@ import NavbarVue from '../components/Navbar.vue';
   >
     <NavbarVue></NavbarVue>
     <slot class="mt-14"></slot>
-    <footer>@copyright 2022</footer>
+    <!-- <footer>@copyright 2022</footer> -->
   </div>
 </template>
 

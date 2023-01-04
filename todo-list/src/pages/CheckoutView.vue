@@ -107,7 +107,7 @@ function select(e) {
 
       <div class="flex max-w-md flex-col gap-3">
         <label>Start Date</label>
-        <v-date-picker class="inline-block h-full" v-model="startDate">
+        <v-date-picker  :min-date='new Date()'  class="inline-block h-full" v-model="startDate">
           <template v-slot="{ inputValue, togglePopover }">
             <div class="flex items-center">
               <button
@@ -128,7 +128,7 @@ function select(e) {
 
       <div class="flex max-w-md flex-col gap-3">
         <label>End Date</label>
-        <v-date-picker class="inline-block h-full" v-model="endDate">
+        <v-date-picker  :min-date='new Date()' class="inline-block h-full" v-model="endDate">
           <template v-slot="{ inputValue, togglePopover }">
             <div class="flex items-center">
               <button
