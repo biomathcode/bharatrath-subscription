@@ -9,8 +9,10 @@ export default class extends BaseSchema {
       table.increments('id').primary()
       table.enum('status', Object.values(OrderStatus)).defaultTo(OrderStatus.ARRIVING)
       table.decimal('delivery_charge').defaultTo(20)
+      table.dateTime('delivery_date')
       table.string('quantity').nullable()
       table.string('user_id')
+      table.decimal('amount')
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */

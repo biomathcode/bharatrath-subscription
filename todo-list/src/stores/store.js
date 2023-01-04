@@ -1,4 +1,4 @@
-import { reactive, toRaw } from "vue";
+import { reactive, Suspense, toRaw } from "vue";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
 
@@ -19,9 +19,26 @@ export const store = reactive({
     console.log("this are products", products);
     console.log(this.products.values);
   },
-  getSubscription(subscriptions) {
-    console.log(subscriptions);
-    this.subscription = [...subscriptions];
+  getSubscription(subscriptions, quantity) {
+    console.log("this is quantiy", quantity);
+    const newData = subscriptions.map((element) => {
+      const newProduct = element.products.map((pd) => {
+        const quant = quantity.filter(
+          (el) => el.product_id === pd.id && el.subscription_id === element.id
+        )[0];
+        return {
+          ...pd,
+          quantity: quant.quantity,
+        };
+      });
+
+      return {
+        ...element,
+        products: newProduct,
+      };
+    });
+    console.log("this is new data", newData);
+    this.subscription = [...newData];
   },
   getTransactions(transactions) {
     this.transaction = [...this.transactions, ...transactions];

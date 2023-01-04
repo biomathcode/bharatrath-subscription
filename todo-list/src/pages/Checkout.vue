@@ -1,4 +1,4 @@
-<script setup>
+p<script setup>
 import { ref, watch } from "vue";
 import DaysSelectorVue from "../components/DaysSelector.vue";
 import { store } from "../stores/store";

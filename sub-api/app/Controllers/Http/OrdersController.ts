@@ -5,7 +5,7 @@ import { DateTime, from } from 'luxon'
 
 export default class OrdersController {
   public async index({ params }: HttpContextContract) {
-    const order = await Order.query().preload('products').whereColumn('user_id', params.user_id)
+    const order = await Order.query().preload('products')
 
     return order
   }
@@ -15,14 +15,14 @@ export default class OrdersController {
 
     const createOrder = await Order.create({
       status: OrderStatus.ARRIVING,
-      delieveryDate: DateTime.fromISO(body.date),
+      deliveryDate: DateTime.fromISO(body.date),
       userId: '1',
-      totalAmount: body.amount,
+      amount: body.amount,
       deliveryCharge: 20,
       quantity: body.quantity,
     })
 
-    return createOrder
+    return createOrder.related('products')
   }
   public async show({ params }: HttpContextContract) {
     return Order.find(params.id)

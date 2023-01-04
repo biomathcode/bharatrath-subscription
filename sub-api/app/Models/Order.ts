@@ -12,7 +12,7 @@ export default class Order extends BaseModel {
   public status: OrderStatus
 
   @column.dateTime()
-  public delieveryDate: DateTime
+  public deliveryDate: DateTime
 
   @column()
   public userId: string
@@ -21,7 +21,7 @@ export default class Order extends BaseModel {
   public quantity: string
 
   @column()
-  public totalAmount: number
+  public amount: number
   @hasMany(() => Product, {
     foreignKey: 'id',
   })
