@@ -1,8 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, beforeSave, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, HasMany, hasMany, manyToMany, ManyToMany } from '@ioc:Adonis/Lucid/Orm'
 import { OrderStatus } from 'Contracts/enums'
 import Product from './Product'
-import User from './User'
 
 export default class Order extends BaseModel {
   @column({ isPrimary: true })
@@ -22,10 +21,14 @@ export default class Order extends BaseModel {
 
   @column()
   public amount: number
-  @hasMany(() => Product, {
-    foreignKey: 'id',
+
+  @manyToMany(() => Product, {
+    pivotTable: 'order_products',
   })
-  public products: HasMany<typeof Product>
+  public products: ManyToMany<typeof Product>
+
+  @column()
+  public address: string
 
   @column()
   public deliveryCharge: number

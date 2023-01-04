@@ -1,5 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Order from 'App/Models/Order'
+import Product from 'App/Models/Product'
 import { OrderStatus } from 'Contracts/enums'
 import { DateTime, from } from 'luxon'
 
@@ -20,9 +21,16 @@ export default class OrdersController {
       amount: body.amount,
       deliveryCharge: 20,
       quantity: body.quantity,
+      // address: body.address,
     })
 
-    return createOrder.related('products')
+    let productsObject = {}
+
+    body.products.forEach((key, i) => (productsObject[key.id] = { quantity: key.quantity }))
+
+    const addProduct = await createOrder.related('products').attach(productsObject)
+
+    return { createOrder, addProduct }
   }
   public async show({ params }: HttpContextContract) {
     return Order.find(params.id)

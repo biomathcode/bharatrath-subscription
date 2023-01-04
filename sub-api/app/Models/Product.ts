@@ -8,6 +8,7 @@ import {
   manyToMany,
 } from '@ioc:Adonis/Lucid/Orm'
 import Subscription from './Subscription'
+import Order from './Order'
 
 export default class Product extends BaseModel {
   @column({ isPrimary: true })
@@ -26,6 +27,11 @@ export default class Product extends BaseModel {
 
   @column()
   public stock: number
+
+  @manyToMany(() => Order, {
+    pivotTable: 'order_products',
+  })
+  public orders: ManyToMany<typeof Order>
 
   @manyToMany(() => Subscription, {
     pivotTable: 'product_subscriptions',
