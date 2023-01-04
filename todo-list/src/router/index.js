@@ -1,7 +1,11 @@
-import axios from "axios";
 import { createRouter, createWebHistory } from "vue-router";
-import { HomeView, AboutView, SubscriptionsView, CheckoutView } from "../pages";
-import { store } from "../stores/store";
+import {
+  HomeView,
+  AboutView,
+  SubscriptionView,
+  CheckoutView,
+  OrderView,
+} from "../pages";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -22,7 +26,12 @@ const router = createRouter({
     {
       path: "/subscriptions",
       name: "subscriptions",
-      component: SubscriptionsView,
+      component: SubscriptionView,
+    },
+    {
+      path: "/orders",
+      name: "orders",
+      component: OrderView,
     },
     {
       path: "/checkout",

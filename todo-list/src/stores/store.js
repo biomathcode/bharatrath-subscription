@@ -50,15 +50,13 @@ export const store = reactive({
     console.log(newSub);
     this.subscription = [...this.subscription, { id: uuid(), ...newSub }];
 
-    // const products = this.cart.map((el) => el.id);
-
     const response = await axios.post(
       "http://localhost:3333/users/1/subscriptions",
       newSub
     );
     console.log(response);
 
-    // this.cart = [];
+    this.cart = [];
   },
   credit(amount) {
     const newTransaction = {

@@ -1,12 +1,16 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
+import { OrderStatus } from 'Contracts/enums'
 
 export default class extends BaseSchema {
   protected tableName = 'orders'
 
-  public async up () {
+  public async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
-
+      table.increments('id').primary()
+      table.enum('status', Object.values(OrderStatus)).defaultTo(OrderStatus.ARRIVING)
+      table.decimal('delivery_charge').defaultTo(20)
+      table.string('quantity').nullable()
+      table.string('user_id')
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */
@@ -15,7 +19,7 @@ export default class extends BaseSchema {
     })
   }
 
-  public async down () {
+  public async down() {
     this.schema.dropTable(this.tableName)
   }
 }

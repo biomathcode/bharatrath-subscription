@@ -15,6 +15,12 @@ export default class Order extends BaseModel {
   public delieveryDate: DateTime
 
   @column()
+  public userId: string
+
+  @column()
+  public quantity: string
+
+  @column()
   public totalAmount: number
   @hasMany(() => Product, {
     foreignKey: 'id',

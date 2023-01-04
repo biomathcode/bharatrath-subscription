@@ -17,6 +17,8 @@ const amount = ref("");
         <li><RouterLink to="/"> 🏡 Home </RouterLink></li>
 
         <li><RouterLink to="/subscriptions">Subscriptions</RouterLink></li>
+        <li><RouterLink to="/orders">📦 Orders</RouterLink></li>
+
       </ul>
     </div>
     <div class="px-2 flex justify-center content-center">
