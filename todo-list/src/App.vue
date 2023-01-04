@@ -15,11 +15,15 @@ onMounted(async () => {
   const user = await axios.get("/users/1");
 
   const subscriptions = await axios.get("/users/1/subscriptions");
+  
+  const orders = await axios.get('/users/1/orders');
 
  
   store.getSubscription(subscriptions.data.subscriptions, subscriptions.data.quantity);
 
   store.getUser(user.data);
+
+  store.getOrders(orders.data.orders, orders.data.quantity);
 
   console.log(user.data);
 
