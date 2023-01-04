@@ -1,5 +1,8 @@
-p<script setup>
-import { ref, watch } from "vue";
+
+<!-- filename: CheckoutView.vue -->
+
+<script setup>
+import { ref } from "vue";
 import DaysSelectorVue from "../components/DaysSelector.vue";
 import { store } from "../stores/store";
 
@@ -9,11 +12,11 @@ let totalAmount = store.cart?.reduce(
 );
 
 const selectType = [
-  'Every Day',
-  'Every Week',
-  'Every Alternate Week',
-  'Every Month',
-]
+  "Every Day",
+  "Every Week",
+  "Every Alternate Week",
+  "Every Month",
+];
 
 const WeekData = [
   {
@@ -52,37 +55,15 @@ const WeekData = [
     alt: "Sat",
   },
 ];
-// const timeSlots = [
-//   {
-//     start: "9 am",
-//     end: "12 am",
-//   },
-//   {
-//     start: "12 pm",
-//     end: "3 pm",
-//   },
-//   {
-//     start: "3 pm",
-//     end: "6 pm",
-//   },
-//   {
-//     start: "6 pm",
-//     end: "9 pm",
-//   },
-// ];
-
 let startDate = ref(new Date());
 
 let endDate = ref(new Date());
 
-let type = ref('Every Day')
+let type = ref("Every Day");
 
 let orderToday = ref(false);
 
-
 let Days = ref([]);
-
-
 
 function select(e) {
   console.log("this is working");
@@ -96,12 +77,13 @@ function select(e) {
 }
 </script>
 
+
 <template>
-  <div v-if="store.cart.length > 0 ? true : false" class="mt-14 flex justify-around  min-w-100">
+  <div v-if="store.cart.length > 0 ? true : false" class="mt-14 flex justify-around min-w-100">
     <div class="min-w-100 flex gap-10 flex-col justify-between">
       <h1 class="text-lg font-bold">Checkout</h1>
       <p>Items</p>
-      <div class="flex gap-10 border-slate-900 " :key="store.cart.length + item.name" v-for="item in store.cart">
+      <div class="flex gap-10 border-slate-900" :key="store.cart.length + item.name" v-for="item in store.cart">
         <figure>
           <img class="h-20 rounded-sm w-20" :src="item.image" :alt="item.name" />
         </figure>
@@ -114,7 +96,9 @@ function select(e) {
         <p>{{ item.quantity + " x " + "₹" + item.price }}</p>
         <p>₹ {{ item.price * item.quantity }}</p>
       </div>
-      <div class="w-100 flex text-end justify-end">Total Amount: ₹{{ totalAmount }}</div>
+      <div class="w-100 flex text-end justify-end">
+        Total Amount: ₹{{ totalAmount }}
+      </div>
     </div>
     <div
       class="min-w-20 border-green-100 rounded-md border-2 bg-green-50 text-green-900 p-20 flex gap-10 flex-col mt-10">
@@ -142,8 +126,6 @@ function select(e) {
         </v-date-picker>
       </div>
 
-
-
       <div class="flex max-w-md flex-col gap-3">
         <label>End Date</label>
         <v-date-picker class="inline-block h-full" v-model="endDate">
@@ -167,17 +149,20 @@ function select(e) {
 
       <div class="flex gap-4">
         <label>Select Type</label>
-        <select v-model="type"  @change="event => type = event.target.value"  class=" bg-white text-gray-900 ">
-          <option v-bind:value="el" :key="el" v-for="el in selectType" >
+        <select v-model="type" @change="(event) => (type = event.target.value)" class="bg-white text-gray-900">
+          <option v-bind:value="el" :key="el" v-for="el in selectType">
             {{ el }}
           </option>
         </select>
       </div>
       <div class="flex gap-4">
         <label>Order For Today</label>
-        <input :value="orderToday" @change="event => orderToday = !orderToday" class="form-check-input bg-white rounded-full h-4 w-4  text-slate-100 checkbox" type="checkbox" />
+        <input :value="orderToday" @change="(event) => (orderToday = !orderToday)"
+          class="form-check-input bg-white rounded-full h-4 w-4 text-slate-100 checkbox" type="checkbox" />
       </div>
-      <button @click="store.startSubscription(startDate, endDate, type, orderToday, Days )" class="btn  bottom-2 btn-success ">
+      <button @click="
+  store.startSubscription(startDate, endDate, type, orderToday, Days)
+      " class="btn bottom-2 btn-success">
         Start Subscription
       </button>
     </div>
