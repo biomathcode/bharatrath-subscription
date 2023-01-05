@@ -1,6 +1,11 @@
 <script setup>
 import { store } from "../stores/store";
 import { format } from "date-fns";
+import { dateRange } from "../utils/getDates";
+
+const datesArray = dateRange();
+
+console.log(datesArray);
 </script>
 
 <template>
