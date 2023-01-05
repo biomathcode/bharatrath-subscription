@@ -31,4 +31,5 @@ import { store } from "../stores/store";
       <div>loading...</div>
     </template>
   </Suspense>
+
 </template>

@@ -9,11 +9,11 @@ import { eachDayOfInterval, getDay } from "date-fns";
 // check if daytype includes in array than return date else return nothing
 //
 
-export function dateRange(
+export function dateRange({
   startDate = "2022-12-31T19:30:09.375Z",
-  endDate = "2023-01-06T19:30:09.375Z",
-  selectedDays = [0, 1, 2, 3, 4, 6]
-) {
+  endDate = "2023-01-31T19:30:09.375Z",
+  selectedDays = [0, 1, 2, 3, 4, 6],
+}) {
   const dates = eachDayOfInterval({
     start: new Date(startDate),
     end: new Date(endDate),
@@ -50,3 +50,41 @@ function getDates(startDate, endDate, selectedD) {
   }
   return dates;
 }
+
+export const WeekData = [
+  {
+    id: 0,
+    name: "Sunday",
+    alt: "Sun",
+  },
+  {
+    id: 1,
+    name: "Monday",
+    alt: "Mon",
+  },
+  {
+    id: 2,
+    name: "Tuesday",
+    alt: "Tue",
+  },
+  {
+    id: 3,
+    name: "Wednesday",
+    alt: "Wed",
+  },
+  {
+    id: 4,
+    name: "Thursday",
+    alt: "Thu",
+  },
+  {
+    id: 5,
+    name: "Friday",
+    alt: "Fri",
+  },
+  {
+    id: 6,
+    name: "Saturyday",
+    alt: "Sat",
+  },
+];

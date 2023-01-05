@@ -1,7 +1,7 @@
 <script setup>
 import { store } from "../stores/store";
 import { format } from "date-fns";
-import { dateRange } from "../utils/getDates";
+import { dateRange } from "../utils";
 
 const datesArray = dateRange();
 

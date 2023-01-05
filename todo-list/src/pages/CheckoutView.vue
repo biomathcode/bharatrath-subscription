@@ -5,6 +5,7 @@
 import { ref } from "vue";
 import DaysSelectorVue from "../components/DaysSelector.vue";
 import { store } from "../stores/store";
+import { WeekData } from "../utils";
 
 let totalAmount = store.cart?.reduce(
   (prev, curr) => prev + curr.quantity * curr.price,
@@ -18,43 +19,7 @@ const selectType = [
   "Every Month",
 ];
 
-const WeekData = [
-  {
-    id: 1,
-    name: "Sunday",
-    alt: "Sun",
-  },
-  {
-    id: 2,
-    name: "Monday",
-    alt: "Mon",
-  },
-  {
-    id: 3,
-    name: "Tuesday",
-    alt: "Tue",
-  },
-  {
-    id: 4,
-    name: "Wednesday",
-    alt: "Wed",
-  },
-  {
-    id: 5,
-    name: "Thursday",
-    alt: "Thu",
-  },
-  {
-    id: 6,
-    name: "Friday",
-    alt: "Fri",
-  },
-  {
-    id: 7,
-    name: "Saturyday",
-    alt: "Sat",
-  },
-];
+
 let startDate = ref(new Date());
 
 let endDate = ref(new Date());
