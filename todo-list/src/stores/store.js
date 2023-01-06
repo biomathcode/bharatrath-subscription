@@ -2,6 +2,9 @@ import { reactive, Suspense, toRaw } from "vue";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
 
+// user
+//TODO: refactor to individual stores
+
 export const store = reactive({
   products: [],
   cart: [],

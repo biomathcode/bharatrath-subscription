@@ -35,9 +35,13 @@ export default class SubscriptionsController {
       endDate: body.endDate,
       status: body.status,
       totalAmount: body.amount,
-      days: body.days,
+      days: body.days, // array days table ? [1,2,3,4,5]
       recurrence: body.type,
     })
+
+    // days table
+    // date
+    // subscriptoin_duration_table
     // solved quantity issue
 
     let productsObject = {}

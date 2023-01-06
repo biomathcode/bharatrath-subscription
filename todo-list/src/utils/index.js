@@ -12,7 +12,7 @@ import { eachDayOfInterval, getDay } from "date-fns";
 export function dateRange({
   startDate = "2022-12-31T19:30:09.375Z",
   endDate = "2023-01-31T19:30:09.375Z",
-  selectedDays = [0, 1, 2, 3, 4, 6],
+  selectedDays = [0, 1, 2, 3, 4, 5, 6],
 }) {
   const dates = eachDayOfInterval({
     start: new Date(startDate),

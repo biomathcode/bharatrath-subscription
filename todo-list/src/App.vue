@@ -9,6 +9,8 @@ import { store } from "./stores/store";
 // create subscriptions
 // get subscriptions
 
+// Routes fetch
+
 onMounted(async () => {
   const products = await axios.get("/products");
 

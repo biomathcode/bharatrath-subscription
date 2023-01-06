@@ -5,7 +5,10 @@ import { dateRange } from "../utils";
 
 const datesArray = dateRange();
 
-console.log(datesArray);
+// upcoming => created order + 3 days
+// future => subscription data 
+
+
 </script>
 
 <template>

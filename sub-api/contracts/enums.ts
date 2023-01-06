@@ -1,32 +1,32 @@
-export enum OrderStatus {
-  ARRIVING = 'arriving',
-  INQUEUE = 'inqueue', //default
-  DELIVERED = 'delivered',
-  DISPATCHED = 'dispatched',
-}
-export enum TransactionStatus {
-  CANCELED = 'cancelled',
-  COMPLETED = 'completed',
-  FAILED = 'failed',
-  ONHOLD = 'onhold',
-  PENDING = 'pending',
-  PROCESSING = 'processing',
-  REFUNDED = 'refunded',
-}
+export const OrderStatus = {
+  ARRIVING: 'arriving',
+  INQUEUE: 'inqueue', //default
+  DELIVERED: 'delivered',
+  DISPATCHED: 'dispatched',
+} as const
+export const TransactionStatus = {
+  CANCELED: 'cancelled',
+  COMPLETED: 'completed',
+  FAILED: 'failed',
+  ONHOLD: 'onhold',
+  PENDING: 'pending',
+  PROCESSING: 'processing',
+  REFUNDED: 'refunded',
+} as const
 
-export enum TransactionType {
-  CREDIT = 'credit',
-  DEBIT = 'debit',
-}
+export const TransactionType = {
+  CREDIT: 'credit',
+  DEBIT: 'debit',
+} as const
 
-export enum SubscriptionStatus {
-  ACTIVE = 'active',
-  CANCELED = 'canceled',
-}
+export const SubscriptionStatus = {
+  ACTIVE: 'active',
+  CANCELED: 'canceled',
+} as const
 
-export enum RecurrenceStatus {
-  EVERYDAY = 'Every Day', // everyday order will be placed
-  EVERYWEEK = 'Every Week', // every week
-  ALTERNATEWEEK = 'Every Alternate Week', // alternate weeks
-  EVERYMONTH = 'Every Month', // everymonth
-}
+export const RecurrenceStatus = {
+  EVERYDAY: 'Every Day', // everyday order will be placed
+  EVERYWEEK: 'Every Week', // every week //days
+  ALTERNATEWEEK: 'Every Alternate Week', // alternate weeks //days
+  EVERYMONTH: 'Every Month', // everymonth // select date
+} as const

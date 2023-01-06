@@ -20,9 +20,13 @@ import { WeekData } from "../utils";
           {{ subs.recurrence }}
         </div>
         <div class="flex gap-2">
-          <div class="flex flex-col gap-1 px-1 py-1 my-4 bg-gray-600 text-gray-50 text-xs rounded-md " :key="day" v-for="day in JSON.parse(subs.days)">
-          {{ WeekData[day].alt }}
-        </div>
+          <div
+            class="flex flex-col gap-1 px-1 py-1 my-4 bg-gray-600 text-gray-50 text-xs rounded-md"
+            :key="day"
+            v-for="day in JSON.parse(subs.days)"
+          >
+            {{ WeekData[day].alt }}
+          </div>
         </div>
         <p>
           {{ subs?.products.map((el) => el.name).join(" + ") }}
@@ -53,8 +57,6 @@ import { WeekData } from "../utils";
             {{ product.price * product.quantity }}
           </div>
         </div>
-        
-       
 
         <CalendarPreview
           v-if="subs.start_date && subs.end_date"
