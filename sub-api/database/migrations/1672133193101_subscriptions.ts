@@ -11,11 +11,11 @@ export default class extends BaseSchema {
       table.dateTime('end_date').nullable()
 
       table.integer('total_amount').unsigned().nullable().defaultTo(500)
-      table.enum('recurrence', Object.values(RecurrenceStatus)).defaultTo(RecurrenceStatus.EVERYDAY)
+      table.string('recurrence').defaultTo('everyday')
 
       table.string('days').nullable().defaultTo('')
 
-      table.enum('status', Object.values(SubscriptionStatus)).defaultTo(SubscriptionStatus.ACTIVE)
+      table.string('status').defaultTo('active')
       // table.
       table.integer('user_id').unsigned().references('id').inTable('users').onDelete('CASCADE')
       table.timestamp('created_at', { useTz: true })

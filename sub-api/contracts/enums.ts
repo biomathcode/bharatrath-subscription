@@ -17,4 +17,4 @@ export type TransactionType = 'credit' | 'debit'
 
 export type SubscriptionStatus = 'active' | 'canceled'
 
-export type RecurrenceStatus = 'Every Day' | 'Every Week' | 'Every Month'
+export type RecurrenceStatus = 'everyday' | 'everyweek' | 'everymonth'

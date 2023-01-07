@@ -20,9 +20,6 @@ export default class User extends BaseModel {
   public name: string
 
   @column()
-  public amount: number
-
-  @column()
   public address: string
 
   @column()

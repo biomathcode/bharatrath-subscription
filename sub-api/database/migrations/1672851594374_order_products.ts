@@ -8,7 +8,7 @@ export default class extends BaseSchema {
       table.increments('id')
       table.integer('order_id').unsigned().references('id').inTable('orders')
       table.integer('product_id').unsigned().references('id').inTable('products')
-      table.integer('quantity').unsigned()
+      table.integer('quantity').unsigned().defaultTo(1)
 
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })

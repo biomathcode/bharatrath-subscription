@@ -9,7 +9,7 @@ export default class extends BaseSchema {
       table.increments('id')
       table.integer('amount').nullable().defaultTo(0).unsigned()
 
-      table.enum('type', Object.values(TransactionType)).defaultTo(TransactionType.CREDIT)
+      table.string('type').defaultTo('credit')
 
       table.integer('user_id').unsigned().references('id').inTable('users').onDelete('CASCADE')
 

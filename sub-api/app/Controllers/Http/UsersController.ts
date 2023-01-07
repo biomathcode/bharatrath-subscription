@@ -1,7 +1,5 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Database from '@ioc:Adonis/Lucid/Database'
 import User from 'App/Models/User'
-import { DateTime } from 'luxon'
 
 export default class UsersController {
   public async index(ctx: HttpContextContract) {
@@ -11,7 +9,6 @@ export default class UsersController {
     const body = request.body()
     console.log(body)
     return User.create({
-      amount: body.amount,
       customerid: body.customerid,
       address: body.address,
     })
@@ -32,12 +29,7 @@ export default class UsersController {
     }
 
     if (body.amount) {
-      return User.updateOrCreate(
-        { id: params.id },
-        {
-          amount: body.amount,
-        }
-      )
+      return User.updateOrCreate({ id: params.id }, {})
     }
 
     return User.findOrFail(params.id)
