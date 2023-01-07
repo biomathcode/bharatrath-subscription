@@ -13,8 +13,6 @@ export default class extends BaseSchema {
       table.integer('total_amount').unsigned().nullable().defaultTo(500)
       table.string('recurrence').defaultTo('everyday')
 
-      table.string('days').nullable().defaultTo('')
-
       table.string('status').defaultTo('active')
       // table.
       table.integer('user_id').unsigned().references('id').inTable('users').onDelete('CASCADE')

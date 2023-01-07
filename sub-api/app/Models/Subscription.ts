@@ -4,12 +4,16 @@ import {
   BelongsTo,
   belongsTo,
   column,
+  HasMany,
+  hasMany,
   ManyToMany,
   manyToMany,
 } from '@ioc:Adonis/Lucid/Orm'
 import Product from './Product'
 import { RecurrenceStatus, SubscriptionStatus } from 'Contracts/enums'
 import User from './User'
+import Date from './Date'
+import Day from './Day'
 
 // end date
 // subscription type
@@ -40,11 +44,18 @@ export default class Subscription extends BaseModel {
   @column()
   public status: SubscriptionStatus
 
-  @column()
-  public endDate: string
+  @hasMany(() => Date, {
+    foreignKey: 'id',
+  })
+  public dates: HasMany<typeof Date>
+
+  @hasMany(() => Day, {
+    foreignKey: 'id',
+  })
+  public days: HasMany<typeof Day>
 
   @column()
-  public days: string // array of strings
+  public endDate: string // array of strings
 
   @column()
   public recurrence: RecurrenceStatus
