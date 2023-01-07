@@ -21,7 +21,7 @@ export default class OrderService {
 
   public static async createOrder(body) {
     const createOrder = await Order.create({
-      status: OrderStatus.ARRIVING,
+      status: 'arriving',
       deliveryDate: DateTime.fromISO(body.date),
       userId: '1',
       amount: body.amount,

@@ -11,13 +11,13 @@ export default class Transaction extends BaseModel {
   public userId: number
 
   @column()
-  public status: typeof TransactionStatus
+  public status: TransactionStatus
 
   @column()
   public amount: number
 
   @column()
-  public type: typeof TransactionType
+  public type: TransactionType
 
   @belongsTo(() => User, {
     localKey: 'userId',

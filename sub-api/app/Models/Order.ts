@@ -4,7 +4,7 @@ import { OrderStatus } from 'Contracts/enums'
 import Product from './Product'
 
 //TODO: Wallet
-// 
+//
 
 export default class Order extends BaseModel {
   @column({ isPrimary: true })
