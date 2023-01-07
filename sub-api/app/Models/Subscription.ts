@@ -38,7 +38,7 @@ export default class Subscription extends BaseModel {
   public totalAmount: number
 
   @column()
-  public status: SubscriptionStatus
+  public status: typeof SubscriptionStatus
 
   @column()
   public endDate: string
@@ -47,7 +47,7 @@ export default class Subscription extends BaseModel {
   public days: string // array of strings
 
   @column()
-  public recurrence: RecurrenceStatus
+  public recurrence: typeof RecurrenceStatus
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
