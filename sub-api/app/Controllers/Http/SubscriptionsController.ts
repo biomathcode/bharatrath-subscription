@@ -17,10 +17,6 @@ export default class SubscriptionsController {
 
     const getAllquantity = await Database.query().from('product_subscriptions').select('*')
 
-    // const products = await subscription.related('products').query()
-
-    // const quantity = await el.related('products').pivotQuery()
-
     return { subscriptions, quantity: getAllquantity }
   }
   public async store({ request }: HttpContextContract) {
@@ -35,7 +31,6 @@ export default class SubscriptionsController {
       endDate: body.endDate,
       status: body.status,
       totalAmount: body.amount,
-      days: body.days, // array days table ? [1,2,3,4,5]
       recurrence: body.type,
     })
 

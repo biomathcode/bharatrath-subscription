@@ -7,6 +7,7 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.dateTime('date')
+      table.integer('subscription_id').references('id').inTable('subscriptions')
     })
   }
 

@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
+import Subscription from './Subscription'
 
 export default class Date extends BaseModel {
   @column({ isPrimary: true })
@@ -7,4 +8,9 @@ export default class Date extends BaseModel {
 
   @column()
   public date: DateTime
+
+  @belongsTo(() => Subscription, {
+    foreignKey: 'id',
+  })
+  public subscriptionId: BelongsTo<typeof Subscription>
 }
