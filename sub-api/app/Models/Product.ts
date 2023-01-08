@@ -3,12 +3,14 @@ import {
   BaseModel,
   belongsTo,
   column,
+  HasMany,
   hasMany,
   ManyToMany,
   manyToMany,
 } from '@ioc:Adonis/Lucid/Orm'
 import Subscription from './Subscription'
 import Order from './Order'
+import ProductSubscription from './ProductSubscription'
 
 export default class Product extends BaseModel {
   @column({ isPrimary: true })
@@ -32,6 +34,11 @@ export default class Product extends BaseModel {
     pivotTable: 'order_products',
   })
   public orders: ManyToMany<typeof Order>
+
+  @hasMany(() => ProductSubscription, {
+    foreignKey: 'product_id',
+  })
+  public ProductSubscription: HasMany<typeof ProductSubscription>
 
   @manyToMany(() => Subscription, {
     pivotTable: 'product_subscriptions',

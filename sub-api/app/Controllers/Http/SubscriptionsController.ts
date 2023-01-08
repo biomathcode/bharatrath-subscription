@@ -46,10 +46,6 @@ export default class SubscriptionsController {
       subscriptionId: subscription.id,
     }))
 
-    console.log(newData)
-
-    await Day.createMany(newData)
-
     await subscription.related('days').createMany(newData)
 
     let productsObject = {}

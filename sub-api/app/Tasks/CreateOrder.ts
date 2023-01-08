@@ -1,5 +1,6 @@
 import Database from '@ioc:Adonis/Lucid/Database'
 import { BaseTask } from 'adonis5-scheduler/build'
+import ProductSubscription from 'App/Models/ProductSubscription'
 import Subscription from 'App/Models/Subscription'
 import OrderService from 'App/Services/OrdersServices'
 
@@ -31,26 +32,44 @@ export default class CreateOrder extends BaseTask {
 
   public async handle() {
     console.log('this is running')
-    // get all subscriptions
-    // create orders
+
     const ActiveSubscriptions = await Subscription.query()
       .where('status', 'active')
       .preload('products')
       .preload('dates')
       .preload('days')
 
-    const quantity = await Database.query().from('product_subscriptions').select('*')
+    ActiveSubscriptions.forEach(async (sub) => {
+      let newObject = {}
 
-    console.log(quantity)
-    ActiveSubscriptions.map(async (sub) => {
-      const createOrders = await OrderService.createOrder({
+      const newProductObject = await Promise.all(
+        sub.products.map(async (product) => {
+          const quantitys = await ProductSubscription.query()
+            .where('subscription_id', sub.id)
+            .where('product_id', product.id)
+
+          const id = product.toJSON().id
+
+          console.log('product', product.toJSON())
+
+          console.log('this is quantity', quantitys[0].quantity)
+          newObject[id] = {
+            quantity: quantitys[0].quantity,
+          }
+
+          return newObject
+        })
+      )
+
+      console.log('this is newObject', newObject)
+      const newOrders = await OrderService.createOrder({
         date: '2023-01-04T05:10:20.739Z',
         amount: 500,
         quantity: [2, 20],
-        products: sub.products,
+        products: newObject,
       })
 
-      console.log(createOrders)
+      console.log(newOrders.toJSON())
     })
   }
 }

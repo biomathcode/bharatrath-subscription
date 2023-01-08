@@ -30,12 +30,10 @@ export default class OrderService {
       // address: body.address,
     })
 
-    let productsObject = {}
+    console.log(body.products)
 
-    body.products.forEach((key, i) => (productsObject[key.id] = { quantity: key.quantity }))
+    await createOrder.related('products').attach(body.products)
 
-    const addProduct = await createOrder.related('products').attach(productsObject)
-
-    return { createOrder, addProduct }
+    return createOrder
   }
 }
