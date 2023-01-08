@@ -1,4 +1,4 @@
-import { reactive, Suspense, toRaw } from "vue";
+import { reactive, toRaw } from "vue";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
 import { WeekData } from "../utils";

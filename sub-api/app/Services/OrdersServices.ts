@@ -26,7 +26,7 @@ export default class OrderService {
       userId: '1',
       amount: body.amount,
       deliveryCharge: 20,
-      quantity: body.quantity,
+      quantity: '2',
       // address: body.address,
     })
 

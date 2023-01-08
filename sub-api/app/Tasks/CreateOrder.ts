@@ -1,7 +1,7 @@
+import Database from '@ioc:Adonis/Lucid/Database'
 import { BaseTask } from 'adonis5-scheduler/build'
-import Order from 'App/Models/Order'
 import Subscription from 'App/Models/Subscription'
-import User from 'App/Models/User'
+import OrderService from 'App/Services/OrdersServices'
 
 // every week of the month
 // every second week of the month
@@ -36,22 +36,21 @@ export default class CreateOrder extends BaseTask {
     const ActiveSubscriptions = await Subscription.query()
       .where('status', 'active')
       .preload('products')
-  
-    //
-    // const userAddress = await User.find(1)
-    // if (!userAddress) throw new Error('USER NOT FOUND')
-    ActiveSubscriptions.forEach((sub) => {})
-    const createdOrders = await Order.create({
-      address: userAddress?.address,
+      .preload('dates')
+      .preload('days')
+
+    const quantity = await Database.query().from('product_subscriptions').select('*')
+
+    console.log(quantity)
+    ActiveSubscriptions.map(async (sub) => {
+      const createOrders = await OrderService.createOrder({
+        date: '2023-01-04T05:10:20.739Z',
+        amount: 500,
+        quantity: [2, 20],
+        products: sub.products,
+      })
+
+      console.log(createOrders)
     })
-    // const productObject = {
-    //   1: {
-    //     quantity: 1,
-    //   },
-    //   2: {
-    //     quantity: 3,
-    //   },
-    // }
-    // await createdOrders.related('products').attach(productObject)
   }
 }
