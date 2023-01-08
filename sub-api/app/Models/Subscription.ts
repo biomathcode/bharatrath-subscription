@@ -14,6 +14,7 @@ import { RecurrenceStatus, SubscriptionStatus } from 'Contracts/enums'
 import User from './User'
 import Date from './Date'
 import Day from './Day'
+import Schedular from './Schedular'
 
 // end date
 // subscription type
@@ -50,6 +51,10 @@ export default class Subscription extends BaseModel {
   @hasMany(() => Day)
   public days: HasMany<typeof Day>
 
+  @hasMany(() => Schedular, {
+    foreignKey: 'subscriptionId',
+  })
+  public schedular: HasMany<typeof Schedular>
   @column()
   public endDate: string // array of strings
 

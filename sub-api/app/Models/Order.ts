@@ -1,7 +1,17 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, HasMany, hasMany, manyToMany, ManyToMany } from '@ioc:Adonis/Lucid/Orm'
+import {
+  BaseModel,
+  BelongsTo,
+  belongsTo,
+  column,
+  HasMany,
+  hasMany,
+  manyToMany,
+  ManyToMany,
+} from '@ioc:Adonis/Lucid/Orm'
 import { OrderStatus } from 'Contracts/enums'
 import Product from './Product'
+import Schedular from './Schedular'
 
 //TODO: Wallet
 //
@@ -29,6 +39,11 @@ export default class Order extends BaseModel {
     pivotTable: 'order_products',
   })
   public products: ManyToMany<typeof Product>
+
+  @hasMany(() => Schedular, {
+    foreignKey: 'orderId',
+  })
+  public Schedular: HasMany<typeof Schedular>
 
   @column()
   public address: string

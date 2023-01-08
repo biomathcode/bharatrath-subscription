@@ -1,25 +1,31 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import Subscription from './Subscription'
-import Product from './Product'
+import Order from './Order'
 
 // one to many order
 // one to many subscription
 //
 
-export default class Scheduler extends BaseModel {
+export default class Schedular extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
-  @hasMany(() => Subscription, {
-    foreignKey: 'id',
-  })
-  public subscriptions: HasMany<typeof Subscription>
+  @column()
+  public subscriptionId: number
 
-  @hasMany(() => Product, {
-    foreignKey: 'id',
+  @column()
+  public orderId: number
+
+  @belongsTo(() => Subscription, {
+    localKey: 'subscriptionId',
   })
-  public products: HasMany<typeof Product>
+  public subscriptions: BelongsTo<typeof Subscription>
+
+  @belongsTo(() => Order, {
+    localKey: 'orderId',
+  })
+  public orders: BelongsTo<typeof Order>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

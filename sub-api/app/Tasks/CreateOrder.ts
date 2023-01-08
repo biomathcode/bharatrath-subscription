@@ -1,8 +1,11 @@
 import Database from '@ioc:Adonis/Lucid/Database'
 import { BaseTask } from 'adonis5-scheduler/build'
+import Order from 'App/Models/Order'
 import ProductSubscription from 'App/Models/ProductSubscription'
+import Schedular from 'App/Models/Schedular'
 import Subscription from 'App/Models/Subscription'
 import OrderService from 'App/Services/OrdersServices'
+import { DateTime } from 'luxon'
 
 // every week of the month
 // every second week of the month
@@ -75,7 +78,17 @@ export default class CreateOrder extends BaseTask {
         products: newObject,
       })
 
-      console.log(newOrders.toJSON())
+      const schedular = await Schedular.create({
+        createdAt: DateTime.fromISO('2023-01-10T05:10:20.739Z'),
+        updatedAt: DateTime.fromISO('2023-01-10T05:10:20.739Z'),
+        subscriptionId: sub.id,
+        orderId: newOrders.id,
+      })
+
+      // schedular.related('orders').associate(Order)
     })
+
+    // create schedular table
+    //
   }
 }
