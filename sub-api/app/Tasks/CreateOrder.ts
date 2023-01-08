@@ -33,17 +33,17 @@ export default class CreateOrder extends BaseTask {
     console.log('this is running')
     // get all subscriptions
     // create orders
-    // const ActiveSubscriptions = await Subscription.query()
-    //   .where('status', 'active')
-    //   .preload('products')
-    // create Orders
+    const ActiveSubscriptions = await Subscription.query()
+      .where('status', 'active')
+      .preload('products')
+  
     //
     // const userAddress = await User.find(1)
     // if (!userAddress) throw new Error('USER NOT FOUND')
-    // ActiveSubscriptions.forEach((sub) => {})
-    // const createdOrders = await Order.create({
-    //   address: userAddress?.address,
-    // })
+    ActiveSubscriptions.forEach((sub) => {})
+    const createdOrders = await Order.create({
+      address: userAddress?.address,
+    })
     // const productObject = {
     //   1: {
     //     quantity: 1,

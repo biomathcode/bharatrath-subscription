@@ -22,10 +22,10 @@ import { WeekData } from "../utils";
         <div class="flex gap-2">
           <div
             class="flex flex-col gap-1 px-1 py-1 my-4 bg-gray-600 text-gray-50 text-xs rounded-md"
-            :key="day"
-            v-for="day in JSON.parse(subs.days)"
+            :key="day.value"
+            v-for="day in subs.dayssss"
           >
-            {{ WeekData[day].alt }}
+            {{ day.value}}
           </div>
         </div>
         <p>
@@ -58,12 +58,12 @@ import { WeekData } from "../utils";
           </div>
         </div>
 
-        <CalendarPreview
+         <CalendarPreview
           v-if="subs.start_date && subs.end_date"
-          :days="JSON.parse(subs.days)"
+          :days="subs.days.map((el) => el.value)"
           :start-date="new Date(subs?.start_date)"
           :end-date="new Date(subs.end_date)"
-        />
+        /> 
       </div>
     </div>
   </div>

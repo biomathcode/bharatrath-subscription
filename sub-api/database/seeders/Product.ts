@@ -12,7 +12,7 @@ export default class extends BaseSeeder {
         stock: 200,
       },
       {
-        image: 'src/asserts/dahi.jpeg',
+        image: 'src/assets/dahi.jpeg',
         name: 'Amul Dahi ',
         description: 'Amul Dahi ',
         price: 40,

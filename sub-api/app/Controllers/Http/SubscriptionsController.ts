@@ -9,7 +9,12 @@ export default class SubscriptionsController {
 
     const user = await User.find(params.user_id)
 
-    const subscriptions = await user?.related('subscription').query().preload('products')
+    const subscriptions = await user
+      ?.related('subscription')
+      .query()
+      .preload('products')
+      .preload('days')
+      .preload('dates')
 
     const el = await Subscription.findBy('user_id', params.user_id)
 
@@ -34,14 +39,13 @@ export default class SubscriptionsController {
       recurrence: body.type,
     })
 
-    // days table
-    // date
-    // subscriptoin_duration_table
-    // solved quantity issue
+    await subscription.related('days').saveMany(body.days)
 
     let productsObject = {}
 
     body.products.forEach((key, i) => (productsObject[key] = { quantity: body.quantity[i] }))
+
+    console.log(body.products)
 
     const products = await subscription.related('products').attach(productsObject)
 

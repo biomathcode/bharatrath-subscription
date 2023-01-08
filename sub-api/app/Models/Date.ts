@@ -9,8 +9,11 @@ export default class Date extends BaseModel {
   @column()
   public date: DateTime
 
+  @column()
+  public subscriptionId: string
+
   @belongsTo(() => Subscription, {
-    foreignKey: 'id',
+    localKey: 'subscriptionId',
   })
-  public subscriptionId: BelongsTo<typeof Subscription>
+  public subscription: BelongsTo<typeof Subscription>
 }

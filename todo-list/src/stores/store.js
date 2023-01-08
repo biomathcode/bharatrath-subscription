@@ -1,6 +1,7 @@
 import { reactive, Suspense, toRaw } from "vue";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
+import { WeekData } from "../utils";
 
 // user
 //TODO: refactor to individual stores
@@ -78,6 +79,8 @@ export const store = reactive({
       (prev, curr) => prev + curr.quantity * curr.price,
       0
     );
+    const newDays = WeekData.filter((el) => Days.includes(el));
+
     const newSub = {
       createdAt: new Date(),
       products: toRaw(products),
@@ -85,7 +88,7 @@ export const store = reactive({
       endDate: endDate,
       type: type,
       orderToday: orderToday,
-      days: JSON.stringify(Days),
+      days: newDays,
       status: "active",
       quantity,
       amount: totalAmount,
