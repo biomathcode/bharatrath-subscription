@@ -13,10 +13,10 @@ export default class Day extends BaseModel {
   public label: string
 
   @column()
-  public subscriptionId: string
+  public subscriptionId?: number
 
   @belongsTo(() => Subscription, {
-    localKey: 'subscription_id',
+    localKey: 'subscriptionId',
   })
   public subscription: BelongsTo<typeof Subscription>
 }

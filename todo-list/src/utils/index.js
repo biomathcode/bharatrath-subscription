@@ -53,37 +53,37 @@ function getDates(startDate, endDate, selectedD) {
 
 export const WeekData = [
   {
-    id: 0,
+    // id: 0,
     value: 0,
     label: "Sunday",
   },
   {
-    id: 1,
+    // id: 1,
     value: 1,
     label: "Monday",
   },
   {
-    id: 2,
+    // id: 2,
     value: 2,
     label: "Tuesday",
   },
   {
-    id: 3,
+    // id: 3,
     value: 3,
     label: "Wednesday",
   },
   {
-    id: 4,
+    // id: 4,
     value: 4,
     label: "Thurday",
   },
   {
-    id: 5,
+    // id: 5,
     value: 5,
     label: "Friday",
   },
   {
-    id: 6,
+    // id: 6,
     value: 6,
     label: "Saturday",
   },

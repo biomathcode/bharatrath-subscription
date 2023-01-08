@@ -10,7 +10,7 @@ export default class Date extends BaseModel {
   public date: DateTime
 
   @column()
-  public subscriptionId: string
+  public subscriptionId: number
 
   @belongsTo(() => Subscription, {
     localKey: 'subscriptionId',

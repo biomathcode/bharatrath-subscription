@@ -79,7 +79,7 @@ export const store = reactive({
       (prev, curr) => prev + curr.quantity * curr.price,
       0
     );
-    const newDays = WeekData.filter((el) => Days.includes(el));
+    const newDays = WeekData.filter((el) => Days.includes(el.value));
 
     const newSub = {
       createdAt: new Date(),

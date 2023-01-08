@@ -44,14 +44,10 @@ export default class Subscription extends BaseModel {
   @column()
   public status: SubscriptionStatus
 
-  @hasMany(() => Date, {
-    foreignKey: 'subscription_id',
-  })
+  @hasMany(() => Date)
   public dates: HasMany<typeof Date>
 
-  @hasMany(() => Day, {
-    foreignKey: 'subscription_id',
-  })
+  @hasMany(() => Day)
   public days: HasMany<typeof Day>
 
   @column()

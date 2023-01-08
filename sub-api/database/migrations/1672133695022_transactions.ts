@@ -5,7 +5,7 @@ export default class extends BaseSchema {
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
+      table.increments('id').primary()
       table.integer('amount').nullable().defaultTo(0).unsigned()
 
       table.string('type').defaultTo('credit')

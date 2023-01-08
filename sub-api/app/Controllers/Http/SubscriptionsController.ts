@@ -1,5 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Database from '@ioc:Adonis/Lucid/Database'
+import Day from 'App/Models/Day'
 import Subscription from 'App/Models/Subscription'
 import User from 'App/Models/User'
 
@@ -29,7 +30,7 @@ export default class SubscriptionsController {
 
     const params = request.params()
 
-    console.log(request.params())
+    console.log(request.params(), body.days)
     const subscription = await Subscription.create({
       userId: params.user_id,
       startDate: body.startDate,
@@ -39,7 +40,17 @@ export default class SubscriptionsController {
       recurrence: body.type,
     })
 
-    await subscription.related('days').saveMany(body.days)
+    const newData = body.days.map((el) => ({
+      value: el.value,
+      label: el.label,
+      subscriptionId: subscription.id,
+    }))
+
+    console.log(newData)
+
+    await Day.createMany(newData)
+
+    await subscription.related('days').createMany(newData)
 
     let productsObject = {}
 
