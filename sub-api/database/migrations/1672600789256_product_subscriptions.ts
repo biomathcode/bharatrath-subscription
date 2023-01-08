@@ -9,7 +9,9 @@ export default class extends BaseSchema {
       table.integer('product_id').unsigned().references('id').inTable('products')
       table.integer('subscription_id').unsigned().references('id').inTable('subscriptions')
       table.integer('quantity').unsigned().defaultTo(1)
-      table.timestamps(true, true)
+
+      table.timestamp('created_at', { useTz: true })
+      table.timestamp('updated_at', { useTz: true })
     })
   }
 

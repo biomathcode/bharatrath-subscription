@@ -50,6 +50,8 @@ export default class CreateOrder extends BaseTask {
 
           const id = product.toJSON().id
 
+          const jsonProduct = product.toJSON()
+
           console.log('product', product.toJSON())
 
           console.log('this is quantity', quantitys[0].quantity)
@@ -57,14 +59,18 @@ export default class CreateOrder extends BaseTask {
             quantity: quantitys[0].quantity,
           }
 
-          return newObject
+          return {
+            ...jsonProduct,
+            quantity: quantitys[0].quantity,
+          }
         })
       )
 
-      console.log('this is newObject', newObject)
+      const amount = newProductObject.reduce((prev, curr) => prev + curr.quantity * curr.price, 0)
+
       const newOrders = await OrderService.createOrder({
         date: '2023-01-04T05:10:20.739Z',
-        amount: 500,
+        amount: amount,
         quantity: [2, 20],
         products: newObject,
       })
