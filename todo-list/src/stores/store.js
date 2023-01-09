@@ -72,7 +72,7 @@ export const store = reactive({
     this.transaction = [...this.transactions, ...transactions];
   },
 
-  async startSubscription(startDate, endDate, type, orderToday, Days) {
+  async startSubscription(startDate, endDate, type, orderToday, Days, dates) {
     const products = toRaw(this.cart.map((el) => el.id));
     const quantity = toRaw(this.cart.map((el) => el.quantity));
     const totalAmount = this.cart?.reduce(
@@ -88,6 +88,7 @@ export const store = reactive({
       endDate: endDate,
       type: type,
       orderToday: orderToday,
+      dates,
       days: newDays,
       status: "active",
       quantity,

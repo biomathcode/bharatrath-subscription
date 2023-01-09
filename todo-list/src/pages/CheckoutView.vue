@@ -1,7 +1,8 @@
 <!-- filename: CheckoutView.vue -->
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { addDays } from "date-fns";
 import DaysSelectorVue from "../components/DaysSelector.vue";
 import { store } from "../stores/store";
 import { WeekData } from "../utils";
@@ -15,7 +16,28 @@ const selectType = ["everyday", "everyweek", "custom"];
 
 let startDate = ref(new Date());
 
-let endDate = ref(new Date());
+let endDate = ref(addDays(new Date(), 2));
+
+let customdates = ref([]);
+
+let dates = computed(() => {
+  return customdates.value.map((day) => day.date);
+});
+
+console.log('this are dates', dates);
+
+let attributes = computed(() => {
+return dates.value.map((date) => ({
+    highlight: true,
+    dates: date,
+  }));
+
+}) 
+
+console.log(dates);
+
+
+console.log(attributes.value);
 
 let type = ref("Every Day");
 
@@ -31,6 +53,20 @@ function select(e) {
     Days.value = [...newArray];
   } else {
     Days.value = [...Days.value, e];
+  }
+}
+
+function onDayClick(day) {
+
+  const idx = customdates.value.findIndex((d) => d.id === day.id);
+  console.log(day);
+  if (idx >= 0) {
+    customdates.value.splice(idx, 1);
+  } else {
+    customdates.value.push({
+      id: day.id,
+      date: day.date,
+    });
   }
 }
 </script>
@@ -156,6 +192,12 @@ function select(e) {
           </option>
         </select>
       </div>
+
+      <div class="flex gap-4">
+        <label>Select Dates</label>
+        <v-calendar :attributes="attributes" @dayclick="onDayClick" />
+      </div>
+
       <div class="flex gap-4">
         <label>Order For Today</label>
         <input
@@ -167,7 +209,7 @@ function select(e) {
       </div>
       <button
         @click="
-          store.startSubscription(startDate, endDate, type, orderToday, Days)
+          store.startSubscription(startDate, endDate, type, orderToday, Days, dates)
         "
         class="btn bottom-2 btn-success"
       >

@@ -3,6 +3,7 @@ import Database from '@ioc:Adonis/Lucid/Database'
 import Day from 'App/Models/Day'
 import Subscription from 'App/Models/Subscription'
 import User from 'App/Models/User'
+import { DateTime } from 'luxon'
 
 export default class SubscriptionsController {
   public async index({ request }: HttpContextContract) {
@@ -46,7 +47,20 @@ export default class SubscriptionsController {
       subscriptionId: subscription.id,
     }))
 
-    await subscription.related('days').createMany(newData)
+    const newDates = body.dates.map((el) => {
+      console.log(el)
+      return {
+        date: DateTime.fromISO(el),
+        subscriptionId: subscription.id,
+      }
+    })
+
+    if (body.type === 'everyday' || body.type === 'everyweek') {
+      await subscription.related('days').createMany(newData)
+    }
+    if ((body.type = 'custom')) {
+      await subscription.related('dates').createMany(newDates)
+    }
 
     let productsObject = {}
 
