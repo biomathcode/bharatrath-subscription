@@ -1,6 +1,4 @@
-import Database from '@ioc:Adonis/Lucid/Database'
 import { BaseTask } from 'adonis5-scheduler/build'
-import Order from 'App/Models/Order'
 import ProductSubscription from 'App/Models/ProductSubscription'
 import Schedular from 'App/Models/Schedular'
 import Subscription from 'App/Models/Subscription'
@@ -43,52 +41,66 @@ export default class CreateOrder extends BaseTask {
       .preload('days')
 
     ActiveSubscriptions.forEach(async (sub) => {
-      let newObject = {}
+      if (sub.recurrence === 'everyday') {
+        let newObject = {}
 
-      const newProductObject = await Promise.all(
-        sub.products.map(async (product) => {
-          const quantitys = await ProductSubscription.query()
-            .where('subscription_id', sub.id)
-            .where('product_id', product.id)
+        const newProductObject = await Promise.all(
+          sub.products.map(async (product) => {
+            const quantitys = await ProductSubscription.query()
+              .where('subscription_id', sub.id)
+              .where('product_id', product.id)
 
-          const id = product.toJSON().id
+            const id = product.toJSON().id
 
-          const jsonProduct = product.toJSON()
+            const jsonProduct = product.toJSON()
 
-          console.log('product', product.toJSON())
+            console.log('product', product.toJSON())
 
-          console.log('this is quantity', quantitys[0].quantity)
-          newObject[id] = {
-            quantity: quantitys[0].quantity,
-          }
+            console.log('this is quantity', quantitys[0].quantity)
+            newObject[id] = {
+              quantity: quantitys[0].quantity,
+            }
 
-          return {
-            ...jsonProduct,
-            quantity: quantitys[0].quantity,
-          }
+            return {
+              ...jsonProduct,
+              quantity: quantitys[0].quantity,
+            }
+          })
+        )
+
+        const amount = newProductObject.reduce((prev, curr) => prev + curr.quantity * curr.price, 0)
+
+        const newOrders = await OrderService.createOrder({
+          date: '2023-01-04T05:10:20.739Z',
+          amount: amount,
+          quantity: [2, 20],
+          products: newObject,
         })
-      )
 
-      const amount = newProductObject.reduce((prev, curr) => prev + curr.quantity * curr.price, 0)
+        await Schedular.create({
+          createdAt: DateTime.fromISO('2023-01-10T05:10:20.739Z'),
+          updatedAt: DateTime.fromISO('2023-01-10T05:10:20.739Z'),
+          subscriptionId: sub.id,
+          orderId: newOrders.id,
+        })
+      }
 
-      const newOrders = await OrderService.createOrder({
-        date: '2023-01-04T05:10:20.739Z',
-        amount: amount,
-        quantity: [2, 20],
-        products: newObject,
-      })
+      if (sub.recurrence === 'everyweek') {
+        const days = sub.days
+        /**
+         * Check if today's day include in days
+         * and then make orders
+         */
+      }
 
-      const schedular = await Schedular.create({
-        createdAt: DateTime.fromISO('2023-01-10T05:10:20.739Z'),
-        updatedAt: DateTime.fromISO('2023-01-10T05:10:20.739Z'),
-        subscriptionId: sub.id,
-        orderId: newOrders.id,
-      })
+      if (sub.recurrence === 'custom') {
+        const dates = sub.dates
 
-      // schedular.related('orders').associate(Order)
+        /**
+         * Check if today's date included in dates
+         * and then make orders
+         */
+      }
     })
-
-    // create schedular table
-    //
   }
 }
