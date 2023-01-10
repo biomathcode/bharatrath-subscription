@@ -40,113 +40,113 @@ export default class CreateOrder extends BaseTask {
       .preload('days')
 
     ActiveSubscriptions.forEach(async (sub) => {
-      // if (sub.recurrence === 'everyday') {
-      //   let newObject = {}
+      if (sub.recurrence === 'everyday') {
+        let newObject = {}
 
-      //   const newProductObject = await Promise.all(
-      //     sub.products.map(async (product) => {
-      //       const quantitys = await ProductSubscription.query()
-      //         .where('subscription_id', sub.id)
-      //         .where('product_id', product.id)
+        const newProductObject = await Promise.all(
+          sub.products.map(async (product) => {
+            const quantitys = await ProductSubscription.query()
+              .where('subscription_id', sub.id)
+              .where('product_id', product.id)
 
-      //       const id = product.toJSON().id
+            const id = product.toJSON().id
 
-      //       const jsonProduct = product.toJSON()
+            const jsonProduct = product.toJSON()
 
-      //       console.log('product', product.toJSON())
+            console.log('product', product.toJSON())
 
-      //       console.log('this is quantity', quantitys[0].quantity)
-      //       newObject[id] = {
-      //         quantity: quantitys[0].quantity,
-      //       }
+            console.log('this is quantity', quantitys[0].quantity)
+            newObject[id] = {
+              quantity: quantitys[0].quantity,
+            }
 
-      //       return {
-      //         ...jsonProduct,
-      //         quantity: quantitys[0].quantity,
-      //       }
-      //     })
-      //   )
+            return {
+              ...jsonProduct,
+              quantity: quantitys[0].quantity,
+            }
+          })
+        )
 
-      //   const amount = newProductObject.reduce((prev, curr) => prev + curr.quantity * curr.price, 0)
+        const amount = newProductObject.reduce((prev, curr) => prev + curr.quantity * curr.price, 0)
 
-      //   const newOrders = await OrderService.createOrder({
-      //     date: '2023-01-04T05:10:20.739Z',
-      //     amount: amount,
-      //     quantity: [2, 20],
-      //     products: newObject,
-      //   })
+        const newOrders = await OrderService.createOrder({
+          date: '2023-01-04T05:10:20.739Z',
+          amount: amount,
+          quantity: [2, 20],
+          products: newObject,
+        })
 
-      //   await Schedular.create({
-      //     createdAt: DateTime.fromISO(new Date().toISOString()),
-      //     updatedAt: DateTime.fromISO(new Date().toISOString()),
-      //     subscriptionId: sub.id,
-      //     orderId: newOrders.id,
-      //   })
-      // }
+        await Schedular.create({
+          createdAt: DateTime.fromISO(new Date().toISOString()),
+          updatedAt: DateTime.fromISO(new Date().toISOString()),
+          subscriptionId: sub.id,
+          orderId: newOrders.id,
+        })
+      }
 
-      // if (sub.recurrence === 'everyweek') {
-      //   /**
-      //    * Check if today's day include in days
-      //    * and then make orders
-      //    */
-      //   // test const days = [0, 1, 3, 4, 5, 6]
+      if (sub.recurrence === 'everyweek') {
+        /**
+         * Check if today's day include in days
+         * and then make orders
+         */
+        // test const days = [0, 1, 3, 4, 5, 6]
 
-      //   const days = sub.days.map((el) => el.value)
+        const days = sub.days.map((el) => el.value)
 
-      //   if (format(new Date(sub.endDate), 'yyyy-MM-dd') === format(new Date(), 'yyyy-MM-dd')) {
-      //     return
-      //   }
+        if (format(new Date(sub.endDate), 'yyyy-MM-dd') === format(new Date(), 'yyyy-MM-dd')) {
+          return
+        }
 
-      //   const tomorrowDate = addDays(new Date(), 1)
+        const tomorrowDate = addDays(new Date(), 1)
 
-      //   if (days.includes(getDay(tomorrowDate))) {
-      //     // create orders
-      //     let newObject = {}
+        if (days.includes(getDay(tomorrowDate))) {
+          // create orders
+          let newObject = {}
 
-      //     const newProductObject = await Promise.all(
-      //       sub.products.map(async (product) => {
-      //         const quantitys = await ProductSubscription.query()
-      //           .where('subscription_id', sub.id)
-      //           .where('product_id', product.id)
+          const newProductObject = await Promise.all(
+            sub.products.map(async (product) => {
+              const quantitys = await ProductSubscription.query()
+                .where('subscription_id', sub.id)
+                .where('product_id', product.id)
 
-      //         const id = product.toJSON().id
+              const id = product.toJSON().id
 
-      //         const jsonProduct = product.toJSON()
+              const jsonProduct = product.toJSON()
 
-      //         console.log('product', product.toJSON())
+              console.log('product', product.toJSON())
 
-      //         console.log('this is quantity', quantitys[0].quantity)
-      //         newObject[id] = {
-      //           quantity: quantitys[0].quantity,
-      //         }
+              console.log('this is quantity', quantitys[0].quantity)
+              newObject[id] = {
+                quantity: quantitys[0].quantity,
+              }
 
-      //         return {
-      //           ...jsonProduct,
-      //           quantity: quantitys[0].quantity,
-      //         }
-      //       })
-      //     )
+              return {
+                ...jsonProduct,
+                quantity: quantitys[0].quantity,
+              }
+            })
+          )
 
-      //     const amount = newProductObject.reduce(
-      //       (prev, curr) => prev + curr.quantity * curr.price,
-      //       0
-      //     )
+          const amount = newProductObject.reduce(
+            (prev, curr) => prev + curr.quantity * curr.price,
+            0
+          )
 
-      //     const newOrders = await OrderService.createOrder({
-      //       date: tomorrowDate.toISOString(),
-      //       amount: amount,
-      //       quantity: [2, 20],
-      //       products: newObject,
-      //     })
+          const newOrders = await OrderService.createOrder({
+            date: tomorrowDate.toISOString(),
+            amount: amount,
+            quantity: [2, 20],
+            products: newObject,
+          })
 
-      //     await Schedular.create({
-      //       createdAt: DateTime.fromISO(new Date().toISOString()),
-      //       updatedAt: DateTime.fromISO(new Date().toISOString()),
-      //       subscriptionId: sub.id,
-      //       orderId: newOrders.id,
-      //     })
-      //   }
-      // }
+          await Schedular.create({
+            createdAt: DateTime.fromISO(new Date().toISOString()),
+            updatedAt: DateTime.fromISO(new Date().toISOString()),
+            subscriptionId: sub.id,
+            orderId: newOrders.id,
+          })
+        }
+      }
 
       if (sub.recurrence === 'custom') {
         /**

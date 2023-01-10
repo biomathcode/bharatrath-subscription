@@ -25,7 +25,7 @@ import { WeekData } from "../utils";
             :key="day.value"
             v-for="day in subs.dayssss"
           >
-            {{ day.value}}
+            {{ day.value }}
           </div>
         </div>
         <p>
@@ -58,12 +58,11 @@ import { WeekData } from "../utils";
           </div>
         </div>
 
-         <CalendarPreview
-          v-if="subs.start_date && subs.end_date"
-          :days="subs.days.map((el) => el.value)"
-          :start-date="new Date(subs?.start_date)"
-          :end-date="new Date(subs.end_date)"
-        /> 
+        <CalendarPreview v-if="subs.start_date && subs.end_date"
+        :type="subs.recurrence"
+        :days="subs.recurrence === 'custom' ? subs.dates.map((el) => el.date )
+        : subs.days.map((el) => el.value)" :start-date="new
+        Date(subs?.start_date)" :end-date="new Date(subs.end_date)" />
       </div>
     </div>
   </div>

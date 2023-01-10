@@ -48,7 +48,7 @@ export const store = reactive({
     this.order = [...newData];
   },
   getSubscription(subscriptions, quantity) {
-    console.log("this is quantiy", quantity);
+    console.log("this is subs", subscriptions);
     const newData = subscriptions.map((element) => {
       const newProduct = element.products.map((pd) => {
         const quant = quantity.filter(
