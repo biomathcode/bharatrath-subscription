@@ -1,13 +1,13 @@
 <script setup>
 import { store } from "../stores/store";
 import { format } from "date-fns";
-import { dateRange } from "../utils";
 
-const datesArray = dateRange();
+// const datesArray = dateRange();
+
+console.log('this are orders', store.order.values);
 
 // upcoming => created order + 3 days
-// future => subscription data 
-
+// future => subscription data
 
 </script>
 

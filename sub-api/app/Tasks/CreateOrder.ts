@@ -4,7 +4,7 @@ import Schedular from 'App/Models/Schedular'
 import Subscription from 'App/Models/Subscription'
 import OrderService from 'App/Services/OrdersServices'
 import { DateTime } from 'luxon'
-import { addDays, format, formatISO, getDay } from 'date-fns'
+import { addDays, format } from 'date-fns'
 
 // every week of the month
 // every second week of the month
