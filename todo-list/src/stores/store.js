@@ -71,6 +71,9 @@ export const store = reactive({
   getTransactions(transactions) {
     this.transaction = [...this.transactions, ...transactions];
   },
+  async updateSubscription(id, payload) {
+    const data = this.subscription.filter((el) => el.id === id);
+  },
 
   async startSubscription(startDate, endDate, type, orderToday, Days, dates) {
     const products = toRaw(this.cart.map((el) => el.id));
