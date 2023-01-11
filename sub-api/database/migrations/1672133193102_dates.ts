@@ -7,7 +7,7 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
       table.dateTime('date')
-      table.integer('subscription_id').references('id').inTable('subscriptions')
+      table.integer('subscription_id').references('id').inTable('subscriptions').onDelete('CASCADE')
     })
   }
 

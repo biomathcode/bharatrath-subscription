@@ -4,7 +4,7 @@ import Schedular from 'App/Models/Schedular'
 import Subscription from 'App/Models/Subscription'
 import OrderService from 'App/Services/OrdersServices'
 import { DateTime } from 'luxon'
-import { addDays, format } from 'date-fns'
+import { addDays, format, getDay } from 'date-fns'
 
 // every week of the month
 // every second week of the month
@@ -82,9 +82,7 @@ export default class CreateOrder extends BaseTask {
           subscriptionId: sub.id,
           orderId: newOrders.id,
         })
-      }
-
-      if (sub.recurrence === 'everyweek') {
+      } else if (sub.recurrence === 'everyweek') {
         /**
          * Check if today's day include in days
          * and then make orders
@@ -146,18 +144,16 @@ export default class CreateOrder extends BaseTask {
             orderId: newOrders.id,
           })
         }
-      }
-
-      if (sub.recurrence === 'custom') {
+      } else if (sub.recurrence === 'custom') {
         /**
          * Check if today's date included in dates
          * and then make orders
          */
 
         // test
-        const dates = ['2023-01-10']
+        // const dates = ['2023-01-10']
 
-        // const dates = sub.dates.map((el) => format(new Date(el.date.toString()), 'yyyy-MM-dd'))
+        const dates = sub.dates.map((el) => format(new Date(el.date.toString()), 'yyyy-MM-dd'))
 
         console.log('this are date', dates)
 
