@@ -12,7 +12,11 @@ let totalAmount = store.cart?.reduce(
   0
 );
 
+
+
 const selectType = ["everyday", "everyweek", "custom"];
+
+let view = ref(0);
 
 let startDate = ref(new Date());
 
@@ -39,7 +43,7 @@ console.log(dates);
 
 console.log(attributes.value);
 
-let type = ref("Every Day");
+let type = ref("everyday");
 
 let orderToday = ref(false);
 
@@ -108,13 +112,26 @@ function onDayClick(day) {
       class="min-w-20 border-green-100 rounded-md border-2 bg-green-50 text-green-900 p-20 flex gap-10 flex-col mt-10"
     >
       <h1 class="text-lg font-extrabold">Start Subscription</h1>
-      <DaysSelectorVue
+
+      <div class="flex gap-4">
+        <label>Select Type</label>
+        <select
+          v-model="type"
+          @change="(event) => (type = event.target.value)"
+          class="bg-white text-gray-900"
+        >
+          <option v-bind:value="el" :key="el" v-for="el in selectType">
+            {{ el }}
+          </option>
+        </select>
+      </div>
+      <DaysSelectorVue v-if="type === 'everyweek'"
         @select="select"
         :data="WeekData"
         :selected-days="Days"
       />
 
-      <div class="flex max-w-md flex-col gap-3">
+      <div v-if="type === 'everyday' || type === 'everyweek' " class="flex max-w-md flex-col gap-3">
         <label>Start Date</label>
         <v-date-picker
           :min-date="new Date()"
@@ -147,7 +164,7 @@ function onDayClick(day) {
         </v-date-picker>
       </div>
 
-      <div class="flex max-w-md flex-col gap-3">
+      <div v-if="type === 'everyday' || type === 'everyweek' "  class="flex max-w-md flex-col gap-3">
         <label>End Date</label>
         <v-date-picker
           :min-date="new Date()"
@@ -180,21 +197,10 @@ function onDayClick(day) {
         </v-date-picker>
       </div>
 
-      <div class="flex gap-4">
-        <label>Select Type</label>
-        <select
-          v-model="type"
-          @change="(event) => (type = event.target.value)"
-          class="bg-white text-gray-900"
-        >
-          <option v-bind:value="el" :key="el" v-for="el in selectType">
-            {{ el }}
-          </option>
-        </select>
-      </div>
+      
 
-      <div class="flex gap-4">
-        <label>Select Dates</label>
+      <div v-if="type === 'custom'"  class="flex flex-col gap-4">
+        <label>Select Dates when you want a delivery</label>
         <v-calendar :attributes="attributes" @dayclick="onDayClick" />
       </div>
 
