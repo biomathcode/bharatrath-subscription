@@ -195,6 +195,7 @@ export default class CreateOrder extends BaseTask {
           const newOrders = await OrderService.createOrder({
             date: addDays(new Date(), 1).toISOString(),
             amount: amount,
+
             quantity: [2, 20],
             products: newObject,
           })

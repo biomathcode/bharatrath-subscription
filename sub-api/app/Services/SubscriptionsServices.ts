@@ -17,21 +17,23 @@ export default class OrderService {
    */
 
   public static async createSubscription(body) {
-    const subscription = await Subscription.create({
-      userId: 1,
-      startDate: body.startDate,
-      endDate: body.endDate,
-      status: body.status,
-      totalAmount: body.amount,
-      recurrence: body.type,
-    })
+    console.log(body.dates, body.type)
 
-    let productsObject = {}
+    // const subscription = await Subscription.create({
+    //   userId: 1,
+    //   startDate: body.startDate,
+    //   endDate: body.endDate,
+    //   status: body.status,
+    //   totalAmount: body.amount,
+    //   recurrence: body.type,
+    // })
 
-    body.products.forEach((key, i) => (productsObject[key] = { quantity: body.quantity[i] }))
+    // let productsObject = {}
 
-    const products = await subscription.related('products').attach(productsObject)
+    // body.products.forEach((key, i) => (productsObject[key] = { quantity: body.quantity[i] }))
 
-    return { subscription, products }
+    // const products = await subscription.related('products').attach(productsObject)
+
+    // return { subscription, products }
   }
 }

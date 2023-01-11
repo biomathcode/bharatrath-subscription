@@ -31,11 +31,23 @@ export default class SubscriptionsController {
 
     const params = request.params()
 
-    console.log(request.params(), body.days)
+    console.log(body.dates)
+    const sortedDates = body.dates.sort(function compare(a: any, b: any) {
+      return a < b ? -1 : a > b ? 1 : 0
+    })
+
+    console.log(sortedDates)
+
+    console.log('end dates', sortedDates[0], sortedDates[sortedDates.length - 1])
+
+    const startDate = body.type === 'custom' ? sortedDates[0] : body.startDate
+
+    const endDate = body.type === 'custom' ? sortedDates[sortedDates.length - 1] : body.endDate
+
     const subscription = await Subscription.create({
       userId: params.user_id,
-      startDate: body.startDate,
-      endDate: body.endDate,
+      startDate: startDate,
+      endDate: endDate,
       status: body.status,
       totalAmount: body.amount,
       recurrence: body.type,
