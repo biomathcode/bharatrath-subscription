@@ -8,8 +8,11 @@ import { store } from "../stores/store";
   <Cart />
   <Suspense>
     <template #default>
-      <div v-if="store.products.length > 0" class="mt-14">
-        <div class="flex-col lg:flex-row-reverse">
+      <div class="mt-14">
+        <div
+          v-if="store.products.length > 0"
+          class="flex-col lg:flex-row-reverse"
+        >
           <h1 class="card-title text-black">Products</h1>
 
           <div class="flex flex-col md:flex-row lg:flex-row gap-10">
@@ -31,5 +34,4 @@ import { store } from "../stores/store";
       <div>loading...</div>
     </template>
   </Suspense>
-
 </template>
