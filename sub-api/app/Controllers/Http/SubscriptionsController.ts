@@ -94,9 +94,12 @@ export default class SubscriptionsController {
   public async update({ params, request }: HttpContextContract) {
     const body = request.body()
 
+    const status = body.status
+
     return Subscription.updateOrCreate(
       { id: params.id },
       {
+        status: status,
         //createdAt: DateTime.local(),
         //amount: body.amount,
       }
