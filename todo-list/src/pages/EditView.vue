@@ -27,13 +27,25 @@ async function fetchData() {
 
 fetchData();
 
+async function updateSubscription() {
+  const data = await axios.put("/subscriptions/" + props.id, {
+    endDate: endDate.value,
+    type: userData.value.recurrence,
+  });
+
+  console.log(data);
+    router.push({ name: "subscriptions" });
+}
+
 console.log("this is userData", startDate, endDate);
 </script>
 
 <template>
   <Suspense>
     <template #default>
-      <div class="w-screen flex flex-col justify-center items-center content-center mt-14">
+      <div
+        class="w-screen flex flex-col justify-center items-center content-center mt-14"
+      >
         <div class="flex flex-col max-w-lg min-w-[500px]">
           <button @click="router.go(-1)">back ⏪</button>
           <div class="text-sm badge badge-primary">
@@ -86,7 +98,6 @@ console.log("this is userData", startDate, endDate);
           <div class="flex max-w-md flex-col gap-3">
             <label>Start Date</label>
             <v-date-picker
-              
               :min-date="new Date()"
               class="inline-block h-full"
               v-model="startDate"
@@ -109,7 +120,6 @@ console.log("this is userData", startDate, endDate);
                     </svg>
                   </button>
                   <input
-
                     :value="inputValue"
                     readonly
                     class="bg-gray-300 text-gray-600 w-full py-1 px-2 appearance-none border rounded-r focus:outline-none focus:border-blue-500"
@@ -151,10 +161,13 @@ console.log("this is userData", startDate, endDate);
             </v-date-picker>
           </div>
           <div class="flex justify-center items-center content-center">
-            <button class="btn btn-success btn-md w-36 mt-20">Update Subscription</button>
-
+            <button
+              @click="updateSubscription()"
+              class="btn btn-success btn-md w-36 mt-20"
+            >
+              Update Subscription
+            </button>
           </div>
-
         </div>
       </div>
     </template>

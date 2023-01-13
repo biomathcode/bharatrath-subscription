@@ -114,7 +114,6 @@ export default class SubscriptionsController {
         },
         {
           endDate: body.endDate,
-          startDate: body.startDate,
         }
       )
     } else if (body.type === 'everyweek') {

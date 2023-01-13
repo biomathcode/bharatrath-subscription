@@ -55,6 +55,7 @@ export default class Subscription extends BaseModel {
     foreignKey: 'subscriptionId',
   })
   public schedular: HasMany<typeof Schedular>
+
   @column()
   public endDate: string // array of strings
 
