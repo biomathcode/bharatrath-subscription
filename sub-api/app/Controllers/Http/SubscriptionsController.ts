@@ -6,6 +6,7 @@ import ProductSubscription from 'App/Models/ProductSubscription'
 import Subscription from 'App/Models/Subscription'
 import User from 'App/Models/User'
 import SubscriptionServices from 'App/Services/SubscriptionsServices'
+import { id } from 'date-fns/locale'
 import { DateTime } from 'luxon'
 import DaysController from './DaysController'
 
@@ -92,8 +93,17 @@ export default class SubscriptionsController {
 
     if (!subscription) throw Error('Subscription not found')
 
+    if (body.status) {
+      return await Subscription.updateOrCreate(
+        { id: params.id },
+        {
+          status: body.status,
+        }
+      )
+    }
+
     if (body.type === 'everyday') {
-      return Subscription.updateOrCreate(
+      return await Subscription.updateOrCreate(
         {
           id: params.id,
         },
@@ -102,14 +112,11 @@ export default class SubscriptionsController {
           startDate: body.startDate,
         }
       )
-    }
-
-    /**
-     * Delete every old days related to subscription
-     * Create new days
-     */
-
-    if (body.type === 'everyweek') {
+    } else if (body.type === 'everyweek') {
+      /**
+       * Delete every old days related to subscription
+       * Create new days
+       */
       await Day.query().where('subscription_id', subscription.id).delete()
       const newDays = body.days.map((el) => ({
         value: el.value,
@@ -126,14 +133,11 @@ export default class SubscriptionsController {
         .preload('products')
 
       return newSub
-    }
-
-    /**
-     * Delete every old dates related to subscription
-     * Create new dates
-     */
-
-    if (body.type === 'custom') {
+    } else if (body.type === 'custom') {
+      /**
+       * Delete every old dates related to subscription
+       * Create new dates
+       */
       await Date.query().where('subscription_id', subscription.id).delete()
 
       const newDates = body.dates.map((el) => {
