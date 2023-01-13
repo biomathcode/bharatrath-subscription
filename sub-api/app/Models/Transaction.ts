@@ -2,6 +2,7 @@ import { DateTime } from 'luxon'
 import { BaseModel, BelongsTo, belongsTo, column, HasOne, hasOne } from '@ioc:Adonis/Lucid/Orm'
 import User from './User'
 import { TransactionStatus, TransactionType } from 'Contracts/enums'
+import Wallet from './Wallet'
 
 export default class Transaction extends BaseModel {
   @column({ isPrimary: true })
@@ -11,6 +12,9 @@ export default class Transaction extends BaseModel {
   public userId: number
 
   @column()
+  public walletId: number
+
+  @column()
   public status: TransactionStatus
 
   @column()
@@ -18,6 +22,11 @@ export default class Transaction extends BaseModel {
 
   @column()
   public type: TransactionType
+
+  @belongsTo(() => Wallet, {
+    localKey: 'walletId',
+  })
+  public wallet: BelongsTo<typeof Wallet>
 
   @belongsTo(() => User, {
     localKey: 'userId',

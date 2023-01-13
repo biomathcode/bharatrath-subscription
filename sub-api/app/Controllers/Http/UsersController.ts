@@ -14,7 +14,7 @@ export default class UsersController {
     })
   }
   public async show({ params }: HttpContextContract) {
-    return User.find(params.id)
+    return await User.query().where('id', params.id).preload('transaction').preload('subscription')
   }
   public async update({ params, request }: HttpContextContract) {
     const body = request.body()
