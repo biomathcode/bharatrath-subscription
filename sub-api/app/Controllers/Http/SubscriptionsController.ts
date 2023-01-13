@@ -1,11 +1,13 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Database from '@ioc:Adonis/Lucid/Database'
+import Date from 'App/Models/Date'
 import Day from 'App/Models/Day'
 import ProductSubscription from 'App/Models/ProductSubscription'
 import Subscription from 'App/Models/Subscription'
 import User from 'App/Models/User'
 import SubscriptionServices from 'App/Services/SubscriptionsServices'
 import { DateTime } from 'luxon'
+import DaysController from './DaysController'
 
 export default class SubscriptionsController {
   public async index({ request }: HttpContextContract) {
@@ -45,7 +47,7 @@ export default class SubscriptionsController {
       recurrence: body.type,
     })
 
-    const newData = body.days.map((el) => ({
+    const newDays = body.days.map((el) => ({
       value: el.value,
       label: el.label,
       subscriptionId: subscription.id,
@@ -60,7 +62,7 @@ export default class SubscriptionsController {
     })
 
     if (body.type === 'everyday' || body.type === 'everyweek') {
-      await subscription.related('days').createMany(newData)
+      await subscription.related('days').createMany(newDays)
     }
     if ((body.type = 'custom')) {
       await subscription.related('dates').createMany(newDates)
@@ -86,16 +88,72 @@ export default class SubscriptionsController {
   public async update({ params, request }: HttpContextContract) {
     const body = request.body()
 
-    const status = body.status
+    const subscription = await Subscription.find(params.id)
 
-    return Subscription.updateOrCreate(
-      { id: params.id },
-      {
-        status: status,
-        //createdAt: DateTime.local(),
-        //amount: body.amount,
-      }
-    )
+    if (!subscription) throw Error('Subscription not found')
+
+    if (body.type === 'everyday') {
+      return Subscription.updateOrCreate(
+        {
+          id: params.id,
+        },
+        {
+          endDate: body.endDate,
+          startDate: body.startDate,
+        }
+      )
+    }
+
+    /**
+     * Delete every old days related to subscription
+     * Create new days
+     */
+
+    if (body.type === 'everyweek') {
+      await Day.query().where('subscription_id', subscription.id).delete()
+      const newDays = body.days.map((el) => ({
+        value: el.value,
+        label: el.label,
+        subscriptionId: subscription.id,
+      }))
+
+      await subscription.related('days').createMany(newDays)
+
+      const newSub = await Subscription.query()
+        .where('id', params.id)
+        .preload('dates')
+        .preload('days')
+        .preload('products')
+
+      return newSub
+    }
+
+    /**
+     * Delete every old dates related to subscription
+     * Create new dates
+     */
+
+    if (body.type === 'custom') {
+      await Date.query().where('subscription_id', subscription.id).delete()
+
+      const newDates = body.dates.map((el) => {
+        console.log(el)
+        return {
+          date: DateTime.fromISO(el),
+          subscriptionId: subscription.id,
+        }
+      })
+
+      await subscription.related('dates').createMany(newDates)
+
+      const newSub = await Subscription.query()
+        .where('id', params.id)
+        .preload('dates')
+        .preload('days')
+        .preload('products')
+
+      return newSub
+    }
   }
   public async destroy({ params }: HttpContextContract) {
     const sub = await Subscription.findOrFail(params.id)
