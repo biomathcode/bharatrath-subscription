@@ -31,5 +31,6 @@ Route.shallowResource('users.orders', 'OrdersController').apiOnly()
 Route.shallowResource('users.subscriptions', 'SubscriptionsController').apiOnly()
 
 Route.shallowResource('users.transactions', 'TransactionsController').apiOnly()
+Route.shallowResource('users.wallets', 'WalletsController').apiOnly()
 
 Route.resource('products', 'ProductsController').apiOnly()
