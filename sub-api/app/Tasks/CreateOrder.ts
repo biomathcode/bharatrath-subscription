@@ -11,15 +11,18 @@ import { addDays, format, getDay } from 'date-fns'
 
 //TODO schedule_table => many subscription, many orders
 
-//TODO: Update subscription
+//TODO: Update subscription ✅
 
 //TODO: specific date,
-//TODO: Pause the subscription
+//TODO: Pause the subscription 😅
+// * start date, end date & custom date
+// * set inactive
+//
 
-//TODO: Fixed number of days, Fixed amount is required to start subscription
-//TODO: deduct wallet amount when order is created
+//TODO: Fixed number of days, Fixed amount is required to start subscription ✅
+//TODO: deduct wallet amount when order is created ✅
 
-//TODO: Refund, Recharge,
+//TODO: Refund, Recharge, ✅
 
 //TODO: Notify the user 5 days before charge end, 1 day and on cancelling subscription
 
@@ -55,6 +58,7 @@ export default class CreateOrder extends BaseTask {
     ActiveSubscriptions.forEach(async (sub) => {
       if (sub.recurrence === 'everyday') {
         let newObject = {}
+        const tomorrowDate = addDays(new Date(), 1)
 
         const newProductObject = await Promise.all(
           sub.products.map(async (product) => {
@@ -66,9 +70,6 @@ export default class CreateOrder extends BaseTask {
 
             const jsonProduct = product.toJSON()
 
-            console.log('product', product.toJSON())
-
-            console.log('this is quantity', quantitys[0].quantity)
             newObject[id] = {
               quantity: quantitys[0].quantity,
             }
@@ -83,7 +84,7 @@ export default class CreateOrder extends BaseTask {
         const amount = newProductObject.reduce((prev, curr) => prev + curr.quantity * curr.price, 0)
 
         const newOrders = await OrderService.createOrder({
-          date: '2023-01-04T05:10:20.739Z',
+          date: tomorrowDate.toISOString(),
           amount: amount,
           quantity: [2, 20],
           products: newObject,
