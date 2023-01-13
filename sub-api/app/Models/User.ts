@@ -1,9 +1,19 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import {
+  afterCreate,
+  BaseModel,
+  beforeCreate,
+  column,
+  HasMany,
+  hasMany,
+  HasOne,
+  hasOne,
+} from '@ioc:Adonis/Lucid/Orm'
 import { v4 as uuid } from 'uuid'
 import Subscription from './Subscription'
 import Transaction from './Transaction'
 import Order from './Order'
+import Wallet from './Wallet'
 
 //https://www.youtube.com/watch?v=NUfpIDMqx2k
 
@@ -36,6 +46,11 @@ export default class User extends BaseModel {
   })
   public subscription: HasMany<typeof Subscription>
 
+  @hasOne(() => User, {
+    foreignKey: 'userId',
+  })
+  public user: HasOne<typeof User>
+
   @hasMany(() => Transaction, {
     foreignKey: 'userId',
   })
@@ -45,4 +60,13 @@ export default class User extends BaseModel {
     foreignKey: 'userId',
   })
   public order: HasMany<typeof Order>
+
+  //TODO: Create not working with seed
+  // @afterCreate()
+  // public static async createWallet(user: User) {
+  //   await Wallet.create({
+  //     userId: user.id,
+  //     amount: 50,
+  //   })
+  // }
 }
