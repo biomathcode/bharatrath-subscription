@@ -24,6 +24,9 @@ export const store = reactive({
     console.log("this are products", products);
     console.log(this.products.values);
   },
+  async filterSubs(id) {
+    return this.subscription.filter((el) => el.id === id);
+  },
   getOrders(orders, quantity) {
     console.log("this is quantiy", quantity);
     const newData = orders.map((element) => {

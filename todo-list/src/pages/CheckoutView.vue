@@ -12,11 +12,7 @@ let totalAmount = store.cart?.reduce(
   0
 );
 
-
-
 const selectType = ["everyday", "everyweek", "custom"];
-
-let view = ref(0);
 
 let startDate = ref(new Date());
 
@@ -28,18 +24,16 @@ let dates = computed(() => {
   return customdates.value.map((day) => day.date);
 });
 
-console.log('this are dates', dates);
+console.log("this are dates", dates);
 
 let attributes = computed(() => {
-return dates.value.map((date) => ({
+  return dates.value.map((date) => ({
     highlight: true,
     dates: date,
   }));
-
-}) 
+});
 
 console.log(dates);
-
 
 console.log(attributes.value);
 
@@ -61,7 +55,6 @@ function select(e) {
 }
 
 function onDayClick(day) {
-
   const idx = customdates.value.findIndex((d) => d.id === day.id);
   console.log(day);
   if (idx >= 0) {
@@ -125,13 +118,17 @@ function onDayClick(day) {
           </option>
         </select>
       </div>
-      <DaysSelectorVue v-if="type === 'everyweek'"
+      <DaysSelectorVue
+        v-if="type === 'everyweek'"
         @select="select"
         :data="WeekData"
         :selected-days="Days"
       />
 
-      <div v-if="type === 'everyday' || type === 'everyweek' " class="flex max-w-md flex-col gap-3">
+      <div
+        v-if="type === 'everyday' || type === 'everyweek'"
+        class="flex max-w-md flex-col gap-3"
+      >
         <label>Start Date</label>
         <v-date-picker
           :min-date="new Date()"
@@ -164,7 +161,10 @@ function onDayClick(day) {
         </v-date-picker>
       </div>
 
-      <div v-if="type === 'everyday' || type === 'everyweek' "  class="flex max-w-md flex-col gap-3">
+      <div
+        v-if="type === 'everyday' || type === 'everyweek'"
+        class="flex max-w-md flex-col gap-3"
+      >
         <label>End Date</label>
         <v-date-picker
           :min-date="new Date()"
@@ -197,9 +197,7 @@ function onDayClick(day) {
         </v-date-picker>
       </div>
 
-      
-
-      <div v-if="type === 'custom'"  class="flex flex-col gap-4">
+      <div v-if="type === 'custom'" class="flex flex-col gap-4">
         <label>Select Dates when you want a delivery</label>
         <v-calendar :attributes="attributes" @dayclick="onDayClick" />
       </div>
@@ -215,7 +213,14 @@ function onDayClick(day) {
       </div>
       <button
         @click="
-          store.startSubscription(startDate, endDate, type, orderToday, Days, dates)
+          store.startSubscription(
+            startDate,
+            endDate,
+            type,
+            orderToday,
+            Days,
+            dates
+          )
         "
         class="btn bottom-2 btn-success"
       >

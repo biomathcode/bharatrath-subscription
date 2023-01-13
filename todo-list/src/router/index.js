@@ -5,6 +5,7 @@ import {
   SubscriptionView,
   CheckoutView,
   OrderView,
+  SubscriptionEditView,
 } from "../pages";
 
 const router = createRouter({
@@ -37,6 +38,13 @@ const router = createRouter({
       path: "/checkout",
       name: "checkout",
       component: CheckoutView,
+    },
+    {
+      path: "/edit/:id",
+      name: "edit",
+      component: SubscriptionEditView,
+      props: true,
+      // props: (route) => ({ query: route.params.id }),
     },
   ],
 });

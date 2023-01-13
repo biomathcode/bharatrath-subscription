@@ -80,10 +80,15 @@ export default class SubscriptionsController {
     return { subscription, products }
   }
   public async show({ params }: HttpContextContract) {
-    const subscription = await Subscription.find(params.id)
+    const subscription = await Subscription.query()
+      .where('id', params.id)
 
-    const products = await subscription?.related('products')
-    return { subscription, products }
+      .preload('products')
+      .preload('dates')
+      .preload('days')
+      .first()
+
+    return subscription
   }
 
   public async update({ params, request }: HttpContextContract) {
