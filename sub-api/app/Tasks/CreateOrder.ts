@@ -6,18 +6,8 @@ import OrderService from 'App/Services/OrdersServices'
 import { DateTime } from 'luxon'
 import { addDays, format, getDay } from 'date-fns'
 
-// every week of the month
-// every second week of the month
-
-//TODO schedule_table => many subscription, many orders
-
-//TODO: Update subscription ✅
-
-//TODO: specific date,
-//TODO: Pause the subscription 😅
+//TODO: Pause the subscription 😅  ✅
 // * start date, end date & custom date
-// * set inactive
-//
 
 //TODO: Fixed number of days, Fixed amount is required to start subscription ✅
 //TODO: deduct wallet amount when order is created ✅
@@ -27,14 +17,6 @@ import { addDays, format, getDay } from 'date-fns'
 //TODO: Notify the user 5 days before charge end, 1 day and on cancelling subscription
 
 // Cancel request, refund the user
-
-// +3 days
-// check for last order
-// lastCreatedOrderDate
-// nextOrderCreated
-// errorFlag => order creation fails
-// orderScheduleDate
-// updateSubscription
 
 export default class CreateOrder extends BaseTask {
   public static get schedule() {

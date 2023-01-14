@@ -13,9 +13,6 @@ import { OrderStatus } from 'Contracts/enums'
 import Product from './Product'
 import Schedular from './Schedular'
 
-//TODO: Wallet
-//
-
 export default class Order extends BaseModel {
   @column({ isPrimary: true })
   public id: number

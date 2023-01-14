@@ -24,7 +24,6 @@ let dates = computed(() => {
   return customdates.value.map((day) => day.date);
 });
 
-console.log("this are dates", dates);
 
 let attributes = computed(() => {
   return dates.value.map((date) => ({
