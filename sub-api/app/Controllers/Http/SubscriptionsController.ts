@@ -78,8 +78,11 @@ export default class SubscriptionsController {
   public async show({ params }: HttpContextContract) {
     const subscription = await Subscription.query()
       .where('id', params.id)
-
-      .preload('products')
+      .preload('products', (item) => {
+        item.preload('ProductSubscription', (quant) => {
+          quant.where('subscription_id', params.id)
+        })
+      })
       .preload('dates')
       .preload('days')
       .first()

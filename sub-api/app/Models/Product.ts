@@ -36,7 +36,7 @@ export default class Product extends BaseModel {
   public orders: ManyToMany<typeof Order>
 
   @hasMany(() => ProductSubscription, {
-    foreignKey: 'product_id',
+    foreignKey: 'productId',
   })
   public ProductSubscription: HasMany<typeof ProductSubscription>
 

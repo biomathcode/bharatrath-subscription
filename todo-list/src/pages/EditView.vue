@@ -100,6 +100,12 @@ console.log("this is userData", startDate, endDate);
             </div>
           </div>
 
+          <div
+            class="text-left flex justify-end badge text-md mt-5 badge-outline"
+          >
+            ₹{{ userData.total_amount }}
+          </div>
+
           <div v-if="userData?.days > 0" class="flex gap-2">
             <div
               class="flex flex-col gap-1 px-1 py-1 my-4 bg-gray-600 text-gray-50 text-xs rounded-md"
@@ -122,8 +128,9 @@ console.log("this is userData", startDate, endDate);
             <DisclosurePanel class="text-gray-500">
               <div :key="product.id" v-for="product in userData.products">
                 <div class="text-sm">
-                  {{ product.name }}
-                  {{ product.price }}
+                  {{ product.name }} x
+                  {{ product.ProductSubscription[0].quantity }} =
+                  {{ product.price * product.ProductSubscription[0].quantity }}
                 </div>
               </div>
             </DisclosurePanel>
@@ -210,6 +217,7 @@ console.log("this is userData", startDate, endDate);
             :selected-days="days"
             :label="`Update days of your subscription`"
           />
+
           <div class="flex gap-20 justify-around items-center content-center">
             <button
               @click="updateSubscription()"
