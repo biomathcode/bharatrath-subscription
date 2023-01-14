@@ -13,7 +13,7 @@ import { ChevronUpIcon } from "@heroicons/vue/20/solid";
   >
     <h2 class="h2 mb-1 text-lg font-semibold">Manage Your Subscriptions</h2>
     <div
-      class="flex gap-1 items-center px-5 rounded mx-5 hover:border-[1px] border-solid border-stone-900"
+      class="flex gap-1 items-center px-5 rounded mx-5 w-96 border-[1px] border-solid border-stone-900"
       :key="subs.id"
       v-for="subs in store.subscription"
     >
