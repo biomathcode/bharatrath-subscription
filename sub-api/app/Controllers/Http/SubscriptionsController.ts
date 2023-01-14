@@ -2,13 +2,9 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Database from '@ioc:Adonis/Lucid/Database'
 import Date from 'App/Models/Date'
 import Day from 'App/Models/Day'
-import ProductSubscription from 'App/Models/ProductSubscription'
 import Subscription from 'App/Models/Subscription'
-import User from 'App/Models/User'
 import SubscriptionServices from 'App/Services/SubscriptionsServices'
-import { id } from 'date-fns/locale'
 import { DateTime } from 'luxon'
-import DaysController from './DaysController'
 
 export default class SubscriptionsController {
   public async index({ request }: HttpContextContract) {

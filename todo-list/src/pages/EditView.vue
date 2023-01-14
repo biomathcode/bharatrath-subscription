@@ -5,11 +5,26 @@ import { format } from "date-fns";
 import { ref } from "vue";
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { ChevronUpIcon } from "@heroicons/vue/20/solid";
+import { WeekData } from "../utils";
+import DaysSelectorVue from "../components/DaysSelector.vue";
 
 // get subscription by id
 const props = defineProps(["id"]);
 
 const userData = ref();
+
+let days = ref([]);
+
+function select(e) {
+  console.log("this is working");
+  console.log(e);
+  if (days.value.includes(e)) {
+    const newArray = days.value.filter((el) => el !== e);
+    days.value = [...newArray];
+  } else {
+    days.value = [...days.value, e];
+  }
+}
 
 let startDate = ref();
 
@@ -21,20 +36,20 @@ async function fetchData() {
 
   startDate.value = subdata.start_date;
   endDate.value = subdata.end_date;
-
-  userData.value = subdata;
 }
 
 fetchData();
 
 async function updateSubscription() {
+  const newDays = WeekData.filter((el) => days.value.includes(el.value));
   const data = await axios.put("/subscriptions/" + props.id, {
     endDate: endDate.value,
     type: userData.value.recurrence,
+    days: newDays,
   });
 
   console.log(data);
-    router.push({ name: "subscriptions" });
+  router.push({ name: "subscriptions" });
 }
 
 console.log("this is userData", startDate, endDate);
@@ -49,30 +64,31 @@ console.log("this is userData", startDate, endDate);
         <div class="flex flex-col max-w-lg min-w-[500px]">
           <button @click="router.go(-1)">back ⏪</button>
           <div class="text-sm badge badge-primary">
-            {{ userData.recurrence }}
+            {{ userData?.recurrence }}
           </div>
+
           <div>
-            {{ userData.products.map((el) => el.name).join(" + ") }}
+            {{ userData?.products.map((el) => el.name).join(" + ") }}
           </div>
           <div class="flex mt-2">
-            <div class="text-xs text-slate-500">
-              {{ format(new Date(userData?.start_date), "dd/MM/yyyy") }}
+            <!-- <div class="text-xs text-slate-500">
+              {{ format(new Date(userData.start_date), "dd/MM/yyyy") }}
             </div>
             <div class="flex items-center text-slate-500 content-center">
               ......
             </div>
             <div class="text-xs text-slate-500">
               {{ format(new Date(userData?.end_date), "dd/MM/yyyy") }}
-            </div>
+            </div> -->
           </div>
 
-          <div v-if="userData.days > 0" class="flex gap-2">
+          <div class="flex gap-2">
             <div
               class="flex flex-col gap-1 px-1 py-1 my-4 bg-gray-600 text-gray-50 text-xs rounded-md"
               :key="day.value"
-              v-for="day in userData.days"
+              v-for="day in userData?.days"
             >
-              {{ day.value }}
+              {{ day.label }}
             </div>
           </div>
 
@@ -95,7 +111,10 @@ console.log("this is userData", startDate, endDate);
             </DisclosurePanel>
           </Disclosure>
 
-          <div class="flex max-w-md flex-col gap-3">
+          <div
+            v-if="userData.recurrence === 'everyday'"
+            class="flex max-w-md flex-col gap-3"
+          >
             <label>Start Date</label>
             <v-date-picker
               :min-date="new Date()"
@@ -128,7 +147,13 @@ console.log("this is userData", startDate, endDate);
               </template>
             </v-date-picker>
           </div>
-          <div class="flex max-w-md flex-col gap-3 mt-5">
+          <div
+            v-if="
+              (userData.recurrence === 'everyday') |
+                (userData.recurrence === 'everyweek')
+            "
+            class="flex max-w-md flex-col gap-3 mt-5"
+          >
             <label>End Date</label>
             <v-date-picker
               :min-date="new Date()"
@@ -160,6 +185,11 @@ console.log("this is userData", startDate, endDate);
               </template>
             </v-date-picker>
           </div>
+          <DaysSelectorVue
+            @select="select"
+            :data="WeekData"
+            :selected-days="days"
+          />
           <div class="flex justify-center items-center content-center">
             <button
               @click="updateSubscription()"
