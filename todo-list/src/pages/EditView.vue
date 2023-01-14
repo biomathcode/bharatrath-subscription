@@ -1,19 +1,18 @@
 <script setup>
 import axios from "../axios/index";
 import router from "../router/index";
-import { format } from "date-fns";
 import { ref } from "vue";
+import format from "date-fns/format";
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { ChevronUpIcon } from "@heroicons/vue/20/solid";
 import { WeekData } from "../utils";
 import DaysSelectorVue from "../components/DaysSelector.vue";
 
-// get subscription by id
 const props = defineProps(["id"]);
 
-const userData = ref();
-
 let days = ref([]);
+
+let isActive = ref(false);
 
 function select(e) {
   console.log("this is working");
@@ -30,25 +29,44 @@ let startDate = ref();
 
 let endDate = ref();
 
+const userData = ref();
+
 async function fetchData() {
   const subs = await axios.get("/subscriptions/" + props.id);
   const subdata = await subs.data;
 
+  userData.value = subdata;
+
   startDate.value = subdata.start_date;
   endDate.value = subdata.end_date;
+
+  isActive.value = subdata.status === "active" ? true : false;
+
+  console.log("this is active value", isActive.value, subdata.recurrence);
+
+  subdata.days?.map((el) => days.value.push(el.value));
 }
 
 fetchData();
 
 async function updateSubscription() {
   const newDays = WeekData.filter((el) => days.value.includes(el.value));
-  const data = await axios.put("/subscriptions/" + props.id, {
+  await axios.put("/subscriptions/" + props.id, {
     endDate: endDate.value,
     type: userData.value.recurrence,
     days: newDays,
   });
+  router.push({ name: "subscriptions" });
+}
 
-  console.log(data);
+async function toggleSubscription() {
+  isActive.value = !isActive.value;
+  const newData = await axios.put("/subscriptions/" + props.id, {
+    status: isActive.value ? "active" : "cancel",
+  });
+
+  console.log(newData);
+
   router.push({ name: "subscriptions" });
 }
 
@@ -71,18 +89,18 @@ console.log("this is userData", startDate, endDate);
             {{ userData?.products.map((el) => el.name).join(" + ") }}
           </div>
           <div class="flex mt-2">
-            <!-- <div class="text-xs text-slate-500">
+            <div class="text-xs text-slate-500">
               {{ format(new Date(userData.start_date), "dd/MM/yyyy") }}
             </div>
             <div class="flex items-center text-slate-500 content-center">
               ......
             </div>
             <div class="text-xs text-slate-500">
-              {{ format(new Date(userData?.end_date), "dd/MM/yyyy") }}
-            </div> -->
+              {{ format(new Date(userData.end_date), "dd/MM/yyyy") }}
+            </div>
           </div>
 
-          <div class="flex gap-2">
+          <div v-if="userData?.days > 0" class="flex gap-2">
             <div
               class="flex flex-col gap-1 px-1 py-1 my-4 bg-gray-600 text-gray-50 text-xs rounded-md"
               :key="day.value"
@@ -112,7 +130,7 @@ console.log("this is userData", startDate, endDate);
           </Disclosure>
 
           <div
-            v-if="userData.recurrence === 'everyday'"
+            v-if="userData?.recurrence === 'everyday'"
             class="flex max-w-md flex-col gap-3"
           >
             <label>Start Date</label>
@@ -149,8 +167,8 @@ console.log("this is userData", startDate, endDate);
           </div>
           <div
             v-if="
-              (userData.recurrence === 'everyday') |
-                (userData.recurrence === 'everyweek')
+              userData?.recurrence === 'everyday'
+              // userData?.recurrence === 'everyweek'
             "
             class="flex max-w-md flex-col gap-3 mt-5"
           >
@@ -186,16 +204,25 @@ console.log("this is userData", startDate, endDate);
             </v-date-picker>
           </div>
           <DaysSelectorVue
+            v-if="days.length > 0"
             @select="select"
             :data="WeekData"
             :selected-days="days"
+            :label="`Update days of your subscription`"
           />
-          <div class="flex justify-center items-center content-center">
+          <div class="flex gap-20 justify-around items-center content-center">
             <button
               @click="updateSubscription()"
               class="btn btn-success btn-md w-36 mt-20"
             >
-              Update Subscription
+              Update
+            </button>
+            <button
+              class="btn btn-md w-36 mt-20"
+              :class="isActive ? 'btn-error' : 'btn-success'"
+              @click="toggleSubscription()"
+            >
+              {{ isActive ? "Pause" : "Resume" }}
             </button>
           </div>
         </div>

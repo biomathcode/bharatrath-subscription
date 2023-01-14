@@ -123,6 +123,7 @@ function onDayClick(day) {
         @select="select"
         :data="WeekData"
         :selected-days="Days"
+        :label="`Select days of your subscription`"
       />
 
       <div
