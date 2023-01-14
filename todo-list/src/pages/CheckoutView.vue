@@ -200,7 +200,7 @@ function onDayClick(day) {
 
       <div v-if="type === 'custom'" class="flex flex-col gap-4">
         <label>Select Dates when you want a delivery</label>
-        <v-calendar :attributes="attributes" @dayclick="onDayClick" />
+        <v-calendar  :min-date="new Date()" :attributes="attributes" @dayclick="onDayClick" />
       </div>
 
       <div class="flex gap-4">

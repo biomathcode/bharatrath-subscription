@@ -1,7 +1,7 @@
 <script setup>
 import axios from "../axios/index";
 import router from "../router/index";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import format from "date-fns/format";
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { ChevronUpIcon } from "@heroicons/vue/20/solid";
@@ -13,6 +13,36 @@ const props = defineProps(["id"]);
 let days = ref([]);
 
 let isActive = ref(false);
+
+let customdates = ref([]);
+
+let dates = computed(() => {
+  return customdates.value.map((day) => day.date);
+});
+
+
+let attributes = computed(() => {
+  return customdates.value.map((date) => ({
+    highlight: true,
+    dates: date.date,
+  }));
+});
+
+function onDayClick(day) {
+  const activeDate = customdates.value.filter((d) => d.id === day.id);
+
+  if (activeDate.length > 0) {
+    const filterData = customdates.value.filter((d) => d.id !== day.id);
+
+    customdates.value = filterData;
+  } else {
+    
+    customdates.value.push({
+      id: day.id,
+      date: day.date,
+    });
+  }
+}
 
 function select(e) {
   console.log("this is working");
@@ -42,7 +72,14 @@ async function fetchData() {
 
   isActive.value = subdata.status === "active" ? true : false;
 
-  console.log("this is active value", isActive.value, subdata.recurrence);
+  subdata.dates?.map((el) =>
+    customdates.value.push({
+      id: format(new Date(el.date), "yyyy-MM-dd"),
+      date: el.date,
+    })
+  );
+
+  console.log("this is dates value", customdates.value);
 
   subdata.days?.map((el) => days.value.push(el.value));
 }
@@ -51,10 +88,14 @@ fetchData();
 
 async function updateSubscription() {
   const newDays = WeekData.filter((el) => days.value.includes(el.value));
+
+  console.log(dates.value);
+
   await axios.put("/subscriptions/" + props.id, {
     endDate: endDate.value,
     type: userData.value.recurrence,
     days: newDays,
+    dates: dates.value,
   });
   router.push({ name: "subscriptions" });
 }
@@ -217,6 +258,18 @@ console.log("this is userData", startDate, endDate);
             :selected-days="days"
             :label="`Update days of your subscription`"
           />
+
+          <div
+            v-if="userData.recurrence === 'custom'"
+            class="flex flex-col gap-4"
+          >
+            <label>Select Dates when you want a delivery</label>
+            <v-calendar
+              :min-date="new Date()"
+              :attributes="attributes"
+              @dayclick="onDayClick"
+            />
+          </div>
 
           <div class="flex gap-20 justify-around items-center content-center">
             <button
