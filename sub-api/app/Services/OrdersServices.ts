@@ -19,7 +19,7 @@ export default class OrderService {
   public static dayMatch(days, day) {
     const daysArr = days.map((el) => el.value)
 
-    return daysArr.includes(getDay(day)) && true
+    if (daysArr.includes(getDay(day))) return true
   }
 
   public static dateMatch(dates, date) {
@@ -32,7 +32,7 @@ export default class OrderService {
    * createOrder
    */
 
-  public static async createOrder(body) {
+  public static async createOrder(body: any) {
     const createOrder = await Order.create({
       status: 'arriving',
       deliveryDate: DateTime.fromISO(body.date),
@@ -43,9 +43,17 @@ export default class OrderService {
       // address: body.address,
     })
 
-    console.log(body.products)
+    let newProductObject = {}
 
-    await createOrder.related('products').attach(body.products)
+    body.products.map((product) => {
+      const id = product.id
+
+      newProductObject[id] = {
+        quantity: product.ProductSubscription[0].quantity,
+      }
+    })
+
+    await createOrder.related('products').attach(newProductObject)
 
     return createOrder
   }
