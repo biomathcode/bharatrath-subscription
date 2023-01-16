@@ -1,6 +1,5 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Transaction from 'App/Models/Transaction'
-import Wallet from 'App/Models/Wallet'
 
 export default class TransactionsController {
   public async index({ request }: HttpContextContract) {
@@ -15,21 +14,9 @@ export default class TransactionsController {
 
     const newTransaction = Transaction.create({
       userId: params.user_id,
-      status: 'completed',
       amount: body.amount,
       type: body.type,
     })
-
-    const wallet = await Wallet.findBy('userId', params.user_id)
-
-    const walletTransaction = Wallet.updateOrCreate(
-      {
-        userId: params.user_id,
-      },
-      {
-        amount: wallet?.amount + body.amount,
-      }
-    )
 
     return newTransaction
   }
@@ -48,6 +35,7 @@ export default class TransactionsController {
       { id: params.id },
       {
         status: status,
+        amount: body.amount,
       }
     )
   }

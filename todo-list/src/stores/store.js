@@ -11,12 +11,13 @@ export const store = reactive({
   cart: [],
   order: [],
   user: {},
+  transactions: [],
+  subscription: [],
+
   getUser(user) {
     console.log("this is user", user);
     this.user = { ...user };
   },
-  subscription: [],
-  transaction: [],
   getProducts(products) {
     this.products = [...this.products, ...products];
     console.log("this are products", products);
@@ -109,13 +110,18 @@ export const store = reactive({
   },
   async credit(amount) {
     const newTransaction = {
-      id: uuid(),
+      id: this.user.transaction.length + 1,
       amount,
       type: "credit",
       date: new Date(),
     };
     await axios.put("/wallets/1", {
       amount: Number(amount) + this.user.wallet.amount,
+    });
+
+    await axios.post("/users/1/transactions", {
+      amount: amount,
+      type: "credit",
     });
     this.user = {
       ...this.user,

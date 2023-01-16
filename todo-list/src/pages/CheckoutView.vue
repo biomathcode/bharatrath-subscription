@@ -3,6 +3,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import { addDays } from "date-fns";
+import router from "../router/index";
 import DaysSelectorVue from "../components/DaysSelector.vue";
 import { store } from "../stores/store";
 import { WeekData } from "../utils";
@@ -31,21 +32,6 @@ let attributes = computed(() => {
   }));
 });
 
-function startSubscription(e) {
-  const constrainAmount = totalAmount * 30;
-  const dif = constrainAmount - store.user.wallet.amount;
-  console.log(dif, constrainAmount, store.user.wallet.amount)
-  if (constrainAmount < store.user.amount) {
-    alert("this is a good option");
-  } else {
-    alert(
-      "Please add " +
-        (constrainAmount - store.user.wallet.amount) +
-        " tokens to your acount"
-    );
-  }
-}
-
 let type = ref("everyday");
 
 let orderToday = ref(false);
@@ -73,6 +59,29 @@ function onDayClick(day) {
       id: day.id,
       date: day.date,
     });
+  }
+}
+
+function startSubscription() {
+  const constrainAmount = totalAmount * 30;
+  const dif = constrainAmount - store.user.wallet.amount;
+  console.log(dif, constrainAmount, store.user.wallet.amount);
+  if (constrainAmount < store.user.wallet.amount) {
+    store.startSubscription(
+      startDate.value,
+      endDate.value,
+      type.value,
+      orderToday.value,
+      Days.value,
+      dates.value
+    );
+    router.push({ name: "home" });
+  } else {
+    alert(
+      "Please add " +
+        (constrainAmount - store.user.wallet.amount) +
+        " tokens to your acount"
+    );
   }
 }
 </script>
@@ -225,20 +234,7 @@ function onDayClick(day) {
           type="checkbox"
         />
       </div>
-      <button
-        @click="
-          startSubscription(e)
-          // store.startSubscription(
-          //   startDate,
-          //   endDate,
-          //   type,
-          //   orderToday,
-          //   Days,
-          //   dates
-          // )
-        "
-        class="btn bottom-2 btn-success"
-      >
+      <button @click="startSubscription()" class="btn bottom-2 btn-success">
         Start Subscription
       </button>
     </div>

@@ -15,9 +15,6 @@ export default class Transaction extends BaseModel {
   public walletId: number
 
   @column()
-  public status: TransactionStatus
-
-  @column()
   public amount: number
 
   @column()

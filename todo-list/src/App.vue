@@ -27,6 +27,8 @@ onMounted(async () => {
 
   store.getOrders(orders.data.orders, orders.data.quantity);
 
+  store.getTransactions(user.data.transaction)
+
   console.log(user.data);
 
   store.getProducts(products.data);
