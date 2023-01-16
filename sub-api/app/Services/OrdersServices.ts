@@ -1,4 +1,3 @@
-import { OrderStatus } from 'Contracts/enums'
 import Order from 'App/Models/Order'
 import { DateTime } from 'luxon'
 import Database from '@ioc:Adonis/Lucid/Database'
@@ -39,7 +38,7 @@ export default class OrderService {
       userId: '1',
       amount: body.amount,
       deliveryCharge: 20,
-      quantity: '2',
+
       // address: body.address,
     })
 

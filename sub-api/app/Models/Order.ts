@@ -27,9 +27,6 @@ export default class Order extends BaseModel {
   public userId: string
 
   @column()
-  public quantity: string
-
-  @column()
   public amount: number
 
   @manyToMany(() => Product, {

@@ -10,7 +10,6 @@ export default class extends BaseSchema {
       table.string('status').defaultTo('arriving')
       table.decimal('delivery_charge').defaultTo(20)
       table.dateTime('delivery_date')
-      table.string('quantity').nullable()
       table.string('user_id')
       table.decimal('amount')
       table.string('address')
