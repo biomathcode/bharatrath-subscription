@@ -36,7 +36,7 @@ const amount = ref("");
 
           <div class="flex flex-col">
             <p>{{ store.user.name }}</p>
-            <p>₹ {{ store.user.amount }}</p>
+            <p>₹ {{ store.user?.wallet?.amount }}</p>
           </div>
         </label>
       </div>

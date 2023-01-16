@@ -1,6 +1,6 @@
 import { reactive, toRaw } from "vue";
 import { v4 as uuid } from "uuid";
-import axios from "axios";
+import axios from "../axios/index";
 import { WeekData } from "../utils";
 
 // user
@@ -10,12 +10,10 @@ export const store = reactive({
   products: [],
   cart: [],
   order: [],
-  user: {
-    name: "Pratik Sharma",
-    amount: 500,
-  },
+  user: {},
   getUser(user) {
-    this.user = { ...user, name: "Pratik Sharma" };
+    console.log("this is user", user);
+    this.user = { ...user };
   },
   subscription: [],
   transaction: [],
@@ -104,24 +102,26 @@ export const store = reactive({
     console.log(newSub);
     this.subscription = [...this.subscription, { id: uuid(), ...newSub }];
 
-    const response = await axios.post(
-      "http://localhost:3333/users/1/subscriptions",
-      newSub
-    );
+    const response = await axios.post("/users/1/subscriptions", newSub);
     console.log(response);
 
     this.cart = [];
   },
-  credit(amount) {
+  async credit(amount) {
     const newTransaction = {
       id: uuid(),
       amount,
-      type: "credited",
+      type: "credit",
       date: new Date(),
     };
+    await axios.put("/wallets/1", {
+      amount: Number(amount) + this.user.wallet.amount,
+    });
     this.user = {
       ...this.user,
-      amount: Number(amount) + this.user.amount,
+      wallet: {
+        amount: Number(amount) + this.user.wallet.amount,
+      },
     };
     this.transaction = [...this.transaction, newTransaction].sort(function (
       a,

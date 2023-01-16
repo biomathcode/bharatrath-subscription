@@ -46,10 +46,10 @@ export default class User extends BaseModel {
   })
   public subscription: HasMany<typeof Subscription>
 
-  @hasOne(() => User, {
+  @hasOne(() => Wallet, {
     foreignKey: 'userId',
   })
-  public user: HasOne<typeof User>
+  public wallet: HasOne<typeof Wallet>
 
   @hasMany(() => Transaction, {
     foreignKey: 'userId',
@@ -61,12 +61,11 @@ export default class User extends BaseModel {
   })
   public order: HasMany<typeof Order>
 
-  //TODO: Create not working with seed
-  // @afterCreate()
-  // public static async createWallet(user: User) {
-  //   await Wallet.create({
-  //     userId: user.id,
-  //     amount: 50,
-  //   })
-  // }
+  @afterCreate()
+  public static async createWallet(user: User) {
+    await Wallet.create({
+      userId: user.id,
+      amount: 50,
+    })
+  }
 }

@@ -18,7 +18,7 @@ onMounted(async () => {
 
   const subscriptions = await axios.get("/users/1/subscriptions");
   
-  const orders = await axios.get('/users/1/orders');
+  const orders = await axios.get("/users/1/orders");
 
  
   store.getSubscription(subscriptions.data.subscriptions, subscriptions.data.quantity);

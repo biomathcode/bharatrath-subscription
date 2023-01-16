@@ -24,7 +24,6 @@ let dates = computed(() => {
   return customdates.value.map((day) => day.date);
 });
 
-
 let attributes = computed(() => {
   return dates.value.map((date) => ({
     highlight: true,
@@ -32,9 +31,20 @@ let attributes = computed(() => {
   }));
 });
 
-console.log(dates);
-
-console.log(attributes.value);
+function startSubscription(e) {
+  const constrainAmount = totalAmount * 30;
+  const dif = constrainAmount - store.user.wallet.amount;
+  console.log(dif, constrainAmount, store.user.wallet.amount)
+  if (constrainAmount < store.user.amount) {
+    alert("this is a good option");
+  } else {
+    alert(
+      "Please add " +
+        (constrainAmount - store.user.wallet.amount) +
+        " tokens to your acount"
+    );
+  }
+}
 
 let type = ref("everyday");
 
@@ -199,7 +209,11 @@ function onDayClick(day) {
 
       <div v-if="type === 'custom'" class="flex flex-col gap-4">
         <label>Select Dates when you want a delivery</label>
-        <v-calendar  :min-date="new Date()" :attributes="attributes" @dayclick="onDayClick" />
+        <v-calendar
+          :min-date="new Date()"
+          :attributes="attributes"
+          @dayclick="onDayClick"
+        />
       </div>
 
       <div class="flex gap-4">
@@ -213,14 +227,15 @@ function onDayClick(day) {
       </div>
       <button
         @click="
-          store.startSubscription(
-            startDate,
-            endDate,
-            type,
-            orderToday,
-            Days,
-            dates
-          )
+          startSubscription(e)
+          // store.startSubscription(
+          //   startDate,
+          //   endDate,
+          //   type,
+          //   orderToday,
+          //   Days,
+          //   dates
+          // )
         "
         class="btn bottom-2 btn-success"
       >

@@ -15,7 +15,7 @@ import { addDays } from 'date-fns'
 
 export default class CreateOrder extends BaseTask {
   public static get schedule() {
-    return '* * * * * *' // get it to midnight
+    return '00 00 21 * * *' // run 9 in the night every day
   }
   /**
    * Set enable use .lock file for block run retry task
