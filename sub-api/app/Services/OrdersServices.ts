@@ -2,6 +2,7 @@ import { OrderStatus } from 'Contracts/enums'
 import Order from 'App/Models/Order'
 import { DateTime } from 'luxon'
 import Database from '@ioc:Adonis/Lucid/Database'
+import { format, getDay } from 'date-fns'
 
 export default class OrderService {
   /**
@@ -13,6 +14,18 @@ export default class OrderService {
     const getAllquantity = await Database.query().from('order_products').select('*')
 
     return { orders, quantity: getAllquantity }
+  }
+
+  public static dayMatch(days, day) {
+    const daysArr = days.map((el) => el.value)
+
+    return daysArr.includes(getDay(day)) && true
+  }
+
+  public static dateMatch(dates, date) {
+    const datesArr = dates.map((el) => format(new Date(el.date.toString()), 'yyyy-MM-dd'))
+
+    if (datesArr.includes(date)) return true
   }
 
   /**
