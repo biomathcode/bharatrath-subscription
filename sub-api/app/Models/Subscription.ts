@@ -15,13 +15,27 @@ import User from './User'
 import Date from './Date'
 import Day from './Day'
 import Schedular from './Schedular'
+import Timeslot from './Timeslot'
 
 // end date
 // subscription type
 
 export default class Subscription extends BaseModel {
-  @column({ isPrimary: true })
-  public id: number
+  @hasMany(() => Date)
+  public dates: HasMany<typeof Date>
+
+  @hasMany(() => Day)
+  public days: HasMany<typeof Day>
+
+  @hasMany(() => Schedular, {
+    foreignKey: 'subscriptionId',
+  })
+  public schedular: HasMany<typeof Schedular>
+
+  @hasMany(() => Timeslot, {
+    foreignKey: 'subscriptionId',
+  })
+  public timeSlot: HasMany<typeof Timeslot>
 
   @manyToMany(() => Product, {
     pivotTable: 'product_subscriptions',
@@ -32,6 +46,9 @@ export default class Subscription extends BaseModel {
     localKey: 'userId',
   })
   public user: BelongsTo<typeof User>
+
+  @column({ isPrimary: true })
+  public id: number
 
   @column()
   public userId?: number
@@ -44,17 +61,6 @@ export default class Subscription extends BaseModel {
 
   @column()
   public status: SubscriptionStatus
-
-  @hasMany(() => Date)
-  public dates: HasMany<typeof Date>
-
-  @hasMany(() => Day)
-  public days: HasMany<typeof Day>
-
-  @hasMany(() => Schedular, {
-    foreignKey: 'subscriptionId',
-  })
-  public schedular: HasMany<typeof Schedular>
 
   @column()
   public endDate: string // array of strings

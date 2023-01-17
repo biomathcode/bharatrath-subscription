@@ -61,11 +61,11 @@ export default class User extends BaseModel {
   })
   public order: HasMany<typeof Order>
 
-  @afterCreate()
-  public static async createWallet(user: User) {
-    await Wallet.create({
-      userId: user.id,
-      amount: 50,
-    })
-  }
+  // @afterCreate()
+  // public static async createWallet(user: User) {
+  //   await Wallet.create({
+  //     userId: user.id,
+  //     amount: 50,
+  //   })
+  // }
 }

@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon'
 import {
+  afterCreate,
   BaseModel,
   BelongsTo,
   belongsTo,
@@ -50,4 +51,7 @@ export default class Order extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  @afterCreate()
+  public static transaction(order: Order) {}
 }
