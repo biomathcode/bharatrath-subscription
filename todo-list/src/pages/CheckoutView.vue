@@ -225,7 +225,7 @@ function startSubscription() {
         />
       </div>
 
-      <div class="flex gap-4">
+      <div v-if="type === 'everyday'" class="flex gap-4">
         <label>Order For Today</label>
         <input
           :value="orderToday"

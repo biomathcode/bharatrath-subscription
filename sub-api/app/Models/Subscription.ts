@@ -6,6 +6,8 @@ import {
   column,
   HasMany,
   hasMany,
+  HasOne,
+  hasOne,
   ManyToMany,
   manyToMany,
 } from '@ioc:Adonis/Lucid/Orm'
@@ -16,6 +18,7 @@ import Date from './Date'
 import Day from './Day'
 import Schedular from './Schedular'
 import Timeslot from './Timeslot'
+import AddOnProductSubscription from './AddOnProductSubscription'
 
 // end date
 // subscription type
@@ -32,15 +35,20 @@ export default class Subscription extends BaseModel {
   })
   public schedular: HasMany<typeof Schedular>
 
-  @hasMany(() => Timeslot, {
+  @hasOne(() => Timeslot, {
     foreignKey: 'subscriptionId',
   })
-  public timeSlot: HasMany<typeof Timeslot>
+  public timeSlot: HasOne<typeof Timeslot>
 
   @manyToMany(() => Product, {
     pivotTable: 'product_subscriptions',
   })
   public products: ManyToMany<typeof Product>
+
+  @manyToMany(() => AddOnProductSubscription, {
+    pivotTable: 'add_on_product_subscriptions',
+  })
+  public addOn: ManyToMany<typeof AddOnProductSubscription>
 
   @belongsTo(() => User, {
     localKey: 'userId',
