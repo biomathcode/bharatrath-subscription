@@ -18,11 +18,10 @@ export default class SubscriptionsController {
         })
       })
       .preload('timeSlot')
-      // .preload('addOn')
       .preload('dates')
       .preload('days')
-      .first()
 
+    console.log(subscription)
     return subscription
   }
   public async store({ request }: HttpContextContract) {
@@ -86,14 +85,12 @@ export default class SubscriptionsController {
   public async show({ params }: HttpContextContract) {
     const subscription = await Subscription.query()
       .where('id', params.id)
-      .preload('products', (item) => {
-        item.preload('ProductSubscription', (quant) => {
-          quant.where('subscription_id', params.id).first()
-        })
-      })
+      .preload('products')
       .preload('dates')
       .preload('days')
       .first()
+
+    console.log(subscription)
 
     return subscription
   }

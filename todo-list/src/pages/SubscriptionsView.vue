@@ -1,9 +1,8 @@
 <script setup>
 import { store } from "../stores/store";
 import router from "../router/index";
-import { format, formatDistance } from "date-fns";
+import { format, formatDistance, addDays } from "date-fns";
 import CalendarPreview from "../components/CalendarPreview.vue";
-import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
 import { ChevronUpIcon } from "@heroicons/vue/20/solid";
 
 console.log('this is store.sub value', store.subscription)
@@ -87,7 +86,8 @@ console.log('this is store.sub value', store.subscription)
               class="card drop-shadow-md p-2 mt-4 rounded-md min-w-full border-[1px] border-gray-900"
             >
               <div>
-                {{ format(new Date(subs?.start_date), "dd MMM yyyy") }}
+
+                {{ format( addDays(new Date(subs?.start_date), 1) , "dd MMM yyyy") }}
               </div>
               <div class="flex flex-row justify-between ">
                 <div>

@@ -63,6 +63,8 @@ const userData = ref();
 
 async function fetchData() {
   const subs = await axios.get("/subscriptions/" + props.id);
+
+  console.log('this is edit subs', subs.data)
   const subdata = await subs.data;
 
   userData.value = subdata;

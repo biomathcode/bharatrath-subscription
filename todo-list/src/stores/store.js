@@ -49,26 +49,31 @@ export const store = reactive({
 
     this.order = [...newData];
   },
-  getSubscription(subscriptions, quantity) {
+  getSubscription(subscriptions) {
     console.log("this is subs", subscriptions);
-    const newData = subscriptions.map((element) => {
-      const newProduct = element.products.map((pd) => {
-        const quant = quantity.filter(
-          (el) => el.product_id === pd.id && el.subscription_id === element.id
-        )[0];
-        return {
-          ...pd,
-          quantity: quant.quantity,
-        };
-      });
 
-      return {
-        ...element,
-        products: newProduct,
-      };
-    });
-    console.log("this is new data", newData);
-    this.subscription = [...newData];
+    // const newData = subscriptions?.map((element) => {
+    //   const newProduct = element.products.map((pd) => {
+    //     const quant = quantity.filter(
+    //       (el) => el.product_id === pd.id && el.subscription_id === element.id
+    //     )[0];
+    //     return {
+    //       ...pd,
+    //       quantity: quant.quantity,
+    //     };
+    //   });
+
+    //   return {
+    //     ...element,
+    //     products: newProduct,
+    //   };
+    // });
+    // console.log("this is new data", newData);
+    // if (newData === undefined) {
+    //   this.subscription = [];
+    // } else {
+    this.subscription = subscriptions;
+    // }
   },
   getTransactions(transactions) {
     this.transaction = [...this.transactions, ...transactions];
