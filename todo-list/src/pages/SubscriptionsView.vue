@@ -3,11 +3,6 @@ import { store } from "../stores/store";
 import router from "../router/index";
 import { format, formatDistance, addDays } from "date-fns";
 import CalendarPreview from "../components/CalendarPreview.vue";
-import { ChevronUpIcon } from "@heroicons/vue/20/solid";
-
-console.log('this is store.sub value', store.subscription)
-
-
 </script>
 
 <template>
@@ -18,7 +13,7 @@ console.log('this is store.sub value', store.subscription)
       :key="subs.id"
       v-for="subs in store.subscription"
     >
-      <div class="flex flex-row w-fit  justify-around gap-10">
+      <div class="flex flex-row w-fit justify-around gap-10">
         <div class="px-6 py-4 flex flex-col gap-1 min-w-full">
           <div class="text-sm badge badge-primary">
             {{ subs.recurrence }}
@@ -63,10 +58,8 @@ console.log('this is store.sub value', store.subscription)
 
             <span> Edit </span>
           </button>
-         
         </div>
         <div class="flex flex-col gap-5">
-
           <CalendarPreview
             v-if="subs.start_date && subs.end_date"
             :type="subs.recurrence"
@@ -81,22 +74,21 @@ console.log('this is store.sub value', store.subscription)
         </div>
       </div>
       <div class="flex flex-col justify-around gap-1 min-w-full p-3">
-            <div class="text-md font-bold">Upcoming Orders</div>
-            <div
-              class="card drop-shadow-md p-2 mt-4 rounded-md min-w-full border-[1px] border-gray-900"
-            >
-              <div>
-
-                {{ format( addDays(new Date(subs?.start_date), 1) , "dd MMM yyyy") }}
-              </div>
-              <div class="flex flex-row justify-between ">
-                <div>
-                  {{ subs?.products.map((el) => el.name).join(" + ") }}
-                </div>
-                <button class="btn-primary btn btn-sm">+ Products</button>
-              </div>
-            </div>
+        <div class="text-md font-bold">Upcoming Orders</div>
+        <div
+          class="card drop-shadow-md p-2 mt-4 rounded-md min-w-full border-[1px] border-gray-900"
+        >
+          <div>
+            {{ format(addDays(new Date(subs?.start_date), 1), "dd MMM yyyy") }}
           </div>
+          <div class="flex flex-row justify-between">
+            <div>
+              {{ subs?.products.map((el) => el.name).join(" + ") }}
+            </div>
+            <button class="btn-primary btn btn-sm">+ Products</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
