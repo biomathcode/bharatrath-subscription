@@ -88,6 +88,7 @@ export default class SubscriptionsController {
       .preload('products')
       .preload('dates')
       .preload('days')
+      .preload('addOn')
       .first()
 
     console.log(subscription)

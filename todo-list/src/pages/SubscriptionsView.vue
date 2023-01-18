@@ -73,6 +73,7 @@ import CalendarPreview from "../components/CalendarPreview.vue";
           />
         </div>
       </div>
+      
       <div class="flex flex-col justify-around gap-1 min-w-full p-3">
         <div class="text-md font-bold">Upcoming Orders</div>
         <div
