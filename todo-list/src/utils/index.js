@@ -51,6 +51,34 @@ function getDates(startDate, endDate, selectedD) {
   return dates;
 }
 
+export const TimeSlots = [
+  {
+    label: "6-9 am",
+    startTime: "6:00",
+    endTime: "9:00",
+  },
+  {
+    label: "9-12 am",
+    startTime: "9:00",
+    endTime: "12:00",
+  },
+  {
+    label: "12-3 pm",
+    startTime: "12:00",
+    endTime: "15:00",
+  },
+  {
+    label: "3-6 pm",
+    startTime: "15:00",
+    endTime: "18:00",
+  },
+  {
+    label: "6-9 pm",
+    startTime: "18:00",
+    endTime: "21:00",
+  },
+];
+
 export const WeekData = [
   {
     // id: 0,

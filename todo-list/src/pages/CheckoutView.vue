@@ -7,6 +7,7 @@ import router from "../router/index";
 import DaysSelectorVue from "../components/DaysSelector.vue";
 import { store } from "../stores/store";
 import { WeekData } from "../utils";
+import TimeSlot from "../components/TimeSlot.vue";
 
 let totalAmount = store.cart?.reduce(
   (prev, curr) => prev + curr.quantity * curr.price,
@@ -38,6 +39,8 @@ let orderToday = ref(false);
 
 let Days = ref([]);
 
+let Timeslot = ref([]);
+
 function select(e) {
   console.log("this is working");
   console.log(e);
@@ -46,6 +49,17 @@ function select(e) {
     Days.value = [...newArray];
   } else {
     Days.value = [...Days.value, e];
+  }
+}
+
+function addSelect(e) {
+  console.log(e);
+
+  if (Timeslot.value.includes(e)) {
+    const newArray = Timeslot.value.filter((el) => el !== e);
+    Timeslot.value = [...newArray];
+  } else {
+    Timeslot.value = [e];
   }
 }
 
@@ -136,6 +150,11 @@ function startSubscription() {
           </option>
         </select>
       </div>
+      <TimeSlot
+        @select="addSelect"
+        :selected-time="Timeslot"
+        :label="`Select Time Slot for delivery`"
+      />
       <DaysSelectorVue
         v-if="type === 'everyweek'"
         @select="select"
