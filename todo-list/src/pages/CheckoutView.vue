@@ -199,7 +199,7 @@ function startSubscription() {
         </v-date-picker>
       </div>
 
-      <div
+      <!-- <div
         v-if="type === 'everyday' || type === 'everyweek'"
         class="flex max-w-md flex-col gap-3"
       >
@@ -233,7 +233,7 @@ function startSubscription() {
             </div>
           </template>
         </v-date-picker>
-      </div>
+      </div> -->
 
       <div v-if="type === 'custom'" class="flex flex-col gap-4">
         <label>Select Dates when you want a delivery</label>
@@ -244,18 +244,18 @@ function startSubscription() {
         />
       </div>
 
-      <div v-if="type === 'everyday'" class="flex gap-4">
-        <label>Order For Today</label>
-        <input
-          :value="orderToday"
-          @change="(event) => (orderToday = !orderToday)"
-          class="form-check-input bg-white rounded-full h-4 w-4 text-slate-100 checkbox"
-          type="checkbox"
-        />
-      </div>
-      <button @click="startSubscription()" class="btn bottom-2 btn-success">
+    
+      <div class="flex gap-10">
+        <button @click="orderToday()" class="btn bottom-2 btn-info">
+        Order Today
+        </button>
+
+        <button @click="startSubscription()" class="btn bottom-2 btn-success">
         Start Subscription
       </button>
+
+      </div>
+      
     </div>
   </div>
   <div
