@@ -18,7 +18,6 @@ const amount = ref("");
 
         <li><RouterLink to="/subscriptions">Subscriptions</RouterLink></li>
         <li><RouterLink to="/orders">📦 Orders</RouterLink></li>
-
       </ul>
     </div>
     <div class="px-2 flex justify-center content-center">
@@ -65,6 +64,16 @@ const amount = ref("");
             class="input bg-slate-100 text-slate-900 input-bordered"
           />
           <span class="bg-slate-100">₹</span>
+
+          <label
+            @click="
+              store.credit(amount);
+              amount = 0;
+            "
+            for="my-modal"
+            class="btn text-slate-100"
+            >+ add</label
+          >
         </label>
       </div>
       <div class="mt-10">
@@ -90,35 +99,12 @@ const amount = ref("");
               ></path>
             </svg>
             <span>
-              {{
-                 " ₹" + item.amount + " " + 
-                item.type +
-               
-            
-                " to your wallet." 
-                
-                
-               
-              }}
-              <br/>
-              <span class="text-slate-700 text-sm">
-               id: #{{item.id}}
-                </span>
+              {{ " ₹" + item.amount + " " + item.type + " to your wallet." }}
+              <br />
+              <span class="text-slate-700 text-sm"> id: #{{ item.id }} </span>
             </span>
           </div>
         </div>
-      </div>
-
-      <div class="modal-action">
-        <label
-          @click="
-            store.credit(amount);
-            amount = 0;
-          "
-          for="my-modal"
-          class="btn text-slate-100"
-          >+ add</label
-        >
       </div>
     </div>
   </div>

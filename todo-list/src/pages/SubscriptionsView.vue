@@ -14,7 +14,7 @@ import CalendarPreview from "../components/CalendarPreview.vue";
       v-for="subs in store.subscription"
     >
       <div class="flex flex-row w-fit justify-around gap-10">
-        <div class="px-6 py-4 flex flex-col gap-1 min-w-full">
+        <div class="px-6 py-4 flex flex-col gap-1">
           <div class="text-sm badge badge-primary">
             {{ subs.recurrence }}
           </div>
@@ -40,15 +40,11 @@ import CalendarPreview from "../components/CalendarPreview.vue";
             }}
           </p>
           <div class="flex mt-2">
-            <div class="text-xs text-slate-500">
-              {{ format(new Date(subs?.start_date), "dd/MM/yyyy") }}
+            <div class="text-base text-slate-900">
+              {{ format(new Date(subs?.start_date), "dd MMM yyyy") }}
             </div>
-            <div class="flex items-center text-slate-500 content-center">
-              ......
-            </div>
-            <div class="text-xs text-slate-500">
-              {{ format(new Date(subs?.end_date), "dd/MM/yyyy") }}
-            </div>
+            
+           
           </div>
           <button
             @click="router.push({ path: '/edit/' + subs.id })"
@@ -61,6 +57,7 @@ import CalendarPreview from "../components/CalendarPreview.vue";
         </div>
         <div class="flex flex-col gap-5">
           <CalendarPreview
+            class="border-none"
             v-if="subs.start_date && subs.end_date"
             :type="subs.recurrence"
             :days="
@@ -73,7 +70,7 @@ import CalendarPreview from "../components/CalendarPreview.vue";
           />
         </div>
       </div>
-      
+
       <div class="flex flex-col justify-around gap-1 min-w-full p-3">
         <div class="text-md font-bold">Upcoming Orders</div>
         <div
@@ -86,10 +83,22 @@ import CalendarPreview from "../components/CalendarPreview.vue";
             <div>
               {{ subs?.products.map((el) => el.name).join(" + ") }}
             </div>
-            <button class="btn-primary btn btn-sm">+ Products</button>
+            <div class="drawer-content">
+              <label
+                for="my-drawer-4"
+                class="drawer-button btn btn-sm btn-primary"
+                >Add Products</label
+              >
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<style>
+.vc-container {
+  border: none;
+}
+</style>

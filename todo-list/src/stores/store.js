@@ -90,6 +90,8 @@ export const store = reactive({
     this.cart = [];
   },
   async credit(amount) {
+    if (amount === null) return alert("Please provide a valid amount");
+
     const newTransaction = {
       id: this.user.transaction.length + 1,
       amount,

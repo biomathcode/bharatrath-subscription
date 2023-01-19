@@ -39,9 +39,11 @@ onMounted(async () => {
 
 <template>
   <Layout>
+
     <div
       class="sm:flex container bg-secondary-content p-5 mx-auto content justify-betweenflex-wrap"
     >
+
       <RouterView class="view main-content w-full order-2"></RouterView>
       <RouterView name="LeftSidebar" class="view order-1 w-full"></RouterView>
       <RouterView name="RightSidebar" class="view order-3 w-full"></RouterView>
