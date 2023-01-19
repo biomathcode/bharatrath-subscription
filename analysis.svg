@@ -1,0 +1,411 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1472.6330808538314 1549.082357524033"
+    width="2945.266161707663" height="3098.164715048066">
+    <!-- svg-source:excalidraw -->
+
+    <defs>
+        <style class="style-fonts">
+            @font-face {
+                font-family: "Virgil";
+                src: url("https://excalidraw.com/Virgil.woff2");
+            }
+
+            @font-face {
+                font-family: "Cascadia";
+                src: url("https://excalidraw.com/Cascadia.woff2");
+            }
+        </style>
+    </defs>
+    <rect x="0" y="0" width="1472.6330808538314" height="1549.082357524033" fill="#ffffff"></rect>
+    <g stroke-linecap="round">
+        <g transform="translate(83.03716375223848 216.21438814226894) rotate(0 688.8295785220835 0)">
+            <path d="M0 0 C229.61 0, 1148.05 0, 1377.66 0 M0 0 C229.61 0, 1148.05 0, 1377.66 0" stroke="#000000"
+                stroke-width="4" fill="none"></path>
+        </g>
+    </g>
+    <mask></mask>
+    <g stroke-linecap="round">
+        <g
+            transform="translate(330.77319500383965 111.40904593725782) rotate(0 -0.26415460317457473 711.5313111369603)">
+            <path d="M0 0 C-0.09 237.18, -0.44 1185.89, -0.53 1423.06 M0 0 C-0.09 237.18, -0.44 1185.89, -0.53 1423.06"
+                stroke="#000000" stroke-width="4" fill="none"></path>
+        </g>
+    </g>
+    <mask></mask>
+    <g stroke-linecap="round">
+        <g transform="translate(619.4793007097742 111.4099167195618) rotate(0 0 712.2645146130244)">
+            <path d="M0 0 C0 237.42, 0 1187.11, 0 1424.53 M0 0 C0 237.42, 0 1187.11, 0 1424.53" stroke="#000000"
+                stroke-width="4" fill="none"></path>
+        </g>
+    </g>
+    <mask></mask>
+    <g stroke-linecap="round">
+        <g transform="translate(899.0747659778062 112.18593911350717) rotate(0 0 711.3616704649542)">
+            <path d="M0 0 C0 237.12, 0 1185.6, 0 1422.72 M0 0 C0 237.12, 0 1185.6, 0 1422.72" stroke="#000000"
+                stroke-width="4" fill="none"></path>
+        </g>
+    </g>
+    <mask></mask>
+    <g stroke-linecap="round">
+        <g transform="translate(1146.9264123120156 111.69280476661606) rotate(0 0 711.2261896565901)">
+            <path d="M0 0 C0 237.08, 0 1185.38, 0 1422.45 M0 0 C0 237.08, 0 1185.38, 0 1422.45" stroke="#000000"
+                stroke-width="4" fill="none"></path>
+        </g>
+    </g>
+    <mask></mask>
+    <g transform="translate(88.59645527438533 237.5083333711582) rotate(0 109.99999999999955 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Add On Product</text></g>
+    <g transform="translate(374.74919017765023 237.8205335332177) rotate(0 14.5 19.5)"><text x="0" y="28"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">❌</text></g>
+    <g transform="translate(677.5688464531322 241.69396688781399) rotate(0 14.5 19.5)"><text x="0" y="28"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">❌</text></g>
+    <g transform="translate(973.4545116377758 242.38236909247098) rotate(0 14.5 19.5)"><text x="0" y="28"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">❌</text></g>
+    <g transform="translate(137.70501059365597 317.1475948545685) rotate(0 67.5 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">End Date</text></g>
+    <g stroke-linecap="round">
+        <g transform="translate(80.51472835195273 290.11186327949144) rotate(0 690.7631432339813 0)">
+            <path d="M0 0 C230.25 0, 1151.27 0, 1381.53 0 M0 0 C230.25 0, 1151.27 0, 1381.53 0" stroke="#000000"
+                stroke-width="4" fill="none"></path>
+        </g>
+    </g>
+    <mask></mask>
+    <g stroke-linecap="round">
+        <g transform="translate(82.32827382666983 363.2090345758861) rotate(0 688.457469377272 0)">
+            <path d="M0 0 C229.49 0, 1147.43 0, 1376.91 0 M0 0 C229.49 0, 1147.43 0, 1376.91 0" stroke="#000000"
+                stroke-width="4" fill="none"></path>
+        </g>
+    </g>
+    <mask></mask>
+    <g transform="translate(383.1152416958703 309.08180862393965) rotate(0 14.5 19.5)"><text x="0" y="28"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">❌</text></g>
+    <g transform="translate(677.9874524789939 303.65244869485923) rotate(0 14.5 19.5)"><text x="0" y="28"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">❌</text></g>
+    <g transform="translate(974.9936656614409 306.8376812782717) rotate(0 14.5 19.5)"><text x="0" y="28"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">❌</text></g>
+    <g stroke-linecap="round"
+        transform="translate(348.61103376356186 106.51090926308098) rotate(0 78.64980695394934 49.0442351311799)">
+        <path
+            d="M24.52 0 M24.52 0 C49.69 0, 74.86 0, 132.78 0 M24.52 0 C53.96 0, 83.41 0, 132.78 0 M132.78 0 C149.13 0, 157.3 8.17, 157.3 24.52 M132.78 0 C149.13 0, 157.3 8.17, 157.3 24.52 M157.3 24.52 C157.3 42.28, 157.3 60.04, 157.3 73.57 M157.3 24.52 C157.3 39.19, 157.3 53.86, 157.3 73.57 M157.3 73.57 C157.3 89.91, 149.13 98.09, 132.78 98.09 M157.3 73.57 C157.3 89.91, 149.13 98.09, 132.78 98.09 M132.78 98.09 C92.03 98.09, 51.28 98.09, 24.52 98.09 M132.78 98.09 C91.46 98.09, 50.14 98.09, 24.52 98.09 M24.52 98.09 C8.17 98.09, 0 89.91, 0 73.57 M24.52 98.09 C8.17 98.09, 0 89.91, 0 73.57 M0 73.57 C0 54.65, 0 35.72, 0 24.52 M0 73.57 C0 62.26, 0 50.95, 0 24.52 M0 24.52 C0 8.17, 8.17 0, 24.52 0 M0 24.52 C0 8.17, 8.17 0, 24.52 0"
+            stroke="#000000" stroke-width="4" fill="none"></path>
+    </g>
+    <g transform="translate(367.7608407175121 119.55514439426088) rotate(0 59.5 35.99999999999977)"><text x="59.5"
+            y="25" font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="middle"
+            style="white-space: pre;" direction="ltr">Country </text><text x="59.5" y="61"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="middle"
+            style="white-space: pre;" direction="ltr">Delight</text></g>
+    <g stroke-linecap="round"
+        transform="translate(633.0616174940315 119.89797164171159) rotate(0 78.64980695394934 41)">
+        <path
+            d="M20.5 0 M20.5 0 C49.86 0, 79.22 0, 136.8 0 M20.5 0 C46.65 0, 72.81 0, 136.8 0 M136.8 0 C150.47 0, 157.3 6.83, 157.3 20.5 M136.8 0 C150.47 0, 157.3 6.83, 157.3 20.5 M157.3 20.5 C157.3 35.81, 157.3 51.11, 157.3 61.5 M157.3 20.5 C157.3 31.12, 157.3 41.74, 157.3 61.5 M157.3 61.5 C157.3 75.17, 150.47 82, 136.8 82 M157.3 61.5 C157.3 75.17, 150.47 82, 136.8 82 M136.8 82 C92.17 82, 47.55 82, 20.5 82 M136.8 82 C92.73 82, 48.65 82, 20.5 82 M20.5 82 C6.83 82, 0 75.17, 0 61.5 M20.5 82 C6.83 82, 0 75.17, 0 61.5 M0 61.5 C0 51.56, 0 41.62, 0 20.5 M0 61.5 C0 50.35, 0 39.19, 0 20.5 M0 20.5 C0 6.83, 6.83 0, 20.5 0 M0 20.5 C0 6.83, 6.83 0, 20.5 0"
+            stroke="#000000" stroke-width="4" fill="none"></path>
+    </g>
+    <g transform="translate(677.7114244479799 124.89797164171159) rotate(0 34 36)"><text x="34" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="middle"
+            style="white-space: pre;" direction="ltr">Supr</text><text x="34" y="61"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="middle"
+            style="white-space: pre;" direction="ltr">Daily</text></g>
+    <g stroke-linecap="round" transform="translate(910.8256645261808 136.27275382992684) rotate(0 79 27.5)">
+        <path
+            d="M13.75 0 M13.75 0 C55.02 0, 96.29 0, 144.25 0 M13.75 0 C59.24 0, 104.74 0, 144.25 0 M144.25 0 C153.42 0, 158 4.58, 158 13.75 M144.25 0 C153.42 0, 158 4.58, 158 13.75 M158 13.75 C158 24.59, 158 35.42, 158 41.25 M158 13.75 C158 20.85, 158 27.96, 158 41.25 M158 41.25 C158 50.42, 153.42 55, 144.25 55 M158 41.25 C158 50.42, 153.42 55, 144.25 55 M144.25 55 C100.08 55, 55.91 55, 13.75 55 M144.25 55 C92.37 55, 40.48 55, 13.75 55 M13.75 55 C4.58 55, 0 50.42, 0 41.25 M13.75 55 C4.58 55, 0 50.42, 0 41.25 M0 41.25 C0 33.67, 0 26.08, 0 13.75 M0 41.25 C0 34.89, 0 28.52, 0 13.75 M0 13.75 C0 4.58, 4.58 0, 13.75 0 M0 13.75 C0 4.58, 4.58 0, 13.75 0"
+            stroke="#000000" stroke-width="4" fill="none"></path>
+    </g>
+    <g transform="translate(937.3256645261808 145.77275382992684) rotate(0 52.5 18)"><text x="52.5" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="middle"
+            style="white-space: pre;" direction="ltr">bb daily</text></g>
+    <g transform="translate(88.76173633682629 385.12508784778674) rotate(0 107.5 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">No of Products</text></g>
+    <g transform="translate(372.0141267081035 376.0389137030652) rotate(0 77.5 53.5)"><text x="0" y="24.666666666666664"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Single or </text><text x="0" y="60.33333333333333"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Pre defined</text><text x="0" y="96"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">combo</text></g>
+    <g transform="translate(669.0266472911444 406.4266783148414) rotate(0 98 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Single Product</text></g>
+    <g transform="translate(960.5900763430582 382.26063992865966) rotate(0 37 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Single</text></g>
+    <g stroke-linecap="round">
+        <g transform="translate(79.25764824195358 494.26678667931264) rotate(0 691.2988101856208 0)">
+            <path d="M0 0 C230.43 0, 1152.16 0, 1382.6 0 M0 0 C230.43 0, 1152.16 0, 1382.6 0" stroke="#000000"
+                stroke-width="4" fill="none"></path>
+        </g>
+    </g>
+    <mask></mask>
+    <g transform="translate(69.75554514021496 516.3465642908504) rotate(0 119 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Top Up or wallet</text></g>
+    <g transform="translate(662.1672819488776 511.36036739436713) rotate(0 91 71)"><text x="0" y="25.5"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Top up </text><text x="0" y="61"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">30 Deliveries</text><text x="0" y="96.5"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">15 Deliveries</text><text x="0" y="132"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">7 Deliveries</text></g>
+    <g transform="translate(359.309795768002 519.6018626808773) rotate(0 111.5 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Wallet Recharge</text></g>
+    <g transform="translate(371.255450212464 556.4139814791179) rotate(0 52.5 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Rs 500</text></g>
+    <g transform="translate(368.72195807338176 598.2166017739637) rotate(0 57 35.5)"><text x="0" y="25.5"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Rs 1000</text><text x="0" y="61"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Rs 1500</text></g>
+    <g transform="translate(926.7218390731996 60.16269550318975) rotate(0 122.5 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Serviceable Areas</text></g>
+    <g transform="translate(645.6326488749928 42.74128001956069) rotate(0 102 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Bangalore Only</text></g>
+    <g transform="translate(353.5353457604306 48.94594567338663) rotate(0 96 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Specific Cities</text></g>
+    <g transform="translate(934.5207485387837 10) rotate(0 96 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Specific Cities</text></g>
+    <g stroke-linecap="round">
+        <g transform="translate(81.7127087659137 676.6256387808617) rotate(0 689.8710222945228 0)">
+            <path d="M0 0 C229.96 0, 1149.79 0, 1379.74 0 M0 0 C229.96 0, 1149.79 0, 1379.74 0" stroke="#000000"
+                stroke-width="4" fill="none"></path>
+        </g>
+    </g>
+    <mask></mask>
+    <g transform="translate(109.79916369578496 697.9310067860915) rotate(0 56.5 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Skipping </text></g>
+    <g transform="translate(367.46902541633244 710.212351035203) rotate(0 96.5 71)"><text x="0" y="25.5"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Set Vacation </text><text x="0" y="61"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">start date</text><text x="0" y="96.5"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">to </text><text x="0" y="132" font-family="Virgil, Segoe UI Emoji"
+            font-size="28px" fill="#000000" text-anchor="start" style="white-space: pre;" direction="ltr">end
+            date</text></g>
+    <g transform="translate(681.0631556342651 733.0197878630634) rotate(0 79 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">No Feature</text></g>
+    <g stroke-linecap="round">
+        <g transform="translate(77.68534685520535 862.9743825542855) rotate(0 692.1168860082753 0)">
+            <path d="M0 0 C230.71 0, 1153.53 0, 1384.23 0 M0 0 C230.71 0, 1153.53 0, 1384.23 0" stroke="#000000"
+                stroke-width="4" fill="none"></path>
+        </g>
+    </g>
+    <mask></mask>
+    <g transform="translate(40.34352063487313 911.8830359148415) rotate(0 127 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Subscription Types</text></g>
+    <g transform="translate(420.0168146799224 907.3314449358531) rotate(0 34 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Daily</text></g>
+    <g transform="translate(392.5499666577598 948.9789130036033) rotate(0 66.5 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Alternate</text></g>
+    <g transform="translate(366.08343660722676 1047.6862027189509) rotate(0 91 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Custom Days</text></g>
+    <g transform="translate(403.41800713466546 996.9577449879816) rotate(0 55.5 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">one-time</text></g>
+    <g transform="translate(702.6630495039208 893.3236400115966) rotate(0 34 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Daily</text></g>
+    <g transform="translate(689.5126079773745 942.5779063811715) rotate(0 64.5 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Weekdays</text></g>
+    <g transform="translate(688.1738129891219 1004.4124538140941) rotate(0 63 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Weekends</text></g>
+    <g transform="translate(672.9678350191498 1075.8951270976704) rotate(0 91 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Custom Days</text></g>
+    <g stroke-linecap="round">
+        <g transform="translate(50.511685600743476 1148.0380270326632) rotate(0 706.0026519369444 0)">
+            <path d="M0 0 C235.33 0, 1176.67 0, 1412.01 0 M0 0 C235.33 0, 1176.67 0, 1412.01 0" stroke="#000000"
+                stroke-width="4" fill="none"></path>
+        </g>
+    </g>
+    <mask></mask>
+    <g transform="translate(65.48080501548066 1185.018632867982) rotate(0 66 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Time Slot</text></g>
+    <g transform="translate(426.2971516018915 1186.9018610840485) rotate(0 14.5 19.5)"><text x="0" y="28"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">❌</text></g>
+    <g stroke-linecap="round">
+        <g transform="translate(54.23845621770852 1243.3850029105206) rotate(0 703.4311092153475 0)">
+            <path d="M0 0 C234.48 0, 1172.39 0, 1406.86 0 M0 0 C234.48 0, 1172.39 0, 1406.86 0" stroke="#000000"
+                stroke-width="4" fill="none"></path>
+        </g>
+    </g>
+    <mask></mask>
+    <g transform="translate(10 1270.988832103406) rotate(0 130 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Monthly Membership</text></g>
+    <g stroke-linecap="round">
+        <g transform="translate(48.76495196835458 1339.9563989210355) rotate(0 705.9501900040259 0)">
+            <path d="M0 0 C235.32 0, 1176.58 0, 1411.9 0 M0 0 C235.32 0, 1176.58 0, 1411.9 0" stroke="#000000"
+                stroke-width="4" fill="none"></path>
+        </g>
+    </g>
+    <mask></mask>
+    <g transform="translate(428.22967692282145 1268.5927570634994) rotate(0 14.5 19.5)"><text x="0" y="28"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">✅</text></g>
+    <g transform="translate(729.9409660948259 1269.850979515274) rotate(0 14.5 19.5)"><text x="0" y="28"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">✅</text></g>
+    <g transform="translate(1000.5898242959156 1271.2221972614725) rotate(0 14.5 19.5)"><text x="0" y="28"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">✅</text></g>
+    <g stroke-linecap="round">
+        <g transform="translate(40.35649843276133 1439.373452235749) rotate(0 710.8683787538971 0)">
+            <path d="M0 0 C236.96 0, 1184.78 0, 1421.74 0 M0 0 C236.96 0, 1184.78 0, 1421.74 0" stroke="#000000"
+                stroke-width="4" fill="none"></path>
+        </g>
+    </g>
+    <mask></mask>
+    <g transform="translate(40.71503142845904 1369.09227464979) rotate(0 136.5 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Subscription Update</text></g>
+    <g transform="translate(438.67617011416223 1364.9700994952236) rotate(0 14.5 19.5)"><text x="0" y="28"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">❌</text></g>
+    <g transform="translate(730.4312002497354 1369.1529844449797) rotate(0 14.5 19.5)"><text x="0" y="28"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">❌</text></g>
+    <g transform="translate(729.4786213526113 1171.7367546990254) rotate(0 14.5 19.5)"><text x="0" y="28"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">✅</text></g>
+    <g transform="translate(1205.430065438377 906.2471670718569) rotate(0 50.5 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Monthly</text></g>
+    <g stroke-linecap="round" transform="translate(1207.296590410222 126.59005014635841) rotate(0 111.5 41)">
+        <path
+            d="M20.5 0 M20.5 0 C90.2 0, 159.91 0, 202.5 0 M20.5 0 C57.81 0, 95.12 0, 202.5 0 M202.5 0 C216.17 0, 223 6.83, 223 20.5 M202.5 0 C216.17 0, 223 6.83, 223 20.5 M223 20.5 C223 30.76, 223 41.01, 223 61.5 M223 20.5 C223 31.26, 223 42.01, 223 61.5 M223 61.5 C223 75.17, 216.17 82, 202.5 82 M223 61.5 C223 75.17, 216.17 82, 202.5 82 M202.5 82 C142.15 82, 81.79 82, 20.5 82 M202.5 82 C137.87 82, 73.25 82, 20.5 82 M20.5 82 C6.83 82, 0 75.17, 0 61.5 M20.5 82 C6.83 82, 0 75.17, 0 61.5 M0 61.5 C0 50.71, 0 39.93, 0 20.5 M0 61.5 C0 47.89, 0 34.29, 0 20.5 M0 20.5 C0 6.83, 6.83 0, 20.5 0 M0 20.5 C0 6.83, 6.83 0, 20.5 0"
+            stroke="#000000" stroke-width="4" fill="none"></path>
+    </g>
+    <g transform="translate(1241.296590410222 149.5900501463584) rotate(0 77.5 18)"><text x="77.5" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="middle"
+            style="white-space: pre;" direction="ltr">bharatrath</text></g>
+    <g transform="translate(1271.5797260846157 235.27756767623578) rotate(0 14.5 19.5)"><text x="0" y="28"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">✅</text></g>
+    <g transform="translate(1273.483322436461 302.14725786460076) rotate(0 14.5 19.5)"><text x="0" y="28"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">❌</text></g>
+    <g transform="translate(1201.526840390672 395.18078293704275) rotate(0 118 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Custom Products</text></g>
+    <g transform="translate(1201.8886469582285 549.8097756988927) rotate(0 111.5 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Wallet Recharge</text></g>
+    <g transform="translate(1180.2923619818048 698.3084402807835) rotate(0 107 53.5)"><text x="0" y="24.666666666666664"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Pause or </text><text x="0" y="60.33333333333333"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">defined Pause, </text><text x="0" y="96"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Cancel, </text></g>
+    <g transform="translate(1237.397839632391 962.9300717821243) rotate(0 34 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Daily</text></g>
+    <g transform="translate(1209.930991610232 1004.5775398498736) rotate(0 66.5 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Alternate</text></g>
+    <g transform="translate(1179.1274039472173 1053.6671765527763) rotate(0 91 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Custom Days</text></g>
+    <g transform="translate(1244.8496449276026 1369.0638669324408) rotate(0 14.5 19.5)"><text x="0" y="28"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">✅</text></g>
+    <g stroke-linecap="round">
+        <g transform="translate(44.827239508952516 1536.3862216316302) rotate(0 708.9029206724394 0)">
+            <path d="M0 0 C236.3 0, 1181.5 0, 1417.81 0 M0 0 C236.3 0, 1181.5 0, 1417.81 0" stroke="#000000"
+                stroke-width="4" fill="none"></path>
+        </g>
+    </g>
+    <mask></mask>
+    <g transform="translate(59.46144598456158 1472.6312234866473) rotate(0 58.5 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Location</text></g>
+    <g transform="translate(364.5640324334563 1472.2491755048377) rotate(0 94 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Specific cities</text></g>
+    <g transform="translate(678.0211026772522 1471.5103990491052) rotate(0 75 18)"><text x="0" y="25"
+            font-family="Virgil, Segoe UI Emoji" font-size="28px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Bangalore </text></g>
+    <g transform="translate(930.4894169021863 1449.8897379093696) rotate(0 87.5 12.5)"><text x="0" y="18"
+            font-family="Virgil, Segoe UI Emoji" font-size="20px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Serviceable Areas</text></g>
+    <g transform="translate(938.1742118640341 1491.504282385432) rotate(0 67 12.5)"><text x="0" y="18"
+            font-family="Virgil, Segoe UI Emoji" font-size="20px" fill="#000000" text-anchor="start"
+            style="white-space: pre;" direction="ltr">Specific cities</text></g>
+    <g stroke-linecap="round">
+        <g transform="translate(1461.1694824123588 104.1754761353468) rotate(0 0 717.453440694343)">
+            <path d="M0 0 C0 239.15, 0 1195.76, 0 1434.91 M0 0 C0 239.15, 0 1195.76, 0 1434.91" stroke="#000000"
+                stroke-width="4" fill="none"></path>
+        </g>
+    </g>
+    <mask></mask>
+    <g stroke-linecap="round"
+        transform="translate(1153.2065212947582 1155.2581041278045) rotate(0 29.50274860373429 18.440958247119852)">
+        <path
+            d="M9.22 0 M9.22 0 C20.17 0, 31.12 0, 49.79 0 M9.22 0 C21.07 0, 32.92 0, 49.79 0 M49.79 0 C55.93 0, 59.01 3.07, 59.01 9.22 M49.79 0 C55.93 0, 59.01 3.07, 59.01 9.22 M59.01 9.22 C59.01 14.44, 59.01 19.66, 59.01 27.66 M59.01 9.22 C59.01 16.12, 59.01 23.01, 59.01 27.66 M59.01 27.66 C59.01 33.81, 55.93 36.88, 49.79 36.88 M59.01 27.66 C59.01 33.81, 55.93 36.88, 49.79 36.88 M49.79 36.88 C35.78 36.88, 21.77 36.88, 9.22 36.88 M49.79 36.88 C39.37 36.88, 28.96 36.88, 9.22 36.88 M9.22 36.88 C3.07 36.88, 0 33.81, 0 27.66 M9.22 36.88 C3.07 36.88, 0 33.81, 0 27.66 M0 27.66 C0 22.4, 0 17.15, 0 9.22 M0 27.66 C0 21.72, 0 15.78, 0 9.22 M0 9.22 C0 3.07, 3.07 0, 9.22 0 M0 9.22 C0 3.07, 3.07 0, 9.22 0"
+            stroke="#000000" stroke-width="2" fill="none"></path>
+    </g>
+    <g transform="translate(1168.7092698984925 1163.6990623749243) rotate(0 14 10)"><text x="14" y="14"
+            font-family="Virgil, Segoe UI Emoji" font-size="16px" fill="#000000" text-anchor="middle"
+            style="white-space: pre;" direction="ltr">6-9</text></g>
+    <g stroke-linecap="round"
+        transform="translate(1206.867923014228 1199.1873580067804) rotate(0 29.50274860373429 18.440958247119852)">
+        <path
+            d="M9.22 0 M9.22 0 C24.8 0, 40.38 0, 49.79 0 M9.22 0 C19.67 0, 30.11 0, 49.79 0 M49.79 0 C55.93 0, 59.01 3.07, 59.01 9.22 M49.79 0 C55.93 0, 59.01 3.07, 59.01 9.22 M59.01 9.22 C59.01 14.5, 59.01 19.78, 59.01 27.66 M59.01 9.22 C59.01 13.85, 59.01 18.47, 59.01 27.66 M59.01 27.66 C59.01 33.81, 55.93 36.88, 49.79 36.88 M59.01 27.66 C59.01 33.81, 55.93 36.88, 49.79 36.88 M49.79 36.88 C38.97 36.88, 28.15 36.88, 9.22 36.88 M49.79 36.88 C40.71 36.88, 31.64 36.88, 9.22 36.88 M9.22 36.88 C3.07 36.88, 0 33.81, 0 27.66 M9.22 36.88 C3.07 36.88, 0 33.81, 0 27.66 M0 27.66 C0 22.45, 0 17.24, 0 9.22 M0 27.66 C0 21.15, 0 14.65, 0 9.22 M0 9.22 C0 3.07, 3.07 0, 9.22 0 M0 9.22 C0 3.07, 3.07 0, 9.22 0"
+            stroke="#000000" stroke-width="2" fill="none"></path>
+    </g>
+    <g transform="translate(1215.870671617964 1207.6283162539003) rotate(0 20.5 10)"><text x="20.5" y="14"
+            font-family="Virgil, Segoe UI Emoji" font-size="16px" fill="#000000" text-anchor="middle"
+            style="white-space: pre;" direction="ltr">9- 12</text></g>
+    <g stroke-linecap="round"
+        transform="translate(1270.164011866209 1154.8102489696712) rotate(0 29.50274860373429 18.440958247119852)">
+        <path
+            d="M9.22 0 M9.22 0 C23.54 0, 37.85 0, 49.79 0 M9.22 0 C20.58 0, 31.94 0, 49.79 0 M49.79 0 C55.93 0, 59.01 3.07, 59.01 9.22 M49.79 0 C55.93 0, 59.01 3.07, 59.01 9.22 M59.01 9.22 C59.01 15.53, 59.01 21.85, 59.01 27.66 M59.01 9.22 C59.01 16.41, 59.01 23.6, 59.01 27.66 M59.01 27.66 C59.01 33.81, 55.93 36.88, 49.79 36.88 M59.01 27.66 C59.01 33.81, 55.93 36.88, 49.79 36.88 M49.79 36.88 C38.96 36.88, 28.13 36.88, 9.22 36.88 M49.79 36.88 C39.44 36.88, 29.1 36.88, 9.22 36.88 M9.22 36.88 C3.07 36.88, 0 33.81, 0 27.66 M9.22 36.88 C3.07 36.88, 0 33.81, 0 27.66 M0 27.66 C0 23.68, 0 19.7, 0 9.22 M0 27.66 C0 20.75, 0 13.83, 0 9.22 M0 9.22 C0 3.07, 3.07 0, 9.22 0 M0 9.22 C0 3.07, 3.07 0, 9.22 0"
+            stroke="#000000" stroke-width="2" fill="none"></path>
+    </g>
+    <g transform="translate(1282.666760469945 1163.251207216791) rotate(0 17 10)"><text x="17" y="14"
+            font-family="Virgil, Segoe UI Emoji" font-size="16px" fill="#000000" text-anchor="middle"
+            style="white-space: pre;" direction="ltr">12-3</text></g>
+    <g stroke-linecap="round"
+        transform="translate(1334.7595768246883 1197.0849913059) rotate(0 29.50274860373429 18.440958247119852)">
+        <path
+            d="M9.22 0 M9.22 0 C23.59 0, 37.96 0, 49.79 0 M9.22 0 C19.85 0, 30.47 0, 49.79 0 M49.79 0 C55.93 0, 59.01 3.07, 59.01 9.22 M49.79 0 C55.93 0, 59.01 3.07, 59.01 9.22 M59.01 9.22 C59.01 15.81, 59.01 22.41, 59.01 27.66 M59.01 9.22 C59.01 13.09, 59.01 16.95, 59.01 27.66 M59.01 27.66 C59.01 33.81, 55.93 36.88, 49.79 36.88 M59.01 27.66 C59.01 33.81, 55.93 36.88, 49.79 36.88 M49.79 36.88 C39.81 36.88, 29.83 36.88, 9.22 36.88 M49.79 36.88 C38.5 36.88, 27.22 36.88, 9.22 36.88 M9.22 36.88 C3.07 36.88, 0 33.81, 0 27.66 M9.22 36.88 C3.07 36.88, 0 33.81, 0 27.66 M0 27.66 C0 20.45, 0 13.25, 0 9.22 M0 27.66 C0 21.91, 0 16.16, 0 9.22 M0 9.22 C0 3.07, 3.07 0, 9.22 0 M0 9.22 C0 3.07, 3.07 0, 9.22 0"
+            stroke="#000000" stroke-width="2" fill="none"></path>
+    </g>
+    <g transform="translate(1349.7623254284244 1205.52594955302) rotate(0 14.5 10)"><text x="14.5" y="14"
+            font-family="Virgil, Segoe UI Emoji" font-size="16px" fill="#000000" text-anchor="middle"
+            style="white-space: pre;" direction="ltr">3-6</text></g>
+    <g stroke-linecap="round"
+        transform="translate(1396.159822857002 1153.362261308137) rotate(0 29.50274860373429 18.440958247119852)">
+        <path
+            d="M9.22 0 M9.22 0 C18.73 0, 28.25 0, 49.79 0 M9.22 0 C17.55 0, 25.89 0, 49.79 0 M49.79 0 C55.93 0, 59.01 3.07, 59.01 9.22 M49.79 0 C55.93 0, 59.01 3.07, 59.01 9.22 M59.01 9.22 C59.01 13.93, 59.01 18.64, 59.01 27.66 M59.01 9.22 C59.01 16.46, 59.01 23.71, 59.01 27.66 M59.01 27.66 C59.01 33.81, 55.93 36.88, 49.79 36.88 M59.01 27.66 C59.01 33.81, 55.93 36.88, 49.79 36.88 M49.79 36.88 C36.21 36.88, 22.64 36.88, 9.22 36.88 M49.79 36.88 C36.12 36.88, 22.46 36.88, 9.22 36.88 M9.22 36.88 C3.07 36.88, 0 33.81, 0 27.66 M9.22 36.88 C3.07 36.88, 0 33.81, 0 27.66 M0 27.66 C0 22.95, 0 18.24, 0 9.22 M0 27.66 C0 20.73, 0 13.8, 0 9.22 M0 9.22 C0 3.07, 3.07 0, 9.22 0 M0 9.22 C0 3.07, 3.07 0, 9.22 0"
+            stroke="#000000" stroke-width="2" fill="none"></path>
+    </g>
+    <g transform="translate(1411.662571460738 1161.8032195552569) rotate(0 14 10)"><text x="14" y="14"
+            font-family="Virgil, Segoe UI Emoji" font-size="16px" fill="#000000" text-anchor="middle"
+            style="white-space: pre;" direction="ltr">6-9</text></g>
+</svg>

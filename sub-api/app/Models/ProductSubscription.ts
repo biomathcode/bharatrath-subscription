@@ -24,7 +24,7 @@ export default class ProductSubscription extends BaseModel {
   public Product: HasOne<typeof Product>
 
   @hasOne(() => Subscription, {
-    localKey: 'subscription_id',
+    localKey: 'subscriptionId',
   })
   public Subscription: HasOne<typeof Subscription>
 

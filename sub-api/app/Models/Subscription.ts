@@ -47,9 +47,6 @@ export default class Subscription extends BaseModel {
 
   @manyToMany(() => AddOnProductSubscription, {
     pivotTable: 'add_on_product_subscriptions',
-
-    pivotForeignKey: 'subscription_id',
-    pivotRelatedForeignKey: 'id',
   })
   public addOn: ManyToMany<typeof AddOnProductSubscription>
 

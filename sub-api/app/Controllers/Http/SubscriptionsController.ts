@@ -17,6 +17,7 @@ export default class SubscriptionsController {
           quant.where('subscription_id', params.user_id)
         })
       })
+      .preload('addOn')
       .preload('timeSlot')
       .preload('dates')
       .preload('days')
@@ -88,7 +89,7 @@ export default class SubscriptionsController {
       .preload('products')
       .preload('dates')
       .preload('days')
-      .preload('addOn')
+      // .preload('addOn')
       .first()
 
     console.log(subscription)

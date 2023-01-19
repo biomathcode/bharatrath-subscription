@@ -1,7 +1,19 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column, HasOne, hasOne } from '@ioc:Adonis/Lucid/Orm'
+import Product from './Product'
+import Subscription from './Subscription'
 
 export default class AddOnProductSubscription extends BaseModel {
+  @hasOne(() => Product, {
+    localKey: 'productId',
+  })
+  public Product: HasOne<typeof Product>
+
+  @hasOne(() => Subscription, {
+    localKey: 'subscriptionId',
+  })
+  public subscription: HasOne<typeof Subscription>
+
   @column({ isPrimary: true })
   public id: number
 
