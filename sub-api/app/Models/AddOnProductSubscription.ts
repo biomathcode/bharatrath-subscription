@@ -4,10 +4,8 @@ import Product from './Product'
 import Subscription from './Subscription'
 
 export default class AddOnProductSubscription extends BaseModel {
-  @hasOne(() => Product, {
-    localKey: 'productId',
-  })
-  public Product: HasOne<typeof Product>
+  @belongsTo(() => Product)
+  public product: BelongsTo<typeof Product>
 
   @hasOne(() => Subscription, {
     localKey: 'subscriptionId',

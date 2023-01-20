@@ -1,0 +1,433 @@
+{
+  "info": {
+    "_postman_id": "88a251a5-6518-471f-ad1d-070f67731caa",
+    "name": "Bharatrath",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "8147016"
+  },
+  "item": [
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Mother dairy Milk\",\n    \"description\": \"Mother dairy milk- 1kg\",\n    \"price\": 24,\n    \"stock\": 100,\n    \"image\": \"src/assets/milk.jpeg\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3333/products",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3333",
+              "path": ["products"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all the products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3333/products",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3333",
+              "path": ["products"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Products",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Transaction",
+      "item": [
+        {
+          "name": "Get Transactions of user",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3333/users/1/transactions",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3333",
+              "path": ["users", "1", "transactions"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create new Transaction",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"amount\": 50, \n    \"type\": \"credit\"\n    \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3333 /users/1/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3333 ",
+              "path": ["users", "1", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Subscription",
+      "item": [
+        {
+          "name": "Create subscription by user",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"startDate\": \"2023-01-01T22:27:48.000+05:30\", \n    \"endDate\": \"2023-01-31T22:27:48.000+05:30\",\n    \"status\": \"active\", \n    \"type\": \"everyday\", \n    \"amount\": 500,\n    \"products\": [1, 2], \n    \"quantity\": [2, 4]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3333/users/1/subscriptions",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3333",
+              "path": ["users", "1", "subscriptions"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Subscriptions by user",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3333/users/1/subscriptions",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3333",
+              "path": ["users", "1", "subscriptions"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Subscription by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3333/users/1/subscriptions",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3333",
+              "path": ["users", "1", "subscriptions"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Subscription",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3333/subscriptions/2",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3333",
+              "path": ["subscriptions", "2"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Subscription",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"status\": \"active\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/subscriptions/1",
+              "host": ["{{base_url}}"],
+              "path": ["subscriptions", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Subscription by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/subscriptions/2",
+              "host": ["{{base_url}}"],
+              "path": ["subscriptions", "2"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "get all users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3333/users/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3333",
+              "path": ["users", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update user",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"image\": \"https://cdn.lorem.space/images/face/.cache/500x0/ben-parker-OhKElOkQ3RE-unsplash.jpg\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3333/users/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3333",
+              "path": ["users", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create new User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Pratik Sharma\", \n    \"address\": \"E 324 Mahavir enclave\", \n    \"customerid\": \"iijlfksdmnlf\", \n    \"amount\": 500, \n    \"image\": \"https://lh3.googleusercontent.com/a/AEdFTp5Ut3DV-yHg0VRYDW9x9E1JKRwW0ZAGf2oF5iC5Bg=s576-p-rw-no\"\n    \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3333/users",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3333",
+              "path": ["users"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/users/1",
+              "host": ["{{base_url}}"],
+              "path": ["users", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Get Orders by user",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3333/users/1/orders",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3333",
+              "path": ["users", "1", "orders"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create order",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"amount\": 500, \n    \"quantity\": \"2\", \n    \"date\": \"2023-01-04T05:10:20.739Z\",\n    \"products\": [\n        {\n            \"id\": 1, \n            \"quantity\": 3\n        }, \n        {\n            \"id\": 2, \n            \"quantity\": 2\n        }\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3333/users/1/orders",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3333",
+              "path": ["users", "1", "orders"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Wallet",
+      "item": [
+        {
+          "name": "Get wallet by user",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/users/1/wallets",
+              "host": ["{{base_url}}"],
+              "path": ["users", "1", "wallets"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Wallet for user",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"amount\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/users/1/wallets",
+              "host": ["{{base_url}}"],
+              "path": ["users", "1", "wallets"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"amount\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/wallets/1",
+              "host": ["{{base_url}}"],
+              "path": ["wallets", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"amount\": \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/wallets/1",
+              "host": ["{{base_url}}"],
+              "path": ["wallets", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3333"
+    }
+  ]
+}

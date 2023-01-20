@@ -1,6 +1,15 @@
 import Subscription from 'App/Models/Subscription'
 
 export default class SubscriptionServices {
+  public static async getSubsByUser(user_id: number) {
+    return await Subscription.query()
+      .where('user_id', user_id)
+      .preload('products')
+      .preload('timeSlot')
+      .preload('dates')
+      .preload('days')
+      .preload('addOn', (q) => q.preload('product'))
+  }
   /**
    * getOrders
    * @param userId: string
