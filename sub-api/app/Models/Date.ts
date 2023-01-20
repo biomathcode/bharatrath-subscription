@@ -12,8 +12,6 @@ export default class Date extends BaseModel {
   @column()
   public subscriptionId: number
 
-  @belongsTo(() => Subscription, {
-    localKey: 'subscriptionId',
-  })
+  @belongsTo(() => Subscription)
   public subscription: BelongsTo<typeof Subscription>
 }
