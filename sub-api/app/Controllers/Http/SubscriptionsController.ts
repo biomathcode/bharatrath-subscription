@@ -17,7 +17,6 @@ export default class SubscriptionsController {
 
     const params = request.params()
 
-    console.log(body.dates)
     const sortedDates = body.dates.sort(function compare(a: any, b: any) {
       return a < b ? -1 : a > b ? 1 : 0
     })

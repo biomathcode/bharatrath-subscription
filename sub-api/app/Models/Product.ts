@@ -19,9 +19,7 @@ export default class Product extends BaseModel {
   })
   public orders: ManyToMany<typeof Order>
 
-  @hasMany(() => ProductSubscription, {
-    foreignKey: 'productId',
-  })
+  @hasMany(() => ProductSubscription)
   public ProductSubscription: HasMany<typeof ProductSubscription>
 
   @hasMany(() => AddOnProductSubscription)

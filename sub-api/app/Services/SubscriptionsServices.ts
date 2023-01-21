@@ -4,7 +4,7 @@ export default class SubscriptionServices {
   public static async getSubsByUser(user_id: number) {
     return await Subscription.query()
       .where('user_id', user_id)
-      .preload('products')
+      .preload('products', (p) => p.preload('ProductSubscription'))
       .preload('timeSlot')
       .preload('dates')
       .preload('days')
