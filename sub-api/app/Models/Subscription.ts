@@ -45,10 +45,8 @@ export default class Subscription extends BaseModel {
   })
   public products: ManyToMany<typeof Product>
 
-  @manyToMany(() => AddOnProductSubscription, {
-    pivotTable: 'add_on_product_subscriptions',
-  })
-  public addOn: ManyToMany<typeof AddOnProductSubscription>
+  @hasMany(() => AddOnProductSubscription)
+  public addOn: HasMany<typeof AddOnProductSubscription>
 
   @belongsTo(() => User, {
     localKey: 'userId',

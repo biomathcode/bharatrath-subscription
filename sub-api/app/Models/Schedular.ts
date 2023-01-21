@@ -8,6 +8,12 @@ import Order from './Order'
 //
 
 export default class Schedular extends BaseModel {
+  @belongsTo(() => Subscription)
+  public subscriptions: BelongsTo<typeof Subscription>
+
+  @belongsTo(() => Order)
+  public orders: BelongsTo<typeof Order>
+
   @column({ isPrimary: true })
   public id: number
 
@@ -16,16 +22,6 @@ export default class Schedular extends BaseModel {
 
   @column()
   public orderId: number
-
-  @belongsTo(() => Subscription, {
-    localKey: 'subscriptionId',
-  })
-  public subscriptions: BelongsTo<typeof Subscription>
-
-  @belongsTo(() => Order, {
-    localKey: 'orderId',
-  })
-  public orders: BelongsTo<typeof Order>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

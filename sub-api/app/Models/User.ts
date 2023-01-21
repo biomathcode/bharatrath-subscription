@@ -46,9 +46,7 @@ export default class User extends BaseModel {
   })
   public subscription: HasMany<typeof Subscription>
 
-  @hasOne(() => Wallet, {
-    foreignKey: 'userId',
-  })
+  @hasOne(() => Wallet)
   public wallet: HasOne<typeof Wallet>
 
   @hasMany(() => Transaction, {

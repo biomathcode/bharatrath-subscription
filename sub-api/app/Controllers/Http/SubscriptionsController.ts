@@ -1,5 +1,4 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Database from '@ioc:Adonis/Lucid/Database'
 import AddOnProductSubscription from 'App/Models/AddOnProductSubscription'
 import Date from 'App/Models/Date'
 import Day from 'App/Models/Day'
@@ -10,22 +9,9 @@ import { DateTime } from 'luxon'
 export default class SubscriptionsController {
   public async index({ request }: HttpContextContract) {
     const params = request.params()
-
-    const subscription = await Subscription.query()
-      .where('user_id', params.user_id)
-      .preload('products', (item) => {
-        item.preload('ProductSubscription', (quant) => {
-          quant.where('subscription_id', params.user_id)
-        })
-      })
-
-      .preload('timeSlot')
-      .preload('dates')
-      .preload('days')
-
-    console.log(subscription)
-    return subscription
+    return SubscriptionServices.getSubsByUser(params.user_id)
   }
+
   public async store({ request }: HttpContextContract) {
     const body = request.body()
 
@@ -90,13 +76,9 @@ export default class SubscriptionsController {
       .preload('products')
       .preload('dates')
       .preload('days')
-      .first()
+      .preload('addOn')
 
-    const AddOnProduct = await AddOnProductSubscription.query().where('subscription_id', params.id)
-
-    console.log(AddOnProduct)
-
-    return AddOnProduct
+    return subscription
   }
 
   public async update({ params, request }: HttpContextContract) {

@@ -4,15 +4,11 @@ import Product from './Product'
 import Subscription from './Subscription'
 
 export default class AddOnProductSubscription extends BaseModel {
-  @hasOne(() => Product, {
-    localKey: 'productId',
-  })
-  public Product: HasOne<typeof Product>
+  @belongsTo(() => Product)
+  public product: BelongsTo<typeof Product>
 
-  @hasOne(() => Subscription, {
-    localKey: 'subscriptionId',
-  })
-  public subscription: HasOne<typeof Subscription>
+  @belongsTo(() => Subscription)
+  public subscription: BelongsTo<typeof Subscription>
 
   @column({ isPrimary: true })
   public id: number
@@ -24,7 +20,7 @@ export default class AddOnProductSubscription extends BaseModel {
   public subscriptionId: number
 
   @column()
-  public quantity: string
+  public quantity: number
 
   @column.dateTime()
   public specificDate: DateTime
