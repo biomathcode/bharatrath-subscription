@@ -61,6 +61,8 @@ export default class User extends BaseModel {
 
   @afterCreate()
   public static async createWallet(user: User) {
-    await user.related('wallet').create({ amount: 999 })
+    await user.related('wallet').create({
+      amount: 1000,
+    })
   }
 }
