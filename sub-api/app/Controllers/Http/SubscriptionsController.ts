@@ -10,9 +10,6 @@ export default class SubscriptionsController {
   public async index({ request }: HttpContextContract) {
     const params = request.params()
     return SubscriptionServices.getSubsByUser(params.user_id)
-
-    // console.log(subscription)
-    // return subscription
   }
 
   public async store({ request }: HttpContextContract) {
@@ -79,13 +76,9 @@ export default class SubscriptionsController {
       .preload('products')
       .preload('dates')
       .preload('days')
-      .first()
+      .preload('addOn')
 
-    const AddOnProduct = await AddOnProductSubscription.query().where('subscription_id', params.id)
-
-    console.log(AddOnProduct)
-
-    return AddOnProduct
+    return subscription
   }
 
   public async update({ params, request }: HttpContextContract) {

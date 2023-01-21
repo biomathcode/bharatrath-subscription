@@ -1,7 +1,5 @@
-// one to many products
-// one to many subscriptions
 import { DateTime } from 'luxon'
-import { BaseModel, column, HasOne, hasOne } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import Product from './Product'
 import Subscription from './Subscription'
 
@@ -18,15 +16,11 @@ export default class ProductSubscription extends BaseModel {
   @column()
   public subscriptionId: number
 
-  @hasOne(() => Product, {
-    localKey: 'productId',
-  })
-  public Product: HasOne<typeof Product>
+  @belongsTo(() => Product)
+  public Product: BelongsTo<typeof Product>
 
-  @hasOne(() => Subscription, {
-    localKey: 'subscriptionId',
-  })
-  public Subscription: HasOne<typeof Subscription>
+  @belongsTo(() => Subscription)
+  public Subscription: BelongsTo<typeof Subscription>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
