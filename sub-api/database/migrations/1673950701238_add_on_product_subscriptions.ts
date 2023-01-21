@@ -22,7 +22,7 @@ export default class extends BaseSchema {
 
       table.integer('quantity').unsigned().defaultTo(1)
 
-      table.timestamp('specific_date')
+      table.date('specific_date')
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

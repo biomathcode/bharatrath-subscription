@@ -17,13 +17,8 @@ export const store = reactive({
   addOnProduct(id, products) {
     const getSubscription = this.subscription.filter((el) => el.id === id);
 
-    const Subscriptions = this.subscription.filter((el) => el.id !== id);
-
-
-    getSubscription[0].customProducts = products
-
-    this.subscription = []
-  }
+    getSubscription[0].customProducts = products;
+  },
 
   getUser(user) {
     console.log("this is user", user);
