@@ -2,6 +2,7 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import AddOnProductSubscription from 'App/Models/AddOnProductSubscription'
 import Date from 'App/Models/Date'
 import Day from 'App/Models/Day'
+import ProductSubscription from 'App/Models/ProductSubscription'
 import Subscription from 'App/Models/Subscription'
 import SubscriptionServices from 'App/Services/SubscriptionsServices'
 import { DateTime } from 'luxon'
@@ -89,6 +90,18 @@ export default class SubscriptionsController {
           status: body.status,
         }
       )
+    }
+
+    if (body.products) {
+      await ProductSubscription.query().where('subscription_id', subscription.id).delete()
+
+      const newProducts = body.products.map((el) => ({
+        productId: el.id,
+        subscriptionId: subscription.id,
+        quantity: el.quantity,
+      }))
+
+      return await subscription.related('subProducts').createMany(newProducts)
     }
 
     if (body.type === 'everyday') {

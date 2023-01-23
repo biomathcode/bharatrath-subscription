@@ -9,6 +9,8 @@ import DaysSelectorVue from "../components/DaysSelector.vue";
 
 const props = defineProps(["id"]);
 
+let products = ref([]);
+
 let days = ref([]);
 
 let isActive = ref(false);
@@ -54,6 +56,31 @@ function select(e) {
   }
 }
 
+const handleProductInput = (e, name) => {
+
+  const index = products.value.map((el) => el.id).indexOf(Number(e.target.name))
+  const restProduct = products.value.filter((el) => el.id !== Number(e.target.name))
+
+  const newProduct = {
+    id: Number(e.target.name), 
+    name: name, 
+    quantity: e.target.value,
+  }
+
+  
+
+  console.log('this index', index)
+
+
+  if(restProduct.length > 0) {
+    products.value = index === 0 ? [newProduct, ...restProduct] : [...restProduct, newProduct]
+  } else {
+    products.value = [ newProduct]
+
+  }
+
+}
+
 let startDate = ref();
 
 let endDate = ref();
@@ -66,14 +93,24 @@ async function fetchData() {
   console.log('this is edit subs', subs.data)
   const subdata = await subs.data;
 
-
-
   userData.value = subdata;
 
   startDate.value = subdata.start_date;
   endDate.value = subdata.end_date;
 
   isActive.value = subdata.status === "active" ? true : false;
+
+  products.value = subdata.subProducts.map((el) => {
+    return (
+      {
+        id: el.Product.id, 
+        name: el.Product.name, 
+        quantity: el.quantity,
+      }
+    )
+  })
+
+  console.log('this are products', products.value)
 
   subdata.dates?.map((el) =>
     customdates.value.push({
@@ -92,13 +129,14 @@ fetchData();
 async function updateSubscription() {
   const newDays = WeekData.filter((el) => days.value.includes(el.value));
 
-  console.log(dates.value);
+
 
   await axios.put("/subscriptions/" + props.id, {
     endDate: endDate.value,
     type: userData.value.recurrence,
     days: newDays,
     dates: dates.value,
+    products: products.value
   });
   router.push({ name: "subscriptions" });
 }
@@ -144,19 +182,16 @@ console.log("this is userData", startDate, endDate);
             </div>
           </div>
           <div
-          v-for="el in userData?.subProducts"
+          :key="el.id"
+          v-for="el in products"
           class="flex gap-20 justify-between my-5"
+          
           >
         
-            <label>{{ el.Product.name }}</label>
-            <input type="number" min="1" class="bg-white border border-gray-200 px-3 text-base-300  w-32" :value="el.quantity" />
+            <label>{{ el.name }}</label>
+            <input @change="(e) => handleProductInput(e, el.name)" :name="el.id" type="number" min="1" class="bg-white border border-gray-200 px-3 text-base-300  w-32" :value="el.quantity" />
           </div>
 
-          <div
-            class="text-left flex justify-end badge text-md mt-5 badge-outline"
-          >
-            ₹{{ userData.total_amount }}
-          </div>
 
           <div v-if="userData?.days > 0" class="flex gap-2">
             <div
@@ -170,7 +205,7 @@ console.log("this is userData", startDate, endDate);
 
           
 
-          <div
+          <!-- <div
             v-if="userData?.recurrence === 'everyday'"
             class="flex max-w-md flex-col gap-3"
           >
@@ -205,7 +240,7 @@ console.log("this is userData", startDate, endDate);
                 </div>
               </template>
             </v-date-picker>
-          </div>
+          </div> -->
 
           <DaysSelectorVue
             v-if="days.length > 0"

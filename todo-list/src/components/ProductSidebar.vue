@@ -35,7 +35,7 @@ const handleSubmit = (e) => {
                 <div>Rs. {{ item.price }}</div>
                 <div class="flex gap-20">
                   <label class="text-base-200 font-bold">Quantity </label>
-                <input name="item.name"  type="number" value="0" class="bg-white w-20" />
+                <input :name="item.name"  type="number" value="0" class="bg-white w-20" />
 
                 </div>
               </div>
