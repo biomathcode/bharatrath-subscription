@@ -4,26 +4,22 @@ export default class SubscriptionServices {
   public static async getSubsByUser(user_id: number) {
     return await Subscription.query()
       .where('user_id', user_id)
-      .preload('products', (p) => p.preload('ProductSubscription'))
+      .preload('subProducts', (p) => p.preload('Product'))
       .preload('timeSlot')
       .preload('dates')
       .preload('days')
       .preload('addOn', (q) => q.preload('product'))
   }
-  /**
-   * getOrders
-   * @param userId: string
-   */
-  public static async getSubscriptionsByUser(userId: string) {
-    const userSubscriptions = Subscription.query()
-      .where('user_id', userId)
-      .preload('products')
+
+  public static async getSubsById(id: number) {
+    return await Subscription.query()
+      .where('id', id)
+      .preload('subProducts', (p) => p.preload('Product'))
+      .preload('timeSlot')
       .preload('dates')
       .preload('days')
-
-    if (!userSubscriptions) throw Error('No user Subscriptions found')
-
-    return userSubscriptions
+      .preload('addOn', (q) => q.preload('product'))
+      .first()
   }
 
   /**

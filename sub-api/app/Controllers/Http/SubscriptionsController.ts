@@ -70,14 +70,9 @@ export default class SubscriptionsController {
     return { subscription, products }
   }
   public async show({ params }: HttpContextContract) {
-    const subscription = await Subscription.query()
-      .where('id', params.id)
-      .preload('products')
-      .preload('dates')
-      .preload('days')
-      .preload('addOn')
+    const id = params.id
 
-    return subscription
+    return SubscriptionServices.getSubsById(id)
   }
 
   public async update({ params, request }: HttpContextContract) {

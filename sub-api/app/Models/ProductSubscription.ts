@@ -4,6 +4,12 @@ import Product from './Product'
 import Subscription from './Subscription'
 
 export default class ProductSubscription extends BaseModel {
+  @belongsTo(() => Product)
+  public Product: BelongsTo<typeof Product>
+
+  @belongsTo(() => Subscription)
+  public Subscription: BelongsTo<typeof Subscription>
+
   @column({ isPrimary: true })
   public id: number
 
@@ -15,12 +21,6 @@ export default class ProductSubscription extends BaseModel {
 
   @column()
   public subscriptionId: number
-
-  @belongsTo(() => Product)
-  public Product: BelongsTo<typeof Product>
-
-  @belongsTo(() => Subscription)
-  public Subscription: BelongsTo<typeof Subscription>
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

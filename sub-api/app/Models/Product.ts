@@ -20,15 +20,13 @@ export default class Product extends BaseModel {
   public orders: ManyToMany<typeof Order>
 
   @hasMany(() => ProductSubscription)
-  public ProductSubscription: HasMany<typeof ProductSubscription>
+  public subProducts: HasMany<typeof ProductSubscription>
 
   @hasMany(() => AddOnProductSubscription)
   public addOn: HasMany<typeof AddOnProductSubscription>
 
-  @manyToMany(() => Subscription, {
-    pivotTable: 'product_subscriptions',
-  })
-  public subscriptions: ManyToMany<typeof Subscription>
+  @hasMany(() => Subscription)
+  public subscriptions: HasMany<typeof Subscription>
 
   @column({ isPrimary: true })
   public id: number

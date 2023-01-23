@@ -29,7 +29,7 @@ import CalendarPreview from "../components/CalendarPreview.vue";
           </div>
 
           <p>
-            {{ subs?.products.map((el) => el.name).join(" + ") }}
+            {{ subs?.subProducts?.map((el) => el.Product.name + " " +  el.quantity).join(" + ") }}
           </p>
           <p class="text-xs text-slate-500">
             created
@@ -81,7 +81,8 @@ import CalendarPreview from "../components/CalendarPreview.vue";
           </div>
           <div class="flex flex-row justify-between">
             <div>
-              {{ subs?.products.map((el) => el.name).join(" + ") }}
+              {{ subs?.subProducts?.map((el) => el.Product.name + " " +  el.quantity).join(" + ") }}
+
             </div>
             <div class="drawer-content">
               <label
