@@ -3,8 +3,7 @@ import axios from "../axios/index";
 import router from "../router/index";
 import { ref, computed } from "vue";
 import format from "date-fns/format";
-import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
-import { ChevronUpIcon } from "@heroicons/vue/20/solid";
+
 import { WeekData } from "../utils";
 import DaysSelectorVue from "../components/DaysSelector.vue";
 
@@ -144,6 +143,14 @@ console.log("this is userData", startDate, endDate);
               {{ format(new Date(userData.end_date), "dd/MM/yyyy") }}
             </div>
           </div>
+          <div
+          v-for="el in userData?.subProducts"
+          class="flex gap-20 justify-between my-5"
+          >
+        
+            <label>{{ el.Product.name }}</label>
+            <input type="number" min="1" class="bg-white border border-gray-200 px-3 text-base-300  w-32" :value="el.quantity" />
+          </div>
 
           <div
             class="text-left flex justify-end badge text-md mt-5 badge-outline"
@@ -161,25 +168,7 @@ console.log("this is userData", startDate, endDate);
             </div>
           </div>
 
-          <Disclosure v-slot="{ open }">
-            <DisclosureButton class="py-2 flex gap-3">
-              <span>View Details</span>
-
-              <ChevronUpIcon
-                :class="open ? 'rotate-180 transform' : ''"
-                class="h-5 w-5 text-purple-500"
-              />
-            </DisclosureButton>
-            <DisclosurePanel class="text-gray-500">
-              <div :key="product.id" v-for="product in userData.products">
-                <div class="text-sm">
-                  {{ product.name }} x
-                  {{ product.ProductSubscription[0].quantity }} =
-                  {{ product.price * product.ProductSubscription[0].quantity }}
-                </div>
-              </div>
-            </DisclosurePanel>
-          </Disclosure>
+          
 
           <div
             v-if="userData?.recurrence === 'everyday'"
@@ -217,9 +206,7 @@ console.log("this is userData", startDate, endDate);
               </template>
             </v-date-picker>
           </div>
-          <div>
-             
-          </div>
+
           <DaysSelectorVue
             v-if="days.length > 0"
             @select="select"

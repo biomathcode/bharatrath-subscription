@@ -27,12 +27,6 @@ const amount = ref("");
           tabindex="0"
           class="btn btn-ghost flex gap-10 content-center items-center sss"
         >
-          <!-- <div class="avatar">
-            <div class="w-10 rounded-full">
-              <img class="avatar" :src="store.user.image" alt="avatar" />
-            </div>
-          </div> -->
-
           <div class="flex flex-col">
             <p>{{ store.user.name }}</p>
             <p>₹ {{ store.user?.wallet?.amount }}</p>

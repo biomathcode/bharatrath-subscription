@@ -1,8 +1,13 @@
 <script setup>
 import { store } from "../stores/store";
-import Card from "./Card.vue";
 
-console.log(store);
+
+const handleSubmit = (e) => {
+  console.log(e.target);
+ 
+}
+
+
 </script>
 
 <template>
@@ -15,23 +20,33 @@ console.log(store);
 
     <div class="drawer-side">
       <label for="my-drawer-4" class="drawer-overlay"></label>
+
       <div
         v-if="store.products.length > 0"
-        class="flex-col flex menu p-4 w-80 bg-white text-base-content mt-16"
+        class="flex-col flex menu p-4 w-80 bg-white text-base-content "
       >
+      <form  @submit.prevent="handleSubmit">
+
         <ul :key="item.id" v-for="item in store?.products">
           <li class="text-gray-900">
             <div class="flex flex-row gap-5">
-              <img :src="item.image" class="h-10 w-10" :alt="item.name" />
               <div class="flex flex-col gap-2">
                 <div>{{ item.name }}</div>
                 <div>Rs. {{ item.price }}</div>
+                <div class="flex gap-20">
+                  <label class="text-base-200 font-bold">Quantity </label>
+                <input name="item.name"  type="number" value="0" class="bg-white w-20" />
+
+                </div>
               </div>
             </div>
           </li>
         </ul>
-        <button class="btn btn-sm btn-info">Add to Upcoming order</button>
+        <button type="submit" class="btn btn-sm btn-info m-10">Add to Upcoming order</button>
+    </form>
+
       </div>
+
     </div>
   </div>
 </template>
