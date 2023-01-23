@@ -57,22 +57,20 @@ function select(e) {
 }
 
 const handleProductInput = (e, name) => {
-
-  const index = products.value.map((el) => el.id).indexOf(Number(e.target.name))
-  const restProduct = products.value.filter((el) => el.id !== Number(e.target.name))
+  const index = products.value
+    .map((el) => el.id)
+    .indexOf(Number(e.target.name));
+  const restProduct = products.value.filter(
+    (el) => el.id !== Number(e.target.name)
+  );
 
   const newProduct = {
-    id: Number(e.target.name), 
-    name: name, 
+    id: Number(e.target.name),
+    name: name,
     quantity: e.target.value,
-  }
-
-  
-
+  };
   console.log('this index', index)
-
-
-  if(restProduct.length > 0) {
+  if (restProduct.length > 0) {
     products.value = index === 0 ? [newProduct, ...restProduct] : [...restProduct, newProduct]
   } else {
     products.value = [ newProduct]

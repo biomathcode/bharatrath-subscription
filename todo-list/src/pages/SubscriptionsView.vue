@@ -40,8 +40,8 @@ import CalendarPreview from "../components/CalendarPreview.vue";
             }}
           </p>
           <div class="flex mt-2">
-            <div class="text-base text-slate-900">
-              {{ format(new Date(subs?.start_date), "dd MMM yyyy") }}
+            <div class="text-sm text-slate-900">
+             Started from :  {{ format(new Date(subs?.start_date), "dd MMM yyyy") }}
             </div>
             
            
