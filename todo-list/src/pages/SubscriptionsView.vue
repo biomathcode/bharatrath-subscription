@@ -91,6 +91,7 @@ import CalendarPreview from "../components/CalendarPreview.vue";
               <label
                 for="my-drawer-4"
                 class="drawer-button btn btn-sm btn-primary"
+                @click="store.updateSubId(subs.id)"
                 >Add Products</label
               >
             </div>

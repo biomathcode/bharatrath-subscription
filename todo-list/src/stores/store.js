@@ -14,6 +14,12 @@ export const store = reactive({
   transactions: [],
   subscription: [],
 
+  activeSubscriptionId: null,
+
+  updateSubId(id) {
+    this.activeSubscriptionId = id;
+  },
+
   addOnProduct(id, products) {
     const getSubscription = this.subscription.filter((el) => el.id === id);
 

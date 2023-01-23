@@ -13,6 +13,9 @@ const handleSubmit = (e) => {
 <template>
   <div class="drawer bg-white drawer-end mt-14">
     <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
+    <div>
+      {{ store.activeSubscriptionId }}
+    </div>
 
     <div class="drawer-content">
       <slot> </slot>
@@ -25,6 +28,7 @@ const handleSubmit = (e) => {
         v-if="store.products.length > 0"
         class="flex-col flex menu p-4 w-80 bg-white text-base-content "
       >
+      <div class="text-base text-gray-700">Subscription Id  {{ store.activeSubscriptionId }}</div>
       <form  @submit.prevent="handleSubmit">
 
         <ul :key="item.id" v-for="item in store?.products">
