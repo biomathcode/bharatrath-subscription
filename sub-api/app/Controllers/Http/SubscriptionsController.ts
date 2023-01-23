@@ -53,6 +53,15 @@ export default class SubscriptionsController {
       }
     })
 
+    if (body.customProducts) {
+      await subscription.related('addOn').createMany([
+        {
+          productId: '1',
+          quantity: 100,
+        },
+      ])
+    }
+
     if (body.type === 'everyday' || body.type === 'everyweek') {
       await subscription.related('days').createMany(newDays)
     }
