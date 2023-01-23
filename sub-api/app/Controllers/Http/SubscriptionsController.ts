@@ -53,15 +53,6 @@ export default class SubscriptionsController {
       }
     })
 
-    if (body.customProducts) {
-      await subscription.related('addOn').createMany([
-        {
-          productId: '1',
-          quantity: 100,
-        },
-      ])
-    }
-
     if (body.type === 'everyday' || body.type === 'everyweek') {
       await subscription.related('days').createMany(newDays)
     }
@@ -91,6 +82,11 @@ export default class SubscriptionsController {
     const subscription = await Subscription.find(params.id)
 
     if (!subscription) throw Error('Subscription not found')
+
+    if (body.customProducts) {
+      console.log(body.customProducts)
+      return await subscription.related('addOn').createMany(body.customProducts)
+    }
 
     if (body.status) {
       return await Subscription.updateOrCreate(
