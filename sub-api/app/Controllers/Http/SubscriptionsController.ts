@@ -60,13 +60,13 @@ export default class SubscriptionsController {
       await subscription.related('dates').createMany(newDates)
     }
 
-    let productsObject = {}
+    console.log('this are timeslot', body.timeSlot)
 
-    body.products.forEach((key, i) => (productsObject[key] = { quantity: body.quantity[i] }))
+    if (body.timeSlot) {
+      await subscription.related('timeSlot').create(body.timeSlot)
+    }
 
-    console.log(body.products)
-
-    const products = await subscription.related('products').attach(productsObject)
+    const products = await subscription.related('subProducts').createMany(body.products)
 
     return { subscription, products }
   }
