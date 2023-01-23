@@ -1,7 +1,7 @@
 import { reactive, toRaw } from "vue";
 import { v4 as uuid } from "uuid";
 import axios from "../axios/index";
-import { WeekData } from "../utils";
+import { TimeSlots, WeekData } from "../utils";
 
 // user
 //TODO: refactor to individual stores
@@ -65,26 +65,49 @@ export const store = reactive({
     const data = this.subscription.filter((el) => el.id === id);
   },
 
-  async startSubscription(startDate, endDate, type, orderToday, Days, dates) {
-    const products = toRaw(this.cart.map((el) => el.id));
-    const quantity = toRaw(this.cart.map((el) => el.quantity));
+  async startSubscription(
+    startDate,
+    endDate,
+    type,
+    orderToday,
+    Days,
+    dates,
+    timeSlot
+  ) {
+    const products = this.cart.map((el) => {
+      return {
+        product_id: el.id,
+        quantity: el.quantity,
+      };
+    });
     const totalAmount = this.cart?.reduce(
       (prev, curr) => prev + curr.quantity * curr.price,
       0
     );
     const newDays = WeekData.filter((el) => Days.includes(el.value));
 
+    const newTimeSlot = TimeSlots.filter((el) => el.label === timeSlot[0]).map(
+      (el) => {
+        return {
+          startTime: el.startTime,
+          endTime: el.endTime,
+        };
+      }
+    );
+
+    console.log("this is timeSlot", newTimeSlot);
+
     const newSub = {
       createdAt: new Date(),
-      products: toRaw(products),
+      products: products,
       startDate: startDate,
       endDate: endDate,
       type: type,
       orderToday: orderToday,
       dates,
+      timeSlot: newTimeSlot[0],
       days: newDays,
       status: "active",
-      quantity,
       amount: totalAmount,
     };
 

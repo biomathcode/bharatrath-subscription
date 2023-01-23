@@ -54,28 +54,28 @@ function getDates(startDate, endDate, selectedD) {
 export const TimeSlots = [
   {
     label: "6-9 am",
-    startTime: "6:00",
-    endTime: "9:00",
+    startTime: "6:00 am ",
+    endTime: "9:00 am ",
   },
   {
     label: "9-12 am",
-    startTime: "9:00",
-    endTime: "12:00",
+    startTime: "9:00 am ",
+    endTime: "12:00 am ",
   },
   {
     label: "12-3 pm",
-    startTime: "12:00",
-    endTime: "15:00",
+    startTime: "12:00 pm ",
+    endTime: "3:00 pm ",
   },
   {
     label: "3-6 pm",
-    startTime: "15:00",
-    endTime: "18:00",
+    startTime: "3:00 pm ",
+    endTime: "6:00 pm ",
   },
   {
     label: "6-9 pm",
-    startTime: "18:00",
-    endTime: "21:00",
+    startTime: "6:00 pm ",
+    endTime: "9:00 pm ",
   },
 ];
 

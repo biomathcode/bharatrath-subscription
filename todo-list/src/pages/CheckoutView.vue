@@ -39,7 +39,7 @@ let orderToday = ref(false);
 
 let Days = ref([]);
 
-let Timeslot = ref([]);
+let timeslot = ref([]);
 
 function select(e) {
   console.log("this is working");
@@ -55,11 +55,11 @@ function select(e) {
 function addSelect(e) {
   console.log(e);
 
-  if (Timeslot.value.includes(e)) {
-    const newArray = Timeslot.value.filter((el) => el !== e);
-    Timeslot.value = [...newArray];
+  if (timeslot.value.includes(e)) {
+    const newArray = timeslot.value.filter((el) => el !== e);
+    timeslot.value = [...newArray];
   } else {
-    Timeslot.value = [e];
+    timeslot.value = [e];
   }
 }
 
@@ -79,6 +79,8 @@ function onDayClick(day) {
 function startSubscription() {
   const constrainAmount = totalAmount * 30;
   const dif = constrainAmount - store.user.wallet.amount;
+
+  console.log('this is timeslot', timeslot)
   console.log(dif, constrainAmount, store.user.wallet.amount);
   if (constrainAmount < store.user.wallet.amount) {
     store.startSubscription(
@@ -87,7 +89,8 @@ function startSubscription() {
       type.value,
       orderToday.value,
       Days.value,
-      dates.value
+      dates.value, 
+      timeslot.value,
     );
     router.push({ name: "home" });
   } else {
@@ -152,7 +155,7 @@ function startSubscription() {
       </div>
       <TimeSlot
         @select="addSelect"
-        :selected-time="Timeslot"
+        :selected-time="timeslot"
         :label="`Select Time Slot for delivery`"
       />
       <DaysSelectorVue

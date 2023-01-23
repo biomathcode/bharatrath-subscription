@@ -31,6 +31,9 @@ import CalendarPreview from "../components/CalendarPreview.vue";
           <p>
             {{ subs?.subProducts?.map((el) => el.Product.name + " " +  el.quantity).join(" + ") }}
           </p>
+          <p class="text-sm">
+            {{ subs?.timeSlot.start_time + "-" +  subs?.timeSlot.end_time }}
+          </p>
           <p class="text-xs text-slate-500">
             created
             {{
