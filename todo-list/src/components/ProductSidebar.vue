@@ -8,7 +8,7 @@ const newProduct = ref(
     return {
       product_id: el.id,
       quantity: 0,
-      specificDate: new Date().toString(),
+      specific_date: new Date().toString(),
     };
   })
 );
