@@ -22,8 +22,8 @@ export default class AddOnProductSubscription extends BaseModel {
   @column()
   public quantity: number
 
-  @column.dateTime()
-  public specificDate: DateTime
+  @column()
+  public specificDate: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

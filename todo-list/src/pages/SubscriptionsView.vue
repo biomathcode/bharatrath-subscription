@@ -81,15 +81,19 @@ import CalendarPreview from "../components/CalendarPreview.vue";
 
         <div class="flex flex-col justify-around gap-1 min-w-full p-3">
           <div class="text-md font-bold">Upcoming Orders</div>
-          <!-- <div v-if=""></div> -->
+
           <div
             class="card drop-shadow-md p-2 mt-4 rounded-md min-w-full border-[1px] border-gray-900"
           >
-            <div>
-              {{
-                format(addDays(new Date(subs?.start_date), 1), "dd MMM yyyy")
-              }}
+            <div class="flex flex-row justify-between">
+              <div>
+                {{
+                  format(addDays(new Date(subs?.start_date), 1), "dd MMM yyyy")
+                }}
+              </div>
+              <div class="text-md font-bold">Add on Product</div>
             </div>
+
             <div class="flex flex-row justify-between">
               <div>
                 {{
@@ -98,7 +102,29 @@ import CalendarPreview from "../components/CalendarPreview.vue";
                     .join(" + ")
                 }}
               </div>
-              <div class="drawer-content">
+              <div
+                v-if="
+                  subs.addOn.length > 0 &&
+                  subs.addOn.filter(
+                    (p) => p.specific_date === addDays(new Date(), 1).toString()
+                  )
+                "
+              >
+                <div :key="product.id" v-for="product in subs.addOn">
+                  <div>
+                    {{ product.product.name + "  (" + product.quantity + ")" }}
+                  </div>
+                </div>
+              </div>
+              <div
+                v-if="
+                  subs.addOn.length === 0 &&
+                  subs.addOn.filter(
+                    (p) => p.specific_date === addDays(new Date(), 1).toString()
+                  )
+                "
+                class="drawer-content"
+              >
                 <label
                   for="my-drawer-4"
                   class="drawer-button btn btn-sm btn-primary"
