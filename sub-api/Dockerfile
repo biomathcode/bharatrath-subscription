@@ -18,7 +18,7 @@ RUN node ace build --production
 FROM base AS production
 ENV NODE_ENV=production
 ENV PORT=3333
-ENV HOST=localhost
+ENV HOST=0.0.0.0
 ENV APP_KEY=2TaFARxZdTchfPov6VwevUbzhs0o6suI
 ENV DRIVE_DISK=local
 ENV DB_CONNECTION=sqlite
@@ -26,4 +26,5 @@ COPY --chown=node:node ./package*.json ./
 RUN npm ci --production
 COPY --chown=node:node --from=build /home/node/app/build .
 EXPOSE 3333
+
 CMD [ "dumb-init", "node", "server.js" ]
