@@ -2,6 +2,7 @@
 import axios from "../axios/index";
 import { ref } from "vue";
 import { store } from "../stores/store";
+import { addDays } from "date-fns";
 
 const newProduct = ref(
   store.products.map((el) => {
@@ -40,7 +41,7 @@ const handleChange = (e) => {
   const elProduct = {
     product_id: Number(e.target.name),
     quantity: Number(e.target.value),
-    specificDate: new Date().toString(),
+    specific_date: addDays(new Date(), 1).toString(),
   };
   console.log("this index", index);
   if (restProduct.length > 0) {
