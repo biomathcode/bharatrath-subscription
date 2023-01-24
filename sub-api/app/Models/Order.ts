@@ -1,15 +1,5 @@
 import { DateTime } from 'luxon'
-import {
-  afterCreate,
-  BaseModel,
-  BelongsTo,
-  belongsTo,
-  column,
-  HasMany,
-  hasMany,
-  manyToMany,
-  ManyToMany,
-} from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, HasMany, hasMany, manyToMany, ManyToMany } from '@ioc:Adonis/Lucid/Orm'
 import { OrderStatus } from 'Contracts/enums'
 import Product from './Product'
 import Schedular from './Schedular'
@@ -51,7 +41,4 @@ export default class Order extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
-
-  @afterCreate()
-  public static transaction(order: Order) {}
 }

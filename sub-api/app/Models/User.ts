@@ -2,7 +2,6 @@ import { DateTime } from 'luxon'
 import {
   afterCreate,
   BaseModel,
-  beforeCreate,
   column,
   HasMany,
   hasMany,
@@ -22,7 +21,7 @@ export default class User extends BaseModel {
   public id: number
 
   @column({
-    prepare: (value: string) => uuid(),
+    prepare: (_: string) => uuid(),
   })
   public customerid: string
 

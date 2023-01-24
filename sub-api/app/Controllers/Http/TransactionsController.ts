@@ -29,12 +29,9 @@ export default class TransactionsController {
   public async update({ params, request }: HttpContextContract) {
     const body = request.body()
 
-    const status = body.status
-
     return Transaction.updateOrCreate(
       { id: params.id },
       {
-        status: status,
         amount: body.amount,
       }
     )

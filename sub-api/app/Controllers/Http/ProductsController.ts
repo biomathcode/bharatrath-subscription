@@ -2,7 +2,7 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Product from 'App/Models/Product'
 
 export default class ProductsController {
-  public async index(ctx: HttpContextContract) {
+  public async index({}: HttpContextContract) {
     return await Product.all()
   }
   public async store({ request }: HttpContextContract) {
@@ -19,9 +19,7 @@ export default class ProductsController {
   public async show({ params }: HttpContextContract) {
     return Product.find(params.id)
   }
-  public async update({ params, request }: HttpContextContract) {
-    const body = request.body()
-
+  public async update({ params }: HttpContextContract) {
     return Product.updateOrCreate(
       { id: params.id },
       {

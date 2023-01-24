@@ -1,5 +1,4 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import AddOnProductSubscription from 'App/Models/AddOnProductSubscription'
 import Date from 'App/Models/Date'
 import Day from 'App/Models/Day'
 import ProductSubscription from 'App/Models/ProductSubscription'

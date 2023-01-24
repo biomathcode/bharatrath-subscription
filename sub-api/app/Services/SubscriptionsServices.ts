@@ -38,13 +38,7 @@ export default class SubscriptionServices {
       recurrence: body.type,
     })
 
-    let productsObject = {}
-
-    body.products.forEach((key, i) => (productsObject[key] = { quantity: body.quantity[i] }))
-
-    const products = await subscription.related('products').attach(productsObject)
-
-    return { subscription, products }
+    return { subscription }
   }
 
   public static async getSubscription(model, payload) {

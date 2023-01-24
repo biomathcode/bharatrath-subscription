@@ -1,17 +1,9 @@
 import { BaseTask } from 'adonis5-scheduler/build'
-import ProductSubscription from 'App/Models/ProductSubscription'
 import Schedular from 'App/Models/Schedular'
 import Subscription from 'App/Models/Subscription'
 import OrderService from 'App/Services/OrdersServices'
 import { DateTime } from 'luxon'
 import { addDays } from 'date-fns'
-
-//TODO: Fixed number of days, Fixed amount is required to start subscription ✅
-//TODO: deduct wallet amount when order is created ✅
-
-//TODO: Refund, Recharge, ✅
-
-//TODO: Notify the user 5 days before charge end, 1 day and on cancelling subscription
 
 export default class CreateOrder extends BaseTask {
   public static get schedule() {
@@ -31,7 +23,7 @@ export default class CreateOrder extends BaseTask {
     const ActiveSubscriptions = await Subscription.query()
       .where('status', 'active')
       .preload('products', (product) => {
-        product.preload('ProductSubscription')
+        product.preload('subProducts')
       })
       .preload('dates')
       .preload('days')
@@ -39,7 +31,7 @@ export default class CreateOrder extends BaseTask {
     for await (let sub of ActiveSubscriptions) {
       if (sub.recurrence === 'everyday') {
         const amount = sub.products.reduce(
-          (prev, curr) => prev + curr.price * curr.ProductSubscription[0].quantity,
+          (prev, curr) => prev + curr.price * curr.subProducts[0].quantity,
           0
         )
 
@@ -58,7 +50,7 @@ export default class CreateOrder extends BaseTask {
         })
       } else if (sub.recurrence === 'everyweek' && OrderService.dayMatch(sub.days, tomorrowDate)) {
         const amount = sub.products.reduce(
-          (prev, curr) => prev + curr.price * curr.ProductSubscription[0].quantity,
+          (prev, curr) => prev + curr.price * curr.subProducts[0].quantity,
           0
         )
         const newOrders = await OrderService.createOrder({
@@ -76,7 +68,7 @@ export default class CreateOrder extends BaseTask {
         })
       } else if (sub.recurrence === 'custom' && OrderService.dateMatch(sub.dates, tomorrowDate)) {
         const amount = sub.products.reduce(
-          (prev, curr) => prev + curr.price * curr.ProductSubscription[0].quantity,
+          (prev, curr) => prev + curr.price * curr.subProducts[0].quantity,
           0
         )
         const newOrders = await OrderService.createOrder({

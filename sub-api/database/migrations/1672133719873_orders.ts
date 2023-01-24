@@ -1,5 +1,4 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
-import { OrderStatus } from 'Contracts/enums'
 
 export default class extends BaseSchema {
   protected tableName = 'orders'

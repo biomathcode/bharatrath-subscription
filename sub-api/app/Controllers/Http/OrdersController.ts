@@ -7,7 +7,7 @@ import OrderService from 'App/Services/OrdersServices'
 //TODO: Transaction to order relationship
 
 export default class OrdersController {
-  public async index({ params }: HttpContextContract) {
+  public async index({}: HttpContextContract) {
     const data = await OrderService.getOrders()
     return data
   }
@@ -19,7 +19,7 @@ export default class OrdersController {
   public async show({ params }: HttpContextContract) {
     return Order.find(params.id)
   }
-  public async update({ params, request }: HttpContextContract) {
+  public async update({ request }: HttpContextContract) {
     const body = request.body()
 
     return body
