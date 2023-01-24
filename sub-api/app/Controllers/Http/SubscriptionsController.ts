@@ -81,15 +81,17 @@ export default class SubscriptionsController {
 
     const subscription = await Subscription.find(params.id)
 
+    console.log('body', body)
+
     if (!subscription) throw Error('Subscription not found')
 
     if (body.customProducts) {
       console.log(body.customProducts)
-      return await subscription.related('addOn').createMany(body.customProducts)
+      await subscription.related('addOn').createMany(body.customProducts)
     }
 
     if (body.status) {
-      return await Subscription.updateOrCreate(
+      await Subscription.updateOrCreate(
         { id: params.id },
         {
           status: body.status,
@@ -106,7 +108,7 @@ export default class SubscriptionsController {
         quantity: el.quantity,
       }))
 
-      return await subscription.related('subProducts').createMany(newProducts)
+      await subscription.related('subProducts').createMany(newProducts)
     }
 
     if (body.type === 'everyday') {
@@ -130,13 +132,15 @@ export default class SubscriptionsController {
         subscriptionId: subscription.id,
       }))
 
-      await subscription.related('days').createMany(newDays)
+      console.log(newDays)
 
+      const subs = await subscription.related('days').createMany(newDays)
+
+      console.log(subs)
       const newSub = await Subscription.query()
         .where('id', params.id)
         .preload('dates')
         .preload('days')
-        .preload('products')
 
       return newSub
     } else if (body.type === 'custom') {

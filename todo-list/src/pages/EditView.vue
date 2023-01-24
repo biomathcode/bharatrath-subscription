@@ -21,7 +21,6 @@ let dates = computed(() => {
   return customdates.value.map((day) => day.date);
 });
 
-
 let attributes = computed(() => {
   return customdates.value.map((date) => ({
     highlight: true,
@@ -37,7 +36,6 @@ function onDayClick(day) {
 
     customdates.value = filterData;
   } else {
-    
     customdates.value.push({
       id: day.id,
       date: day.date,
@@ -69,15 +67,14 @@ const handleProductInput = (e, name) => {
     name: name,
     quantity: e.target.value,
   };
-  console.log('this index', index)
+  console.log("this index", index);
   if (restProduct.length > 0) {
-    products.value = index === 0 ? [newProduct, ...restProduct] : [...restProduct, newProduct]
+    products.value =
+      index === 0 ? [newProduct, ...restProduct] : [...restProduct, newProduct];
   } else {
-    products.value = [ newProduct]
-
+    products.value = [newProduct];
   }
-
-}
+};
 
 let startDate = ref();
 
@@ -88,7 +85,7 @@ const userData = ref();
 async function fetchData() {
   const subs = await axios.get("/subscriptions/" + props.id);
 
-  console.log('this is edit subs', subs.data)
+  console.log("this is edit subs", subs.data);
   const subdata = await subs.data;
 
   userData.value = subdata;
@@ -99,16 +96,14 @@ async function fetchData() {
   isActive.value = subdata.status === "active" ? true : false;
 
   products.value = subdata.subProducts.map((el) => {
-    return (
-      {
-        id: el.Product.id, 
-        name: el.Product.name, 
-        quantity: el.quantity,
-      }
-    )
-  })
+    return {
+      id: el.Product.id,
+      name: el.Product.name,
+      quantity: el.quantity,
+    };
+  });
 
-  console.log('this are products', products.value)
+  console.log("this are products", products.value);
 
   subdata.dates?.map((el) =>
     customdates.value.push({
@@ -127,15 +122,18 @@ fetchData();
 async function updateSubscription() {
   const newDays = WeekData.filter((el) => days.value.includes(el.value));
 
-
-
-  await axios.put("/subscriptions/" + props.id, {
+  const updates = await axios.put("/subscriptions/" + props.id, {
     endDate: endDate.value,
     type: userData.value.recurrence,
     days: newDays,
     dates: dates.value,
-    products: products.value
+    products: products.value,
   });
+
+  console.log("this is newDays", newDays, WeekData);
+
+  console.log(updates);
+
   router.push({ name: "subscriptions" });
 }
 
@@ -166,7 +164,9 @@ console.log("this is userData", startDate, endDate);
           </div>
 
           <div>
-            {{ userData?.subProducts?.map((el) => el.Product.name).join(" + ") }}
+            {{
+              userData?.subProducts?.map((el) => el.Product.name).join(" + ")
+            }}
           </div>
           <div class="flex mt-2">
             <div class="text-xs text-slate-500">
@@ -180,16 +180,20 @@ console.log("this is userData", startDate, endDate);
             </div>
           </div>
           <div
-          :key="el.id"
-          v-for="el in products"
-          class="flex gap-20 justify-between my-5"
-          
+            :key="el.id"
+            v-for="el in products"
+            class="flex gap-20 justify-between my-5"
           >
-        
             <label>{{ el.name }}</label>
-            <input @change="(e) => handleProductInput(e, el.name)" :name="el.id" type="number" min="1" class="bg-white border border-gray-200 px-3 text-base-300  w-32" :value="el.quantity" />
+            <input
+              @change="(e) => handleProductInput(e, el.name)"
+              :name="el.id"
+              type="number"
+              min="1"
+              class="bg-white border border-gray-200 px-3 text-base-300 w-32"
+              :value="el.quantity"
+            />
           </div>
-
 
           <div v-if="userData?.days > 0" class="flex gap-2">
             <div
@@ -200,8 +204,6 @@ console.log("this is userData", startDate, endDate);
               {{ day.label }}
             </div>
           </div>
-
-          
 
           <!-- <div
             v-if="userData?.recurrence === 'everyday'"
